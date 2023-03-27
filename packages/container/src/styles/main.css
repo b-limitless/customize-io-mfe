@@ -1,0 +1,21 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.App {
+  min-height: 100vh;
+  overflow: initial !important;
+  margin: 0;
+}
+/*# sourceMappingURL=main.css.map */
