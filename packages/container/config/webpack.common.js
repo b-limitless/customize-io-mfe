@@ -1,14 +1,14 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { merge } = require("webpack-merge");
-
+const path = require('path');
 const commonConfig = {
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: "ts-loader",
         exclude: /node_modules/,
-      }, 
+      },
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
@@ -20,23 +20,6 @@ const commonConfig = {
           },
         },
       },
-      
-    ],
-  },
-  resolve: {
-    extensions: [".js", ".jsx", ".tsx", ".ts"]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-  ]
-};
-
-
-const sassConfig = {
-  module: {
-    rules: [
       {
         test: /\.s[ac]ss$/i,
         use: [
@@ -46,21 +29,41 @@ const sassConfig = {
           "css-loader",
           // Compiles Sass to CSS
           "sass-loader",
-        ],
-      },
-    ],
-  },
-};
 
-const cssConfig =  {
-  module: {
-    rules: [
+        ],
+        
+      },
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
+        
+      },
+      {
+        test: /\.svg$/,
+        loader: "svg-inline-loader",
       },
     ],
   },
+  resolve: {
+    extensions: [".js", ".jsx", ".tsx", ".ts", ".svg", ".scss", "sass"],
+    alias: {
+      src: path.resolve(__dirname, 'src/'),
+    },
+    preferRelative:true
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+    }),
+  ],
 };
 
-module.exports = merge(commonConfig, sassConfig, cssConfig);
+
+
+
+
+
+
+
+
+module.exports = commonConfig;
