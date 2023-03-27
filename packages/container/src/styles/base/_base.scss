@@ -16,3 +16,23 @@ body,
   overflow: initial !important;
   margin: 0;
 }
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: $secondary-font-family
+}
+a {
+  text-decoration: none;
+}
+
+input:focus,
+textarea {
+  outline: none;
+}
+li {
+  list-style: none;
+}
+

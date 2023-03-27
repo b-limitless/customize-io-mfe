@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { merge } = require("webpack-merge");
-const path = require('path');
+const path = require("path");
 const commonConfig = {
   module: {
     rules: [
@@ -29,27 +29,45 @@ const commonConfig = {
           "css-loader",
           // Compiles Sass to CSS
           "sass-loader",
-
         ],
-        
       },
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
-        
       },
       {
-        test: /\.svg$/,
-        loader: "svg-inline-loader",
+        test: /\.(woff2?|jpe?g|png|gif|ico|svg)$/,
+        oneOf: [
+          {
+            include: path.resolve(__dirname, "../node_modules/"),
+            use: "svg-inline-loader",
+          },
+          {
+            exclude: path.resolve(__dirname, "../node_modules/"),
+            use: "url-loader",
+          },
+        ],
       },
+      
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".tsx", ".ts", ".svg", ".scss", "sass"],
+    extensions: [
+      ".js",
+      ".jsx",
+      ".tsx",
+      ".ts",
+      ".svg",
+      ".scss",
+      ".sass",
+      ".png",
+      ".jpeg",
+      ".gif",
+    ],
     alias: {
-      src: path.resolve(__dirname, 'src/'),
+      src: path.resolve(__dirname, "src/"),
     },
-    preferRelative:true
+    preferRelative: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -57,13 +75,5 @@ const commonConfig = {
     }),
   ],
 };
-
-
-
-
-
-
-
-
 
 module.exports = commonConfig;
