@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { merge } = require("webpack-merge");
 const path = require("path");
+
 const commonConfig = {
   module: {
     rules: [
@@ -64,10 +64,6 @@ const commonConfig = {
       ".jpeg",
       ".gif",
     ],
-    alias: {
-      src: path.resolve(__dirname, "src/"),
-    },
-    preferRelative: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
