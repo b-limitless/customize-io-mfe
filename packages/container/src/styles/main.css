@@ -89,6 +89,17 @@ li {
           align-items: center;
 }
 
+.left-menu .menu-wrapper .top .logo--arrow .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 8.62px;
+          column-gap: 8.62px;
+}
+
 .left-menu .menu-wrapper .top .navigation {
   top: 4rem;
   position: relative;
@@ -102,7 +113,7 @@ li {
 .left-menu .menu-wrapper .top .navigation .navigation--ul .item .sub--ul {
   position: relative;
   margin-left: 2rem;
-  top: -1rem;
+  top: 0px;
   height: 0px;
   visibility: hidden;
   -webkit-transition: all 0.25s ease;
@@ -125,6 +136,14 @@ li {
   opacity: 1;
 }
 
+.left-menu .menu-wrapper .top .navigation .navigation--ul .item .sub--ul .sub-menu-checkbox {
+  display: none;
+}
+
+.left-menu .menu-wrapper .top .navigation .navigation--ul .item .sub--ul .sub-menu-checkbox:checked + label li {
+  font-weight: 600;
+}
+
 .left-menu .menu-wrapper .top .navigation .navigation--ul .item .major-list {
   display: none;
 }
@@ -133,6 +152,15 @@ li {
   top: 0.5rem !important;
   visibility: visible !important;
   height: auto !important;
+}
+
+.left-menu .menu-wrapper .top .navigation .navigation--ul .item .major-list:checked ~ .title-icon .arrow {
+  -webkit-transform: rotate(0deg) !important;
+          transform: rotate(0deg) !important;
+}
+
+.left-menu .menu-wrapper .top .navigation .navigation--ul .item .major-list:checked ~ .title-icon .title {
+  font-weight: 600;
 }
 
 .left-menu .menu-wrapper .top .navigation .navigation--ul .title-icon {
@@ -144,6 +172,13 @@ li {
           align-items: center;
 }
 
+.left-menu .menu-wrapper .top .navigation .navigation--ul .title-icon .arrow {
+  -webkit-transform: rotate(-90deg) !important;
+          transform: rotate(-90deg) !important;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
 .left-menu .menu-wrapper .top .navigation .navigation--ul .title-icon .title {
   position: relative;
   left: 1rem;
@@ -152,5 +187,147 @@ li {
   font-weight: 500;
   color: rgba(0, 0, 0, 0.45);
   margin-right: auto;
+}
+
+.left-menu .menu-wrapper .bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 4rem;
+}
+
+.left-menu .menu-wrapper .bottom--top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 1rem;
+}
+
+.left-menu .menu-wrapper .bottom--top .switch--account {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 0.5rem;
+          column-gap: 0.5rem;
+  background-color: #EEEEEE;
+  border-radius: 5px;
+  padding: 1rem 0.5rem;
+}
+
+.left-menu .menu-wrapper .bottom--top .switch--account .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 1rem;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.left-menu .menu-wrapper .bottom--top .switch--account .details .switch {
+  font-size: calc($px / 16)rem;
+  color: #848484;
+  line-height: 110%;
+}
+
+.left-menu .menu-wrapper .bottom--top .switch--account .details .switch span {
+  font-weight: 600;
+}
+
+.left-menu .menu-wrapper .bottom--top .switch--account .details .unlinited {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: #848484;
+  line-height: 130%;
+}
+
+.left-menu .menu-wrapper .bottom--top .switch--account .details .ico-getpro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.left-menu .menu-wrapper .bottom--top .switch--account .details .ico-getpro .get-pro {
+  margin-right: auto;
+  color: #EFBB40;
+}
+
+.left-menu .menu-wrapper .bottom--top .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: calc($px / 16)rem;
+          column-gap: calc($px / 16)rem;
+}
+
+.left-menu .menu-wrapper .bottom--top .item .text {
+  color: gray;
+  font-style: normal;
+  font-weight: 500;
+  font-size: calc($px / 16)rem;
+}
+
+.left-menu .menu-wrapper .bottom--bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: calc($px / 16)rem;
+          column-gap: calc($px / 16)rem;
+}
+
+.left-menu .menu-wrapper .bottom--bottom .name--role {
+  margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 4px;
+}
+
+.left-menu .menu-wrapper .bottom--bottom .name--role .name {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 23px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.left-menu .menu-wrapper .bottom--bottom .name--role .role {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.left-menu .menu-wrapper .bottom--bottom .logout {
+  cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */
