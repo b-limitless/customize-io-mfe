@@ -57,6 +57,13 @@ li {
           column-gap: 1rem;
 }
 
+@media only screen and (max-width: 75em) and (min-width: 51.25em) {
+  .container {
+    -ms-grid-columns: calc($px / 16)rem 1fr;
+        grid-template-columns: calc($px / 16)rem 1fr;
+  }
+}
+
 .left-menu {
   height: 100vh;
   background-color: #F5F5F5;
@@ -100,6 +107,18 @@ li {
           column-gap: 8.62px;
 }
 
+@media only screen and (max-width: 75em) and (min-width: 51.25em) {
+  .left-menu .menu-wrapper .top .logo--arrow .logo {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 75em) and (min-width: 51.25em) {
+  .left-menu .menu-wrapper .top .logo--arrow .arrow {
+    display: none;
+  }
+}
+
 .left-menu .menu-wrapper .top .navigation {
   top: 4rem;
   position: relative;
@@ -110,14 +129,32 @@ li {
   overflow: hidden;
 }
 
+@media only screen and (max-width: 75em) and (min-width: 51.25em) {
+  .left-menu .menu-wrapper .top .navigation .navigation--ul .item {
+    position: relative;
+    overflow: visible;
+  }
+}
+
 .left-menu .menu-wrapper .top .navigation .navigation--ul .item .sub--ul {
   position: relative;
   margin-left: 2rem;
   top: 0px;
   height: 0px;
   visibility: hidden;
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
+  -webkit-transition: all 0.11s ease;
+  transition: all 0.11s ease;
+}
+
+@media only screen and (max-width: 75em) and (min-width: 51.25em) {
+  .left-menu .menu-wrapper .top .navigation .navigation--ul .item .sub--ul {
+    position: absolute;
+    margin-left: calc($px / 16)rem !important;
+    width: 200px;
+    top: 2rem !important;
+    background-color: #F5F5F5;
+    padding: 1rem 2rem;
+  }
 }
 
 .left-menu .menu-wrapper .top .navigation .navigation--ul .item .sub--ul .sub--li {
@@ -152,6 +189,13 @@ li {
   top: 0.5rem !important;
   visibility: visible !important;
   height: auto !important;
+}
+
+@media only screen and (max-width: 75em) and (min-width: 51.25em) {
+  .left-menu .menu-wrapper .top .navigation .navigation--ul .item .major-list:checked ~ .sub--ul {
+    top: 2rem !important;
+    left: 22px !important;
+  }
 }
 
 .left-menu .menu-wrapper .top .navigation .navigation--ul .item .major-list:checked ~ .title-icon .arrow {
@@ -211,6 +255,10 @@ li {
   row-gap: 1rem;
 }
 
+.left-menu .menu-wrapper .bottom--top .bottom-checkbox {
+  display: none;
+}
+
 .left-menu .menu-wrapper .bottom--top .switch--account {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -220,6 +268,12 @@ li {
   background-color: #EEEEEE;
   border-radius: 5px;
   padding: 1rem 0.5rem;
+}
+
+@media only screen and (max-width: 75em) and (min-width: 51.25em) {
+  .left-menu .menu-wrapper .bottom--top .switch--account {
+    display: none;
+  }
 }
 
 .left-menu .menu-wrapper .bottom--top .switch--account .details {
@@ -274,6 +328,7 @@ li {
   display: flex;
   -webkit-column-gap: calc($px / 16)rem;
           column-gap: calc($px / 16)rem;
+  position: relative;
 }
 
 .left-menu .menu-wrapper .bottom--top .item .text {
@@ -281,6 +336,18 @@ li {
   font-style: normal;
   font-weight: 500;
   font-size: calc($px / 16)rem;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 75em) and (min-width: 51.25em) {
+  .left-menu .menu-wrapper .bottom--top .item .text {
+    top: 0px;
+    position: absolute;
+    left: 4rem;
+    display: none;
+    background-color: #F5F5F5;
+    padding: 1rem 2rem;
+  }
 }
 
 .left-menu .menu-wrapper .bottom--bottom {
@@ -306,6 +373,12 @@ li {
   row-gap: 4px;
 }
 
+@media only screen and (max-width: 75em) and (min-width: 51.25em) {
+  .left-menu .menu-wrapper .bottom--bottom .name--role {
+    display: none;
+  }
+}
+
 .left-menu .menu-wrapper .bottom--bottom .name--role .name {
   font-weight: 500;
   font-size: 18px;
@@ -329,5 +402,31 @@ li {
 
 .left-menu .menu-wrapper .bottom--bottom .logout {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 75em) and (min-width: 51.25em) {
+  .left-menu .menu-wrapper .bottom--bottom .logout {
+    display: none;
+  }
+}
+
+.svg path {
+  fill: red !important;
+}
+
+@media only screen and (max-width: 75em) and (min-width: 51.25em) {
+  .major-list:checked ~ .title-icon .title {
+    display: block !important;
+    left: 3rem !important;
+    cursor: pointer;
+  }
+  .bottom--top .bottom-checkbox:checked ~ label + .text {
+    display: block !important;
+  }
+  .arrow,
+  .title {
+    display: none !important;
+    background-color: #F5F5F5;
+  }
 }
 /*# sourceMappingURL=main.css.map */

@@ -15,9 +15,20 @@
         align-items: center;
 
         .logo {
-            display: flex;
-            align-items: center;
-            column-gap: 8.62px;
+          display: flex;
+          align-items: center;
+          column-gap: 8.62px;
+
+          @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
+            display: none;
+          }
+          .logo-text {
+          }
+        }
+        .arrow {
+          @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
+            display: none;
+          }
         }
       }
 
@@ -29,17 +40,31 @@
             padding: 0.5rem 0;
             overflow: hidden;
 
+            @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
+              position: relative;
+              overflow: visible;
+            }
+
             .sub--ul {
               position: relative;
               margin-left: 2rem;
               top: 0px;
               height: 0px;
               visibility: hidden;
-              -webkit-transition: all 0.25s ease;
-              -moz-transition: all 0.25s ease;
-              -ms-transition: all 0.25s ease;
-              -o-transition: all 0.25s ease;
-              transition: all 0.25s ease;
+              -webkit-transition: all 0.11s ease;
+              -moz-transition: all 0.11s ease;
+              -ms-transition: all 0.11s ease;
+              -o-transition: all 0.11s ease;
+              transition: all 0.11s ease;
+
+              @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
+                position: absolute;
+                margin-left: pxToRem(44) !important;
+                width: 200px;
+                top: 2rem !important;
+                background-color: $light-gray1;
+                padding: 1rem 2rem;
+              }
 
               .sub--li {
                 padding: 4px 8px;
@@ -71,6 +96,11 @@
               top: 0.5rem !important;
               visibility: visible !important;
               height: auto !important;
+
+              @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
+                top: 2rem !important;
+                left: 22px !important;
+              }
             }
             .major-list:checked ~ .title-icon .arrow {
               //display: none;
@@ -111,12 +141,20 @@
         flex-direction: column;
         row-gap: 1rem;
 
+        .bottom-checkbox {
+          display: none;
+        }
+
         .switch--account {
           display: flex;
           column-gap: 0.5rem;
           background-color: $light-gray3;
           border-radius: 5px;
           padding: 1rem 0.5rem;
+
+          @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
+            display: none;
+          }
 
           .details {
             display: flex;
@@ -153,12 +191,23 @@
         .item {
           display: flex;
           column-gap: pxToRem(18.21);
-
+          position: relative;
           .text {
             color: gray;
             font-style: normal;
             font-weight: 500;
             font-size: pxToRem(18);
+
+            cursor: pointer;
+
+            @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
+              top: 0px;
+              position: absolute;
+              left: 4rem;
+              display: none;
+              background-color: $light-gray1;
+              padding: 1rem 2rem;
+            }
           }
         }
       }
@@ -171,6 +220,10 @@
           display: flex;
           flex-direction: column;
           row-gap: 4px;
+
+          @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
+            display: none;
+          }
           .name {
             font-weight: 500;
             font-size: 18px;
@@ -188,9 +241,41 @@
           }
         }
         .logout {
-            cursor: pointer;
+          cursor: pointer;
+          @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
+            display: none;
+          }
         }
       }
     }
+  }
+}
+
+.svg path {
+  fill: red !important;
+}
+
+@media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
+  .major-list:checked ~ .title-icon .title {
+    display: block !important;
+    left: 3rem !important;
+    cursor: pointer;
+    
+  }
+
+  .bottom {
+    &--top {
+      .bottom-checkbox:checked ~ label + .text {
+        display: block !important;
+        
+      }
+    }
+  }
+
+  .arrow,
+  .title {
+    display: none !important;
+    background-color: $light-gray1;
+    
   }
 }
