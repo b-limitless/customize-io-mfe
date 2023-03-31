@@ -152,19 +152,24 @@ export default function SideMenu({ }: Props) {
             </div>
           </div>
           <div className="bottom--bottom">
-            <div className="col avatar">
-              <img src={avatar} />
-            </div>
-            <div className="col name--role">
-              <div className="name">Bharat Shah</div>
-              <div className="role">Administrator</div>
-            </div>
-            <div className="col logout">
-              <img src={logout} alt="" />
-            </div>
 
+            <input type="checkbox" id="avatar-profile-info" className="avatar-profile-info" />
+            <label htmlFor="avatar-profile-info" >
+              <div className="col avatar">
+                <img src={avatar} />
+              </div>
+            </label>
+
+            <div className="profile-logout">
+              <div className="col name--role">
+                <div className="name">Bharat Shah</div>
+                <div className="role">Administrator</div>
+              </div>
+              <div className="col logout">
+                <img src={logout} alt="" />
+              </div>
+            </div>
           </div>
-
         </div>
 
       </div>
