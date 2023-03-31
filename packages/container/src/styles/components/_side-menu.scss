@@ -63,7 +63,7 @@
                 width: 200px;
                 top: 2rem !important;
                 background-color: $light-gray1;
-                padding: 1rem 2rem;
+                padding: 1rem 1rem;
               }
 
               .sub--li {
@@ -256,18 +256,23 @@
 }
 
 @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
+  .major-list:checked ~ .title-icon {
+
+  }
   .major-list:checked ~ .title-icon .title {
     display: block !important;
-    left: 3rem !important;
+    left: pxToRem(66) !important;
     cursor: pointer;
-    
+    position: absolute !important;
+    background-color: $light-gray1;
+    width: 200px !important;
+    padding: 1rem ;
   }
 
   .bottom {
     &--top {
       .bottom-checkbox:checked ~ label + .text {
         display: block !important;
-        
       }
     }
   }
@@ -276,6 +281,5 @@
   .title {
     display: none !important;
     background-color: $light-gray1;
-    
   }
 }
