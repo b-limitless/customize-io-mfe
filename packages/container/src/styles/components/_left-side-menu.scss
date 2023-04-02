@@ -1,0 +1,7 @@
+.side--navbar {
+    @media only screen and (max-width: $bp-700) {
+        position: fixed;
+        left: -(pxToRem($left-menu-width));
+        transition:all .2s ease;
+    }
+}

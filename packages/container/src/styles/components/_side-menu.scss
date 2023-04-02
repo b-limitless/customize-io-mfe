@@ -1,6 +1,7 @@
 .left-menu {
   height: 100vh;
   background-color: $light-gray1;
+  position: fixed;
   .menu-wrapper {
     height: 100vh;
     display: flex;
@@ -26,6 +27,9 @@
           }
         }
         .arrow {
+          .left-arrow-checkbox {
+            display: none;
+          }
           @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
             display: none;
           }
@@ -303,4 +307,9 @@
     display: none !important;
     background-color: $light-gray1;
   }
+}
+
+
+.side--navbar:has(.left-arrow-checkbox:checked) {
+  left: -(pxToRem($left-menu-width)) ;
 }

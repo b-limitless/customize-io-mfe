@@ -27,7 +27,11 @@ export default function SideMenu({ }: Props) {
               {/* <img src={logoPrimary} alt="Customize io" /> */}
             </div>
             <div className="item arrow">
+              <input type="radio" className="left-arrow-checkbox" name="toggle-menu-checkbox" id="left-arrow-checkbox" />
+              <label htmlFor="left-arrow-checkbox">
               <img src={arrowLeft} alt="Toggle menu" />
+              </label>
+              
             </div>
           </div>
 

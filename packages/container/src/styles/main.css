@@ -51,8 +51,8 @@ li {
 .container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: minmax(260px, 300px) 1fr;
-      grid-template-columns: minmax(260px, 300px) 1fr;
+  -ms-grid-columns: minmax(calc($px / 16)rem, 300px) 1fr;
+      grid-template-columns: minmax(calc($px / 16)rem, 300px) 1fr;
   -webkit-column-gap: 1rem;
           column-gap: 1rem;
 }
@@ -64,9 +64,58 @@ li {
   }
 }
 
+.container .right {
+  margin-top: 1rem;
+}
+
+.toggal-menu {
+  display: none;
+  cursor: pointer;
+  z-index: 2 !important;
+  margin-right: 2rem;
+}
+
+.toggle-menu-checbox {
+  display: none;
+}
+
+.toggle-menu-checbox:checked ~ label {
+  display: none;
+}
+
+.toggle-menu-checbox:checked ~ .side--navbar {
+  display: block;
+}
+
+@media only screen and (max-width: 43.75em) {
+  .toggle-menu-checbox {
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+  }
+  .toggal-menu {
+    display: block;
+    position: fixed;
+  }
+  .toggle-menu-checbox:checked ~ .container > .side--navbar {
+    left: 0;
+  }
+}
+
+@media only screen and (max-width: 43.75em) {
+  .side--navbar {
+    position: fixed;
+    left: -calc($px / 16)rem;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+  }
+}
+
 .left-menu {
   height: 100vh;
   background-color: #F5F5F5;
+  position: fixed;
 }
 
 .left-menu .menu-wrapper {
@@ -111,6 +160,10 @@ li {
   .left-menu .menu-wrapper .top .logo--arrow .logo {
     display: none;
   }
+}
+
+.left-menu .menu-wrapper .top .logo--arrow .arrow .left-arrow-checkbox {
+  display: none;
 }
 
 @media only screen and (max-width: 75em) and (min-width: 51.25em) {
@@ -451,5 +504,9 @@ li {
     display: none !important;
     background-color: #F5F5F5;
   }
+}
+
+.side--navbar:has(.left-arrow-checkbox:checked) {
+  left: -calc($px / 16)rem;
 }
 /*# sourceMappingURL=main.css.map */
