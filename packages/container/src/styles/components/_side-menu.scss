@@ -2,6 +2,8 @@
   height: 100vh;
   background-color: $light-gray1;
   position: fixed;
+  width: pxToRem($left-menu-width);
+  
   .menu-wrapper {
     height: 100vh;
     display: flex;
@@ -23,8 +25,7 @@
           @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
             display: none;
           }
-          .logo-text {
-          }
+          
         }
         .arrow {
           .left-arrow-checkbox {
@@ -96,10 +97,16 @@
             .major-list {
               display: none;
             }
+            .major-list:checked + .title-icon  svg {
+              opacity: 1;
+            }
             .major-list:checked ~ .sub--ul {
               top: 0.5rem !important;
               visibility: visible !important;
               height: auto !important;
+            
+              
+
 
               @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
                 top: 2rem !important;
@@ -260,9 +267,6 @@
   }
 }
 
-.svg path {
-  fill: red !important;
-}
 
 @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
  
@@ -313,3 +317,4 @@
 .side--navbar:has(.left-arrow-checkbox:checked) {
   left: -(pxToRem($left-menu-width)) ;
 }
+

@@ -36,7 +36,7 @@ const commonConfig = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(woff2?|jpe?g|png|gif|ico|svg)$/,
+        test: /\.(woff2?|jpe?g|png|gif|ico)$/, 
         oneOf: [
           {
             include: path.resolve(__dirname, "../node_modules/"),
@@ -48,11 +48,11 @@ const commonConfig = {
           },
         ],
       },
-      // {
-      //   test: /\.svg$/i,
-      //   issuer: /\.[jt]sx?$/,
-      //   use: ['@svgr/webpack'],
-      // },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
+      },
       
     ],
   },

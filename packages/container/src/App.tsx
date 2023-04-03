@@ -2,7 +2,7 @@ import React from "react"
 import SideMenu from "./components/common/SideMenu";
 import "./styles/main.scss";
 // import Header from "/src/components/common/Header";
-import arrowRight from "./assets/svg/arrow-right.svg";
+import ArrowRight from "./assets/svg/arrow-right.svg";
 
 type Props = {}
 
@@ -13,7 +13,8 @@ export default function App({ }: Props) {
       
       <label htmlFor="toggle-menu-checkbox" >
         <div className="toggal-menu">
-          <img src={arrowRight} alt="" />
+          {/* <img src={arrowRight} alt="" /> */}
+          <ArrowRight/>
         </div>
       </label>
 
