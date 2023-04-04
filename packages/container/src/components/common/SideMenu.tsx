@@ -13,6 +13,7 @@ import rightArrowRound from "../../assets/svg/right-arrow-round.svg";
 import Setting from "../../assets/svg/settings.svg";
 import switchPro from "../../assets/svg/switch-pro.svg";
 import { sideNavConfig } from '../../config/navMenu';
+import NavList from './NavList';
 
 
 type Props = {}
@@ -37,101 +38,7 @@ export default function SideMenu({ }: Props) {
           </div>
           <div className="row navigation">
             <ul className="navigation--ul">
-
-              {sideNavConfig.map((row, i) => <li className="item base-list" key={i}>
-                <input type="radio" name="ci-root-menu" id={`cio-product-li-${i}`} className="major-list" />
-                <label className="title-icon" htmlFor={`cio-product-li-${i}`}>
-                  <span className="icon">
-                    {row.icon}
-
-                  </span>
-                  <span className="title">{row.title}</span>
-                  {row.children.length > 0 && <span className="arrow">
-                    <ArrowDown />
-                  </span>}
-                </label>
-                <ul className="sub--ul">
-                  {row.children.map((list, j) => <>
-                    <input type="radio" name="sub-menu-checkbox" id={`ci-title-${i}-${j}`} className="sub-menu-checkbox" />
-                    <label htmlFor={`ci-title-${i}-${j}`}>
-                      <li className="sub--li">{list.title}</li>
-                    </label></>)}
-                </ul>
-              </li>)}
-
-              {/* <li className="item base-list">
-                <input type="radio" name="ci-root-menu" id="cio-product-li-0" className="major-list" />
-                <label className="title-icon" htmlFor="cio-product-li-0">
-                  <span className="icon">
-                    <DashboardIcon />
-                  </span>
-                  <span className="title">Dashboard</span>
-                </label>
-              </li>
-              <li className="item base-list">
-                <input type="radio" name="ci-root-menu" id="cio-product-li" className="major-list" />
-                <label className="title-icon" htmlFor="cio-product-li">
-                  <span className="icon">
-                    <ProductIcon />
-                  </span>
-                  <span className="title">Products</span>
-                  <span className="arrow">
-                    <ArrowDown />
-                  </span>
-                </label>
-                <ul className="sub--ul">
-                  <>
-                  <input type="radio" name="sub-menu-checkbox" id="ci-title-one" className="sub-menu-checkbox" />
-                  <label htmlFor="ci-title-one">
-                    <li className="sub--li">Title One</li>
-                  </label>
-                  </>
-                  
-                  <>
-                  <input type="radio" name="sub-menu-checkbox" id="ci-title-two" className="sub-menu-checkbox" />
-                  <label htmlFor="ci-title-two">
-                    <li className="sub--li">Title Two</li>
-                  </label>
-                  </>
-                  
-                  <>
-                  <input type="radio" name="sub-menu-checkbox" id="ci-title-three" className="sub-menu-checkbox" />
-                  <label htmlFor="ci-title-three">
-                    <li className="sub--li">Title Three</li>
-                  </label>
-                  </>
-                  
-                </ul>
-              </li>
-              <li className="item base-list">
-                <input type="radio" name="ci-root-menu" id="cio-product-li-1" className="major-list" />
-                <label className="title-icon" htmlFor="cio-product-li-1">
-                  <span className="icon">
-                    <PricingIcon />
-                  </span>
-                  <span className="title">Pricing</span>
-                  <span className="arrow">
-                    <ArrowDown />
-                  </span>
-                </label>
-                <ul className="sub--ul">
-                  <input type="radio" name="sub-menu-checkbox" id="ci-title-4" className="sub-menu-checkbox" />
-                  <label htmlFor="ci-title-4">
-                    <li className="sub--li">Title One</li>
-                  </label>
-                  <input type="radio" name="sub-menu-checkbox" id="ci-title-5" className="sub-menu-checkbox" />
-                  <label htmlFor="ci-title-5">
-                    <li className="sub--li">Title Two</li>
-                  </label>
-                  <input type="radio" name="sub-menu-checkbox" id="ci-title-6" className="sub-menu-checkbox" />
-                  <label htmlFor="ci-title-6">
-                    <li className="sub--li">Title Three</li>
-                  </label>
-                </ul>
-              </li> */}
-
-
-
+              {sideNavConfig.map((row, i) => <NavList row={row} i={i}/>)}
             </ul>
           </div>
         </div>
