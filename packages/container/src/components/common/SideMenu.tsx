@@ -1,23 +1,21 @@
 import React from 'react';
-import ArrowLeft from "../../assets/svg/arrow-left.svg";
-import ProductIcon from "../../assets/svg/product-icon.svg";
-import ArrowDown from "../../assets/svg/arrow-down.svg";
-import PricingIcon from "../../assets/svg/pricing.svg";
 import avatar from "../../assets/img/avatar.png";
-import DashboardIcon from "../../assets/svg/dashboard.svg";
+import ArrowLeft from "../../assets/svg/arrow-left.svg";
 import FaqIcon from "../../assets/svg/faq.svg";
 import LogoIcon from "../../assets/svg/logo-icon.svg";
 import LogoText from "../../assets/svg/logo-text.svg";
 import logout from "../../assets/svg/logout.svg";
 import rightArrowRound from "../../assets/svg/right-arrow-round.svg";
 import Setting from "../../assets/svg/settings.svg";
-import switchPro from "../../assets/svg/switch-pro.svg";
+import SwitchPro from "../../assets/svg/switch-pro.svg";
 import { sideNavConfig } from '../../config/navMenu';
 import NavList from './NavList';
 
+interface SideMenuInterface {
+  setSelectedMenu: Function
+}
 
-type Props = {}
-export default function SideMenu({ }: Props) {
+export default function SideMenu({ setSelectedMenu }: SideMenuInterface) {
   return (
     <div className="left-menu">
       <div className="menu-wrapper">
@@ -38,7 +36,7 @@ export default function SideMenu({ }: Props) {
           </div>
           <div className="row navigation">
             <ul className="navigation--ul">
-              {sideNavConfig.map((row, i) => <NavList row={row} i={i}/>)}
+              {sideNavConfig.map((row, i) => <NavList row={row} i={i} key={i} setSelectedMenu={setSelectedMenu} />)}
             </ul>
           </div>
         </div>
@@ -46,7 +44,7 @@ export default function SideMenu({ }: Props) {
           <div className="bottom--top">
             <div className="row switch--account">
               <div className="col icon">
-                <img src={switchPro} />
+                <SwitchPro/>
               </div>
               <div className="col details">
                 <div className="details--item switch">Switch account

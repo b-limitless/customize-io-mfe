@@ -123,6 +123,12 @@ li {
   width: calc($px / 16)rem;
 }
 
+@media only screen and (max-width: 75em) and (min-width: 51.25em) {
+  .left-menu {
+    width: calc($px / 16)rem;
+  }
+}
+
 .left-menu .menu-wrapper {
   height: 100vh;
   display: -webkit-box;
