@@ -45,7 +45,7 @@ export default function App({ }: Props) {
         <Switch>
           <Route path="/dashboard">
             <Container selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} >
-              <div>Dashboard</div>
+              <DashboardApp onSingIn={() => { }} isSignIn={false} />
             </Container>
           </Route>
 

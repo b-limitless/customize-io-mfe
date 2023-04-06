@@ -1,5 +1,5 @@
+import React, { useRef, useEffect } from "react";
 import { mount } from "dashboard/DashboardApp";
-import Reat, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 export default ({ onSingIn, isSignIn }) => {
