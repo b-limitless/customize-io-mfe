@@ -14,7 +14,8 @@ export enum menuEnum {
     Dashboard = "Dashboard",
     Product_Febric = "Product_Febric",
     Product_Shirts = "Product_Shirts",
-    Product_Pants = "Product_Pants"
+    Product_Pants = "Product_Pants",
+    Product_Thread = "Product_Thread",
 }
 
 const keys = [...Object.keys(menuEnum)] as const;

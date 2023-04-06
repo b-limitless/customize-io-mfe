@@ -193,6 +193,10 @@ li {
   overflow: hidden;
 }
 
+.left-menu .menu-wrapper .top .navigation .navigation--ul .item a {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 75em) and (min-width: 51.25em) {
   .left-menu .menu-wrapper .top .navigation .navigation--ul .item {
     position: relative;

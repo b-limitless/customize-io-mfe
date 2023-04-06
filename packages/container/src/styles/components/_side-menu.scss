@@ -49,6 +49,10 @@
           .item {
             padding: 0.5rem 0;
             overflow: hidden;
+            a {
+              
+              cursor: pointer ;
+            }
 
             @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
               position: relative;
@@ -208,6 +212,7 @@
           display: flex;
           column-gap: pxToRem(18.21);
           position: relative;
+          
           .text {
             color: gray;
             font-style: normal;
