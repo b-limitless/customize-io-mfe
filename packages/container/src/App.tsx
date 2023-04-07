@@ -8,11 +8,8 @@ import { splitTitleToUrl } from "./pure-functions/splitTitleToUrl";
 
 import "./styles/main.scss";
 
-// For example I am lazy loading the components
-const Dashboard = (<div>This is dashboard</div>);
-const ProductFebric = <div>Product Febric</div>;
-
 import DashboardApp from "./components/remotes/DashboardApp";
+import ProductApp from "./components/remotes/ProductApp";
 import { Router, Switch, Route } from "react-router-dom";
 
 type Props = {}
@@ -37,8 +34,6 @@ export default function App({ }: Props) {
     }
   }, [selectedMenu]);
 
-  console.log("selected menu", selectedMenu)
-
   return (
     <>
       <Router history={history}>
@@ -49,17 +44,12 @@ export default function App({ }: Props) {
             </Container>
           </Route>
 
-          <Route exact path="/product/febric">
+          <Route path="/product">
             <Container selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} >
-              <div>Product/Febric</div>
+              <ProductApp onSingIn={() => { }} isSignIn={false} />
             </Container>
           </Route>
 
-          <Route exact path="/product/thread">
-            <Container selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} >
-              <div>Product/thread</div>
-            </Container>
-          </Route>
 
         </Switch>
       </Router>

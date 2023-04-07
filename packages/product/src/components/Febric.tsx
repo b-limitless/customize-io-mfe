@@ -4,6 +4,6 @@ type Props = {}
 
 export default function Febric({}: Props) {
   return (
-    <div>Febric</div>
+    <div>Service - Product/Febric</div>
   )
 }

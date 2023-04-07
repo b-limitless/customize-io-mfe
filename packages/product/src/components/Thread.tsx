@@ -4,6 +4,6 @@ type Props = {}
 
 export default function Thread({}: Props) {
   return (
-    <div>Thread</div>
+    <div>Service - Product/Thread</div>
   )
 }

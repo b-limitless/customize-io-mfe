@@ -13,13 +13,18 @@ const gereateClassName = createGenerateClassName({
 });
 
 export default ({ history, onSignIn, isSignedIn }) => {
+
   return (
     <div>
       <StylesProvider generateClassName={gereateClassName}>
         <Router history={history}>
           <Switch>
-            <Route path="/product/febric" component={Febric} />
-            <Route path="/product/thread" component={Thread} />
+            <Route path="/product/febric">
+              <Febric/>
+            </Route>
+            <Route path="/product/thread">
+              <Thread/>
+            </Route>
           </Switch>
         </Router>
       </StylesProvider>
