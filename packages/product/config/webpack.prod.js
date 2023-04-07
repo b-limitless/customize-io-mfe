@@ -10,16 +10,12 @@ const prodConfig = {
   mode: "production",
   output: {
     filename: "[name].[contenthash].js",
-    publicPath: "/dashboard/latest/",
+    publicPath: "/product/latest/",
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "dashboard",
+      name: "product",
       shared: packageJson.dependencies,
-      filename: "remoteEntry.js",
-      exposes: {
-        "./DashboardApp": "./src/bootstrap",
-      },
     }),
   ],
 };
