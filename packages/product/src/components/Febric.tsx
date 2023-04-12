@@ -1,9 +1,9 @@
 import React from 'react'
 
-type Props = {}
-
-export default function Febric({}: Props) {
+// type Props = {}
+//{}: Props
+export default function Febric() {
   return (
-    <div>Service - Product/Febric</div>
+    <div>Service - product - world</div>
   )
 }

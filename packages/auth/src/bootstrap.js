@@ -1,23 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { createMemoryHistory, createBrowserHistory } from "history";
-import {useNavigate} from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import App from "./App";
-
-
 
 // Mount function to start up the app
 const mount = (
   el,
-  {
-    onNavigate,
-    defaultHistory,
-    initialPath,
-    onSignIn,
-    isSignedIn
-  }
+  { onNavigate, defaultHistory, initialPath, onSignIn, isSignedIn }
 ) => {
-  const navigate = useNavigate();
   const history =
     defaultHistory ||
     createMemoryHistory({
@@ -27,23 +18,18 @@ const mount = (
   if (onNavigate) {
     history.listen(onNavigate);
   }
-  ReactDOM.render(
-      <App
-        history={history}
-        onSignIn={onSignIn}
-        isSignedIn={isSignedIn}
-      />
-      ,
 
-    el
+  const root = ReactDOM.createRoot(el);
+
+  root.render(
+    <App history={history} onSignIn={onSignIn} isSignedIn={isSignedIn} />
   );
 
   return {
     onParentNavigate({ pathname: nextPathname }) {
       const { pathname } = history.location;
-      console.log(nextPathname);
       if (pathname !== nextPathname) {
-        navigate(nextPathname);
+        history.push(nextPathname);
       }
     },
   };

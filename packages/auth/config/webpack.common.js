@@ -1,13 +1,8 @@
-const commonConfig = {
+module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.m?js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -34,9 +29,3 @@ const commonConfig = {
     ],
   },
 };
-
-
-
-
-module.exports = commonConfig;
-

@@ -9,7 +9,8 @@ import { Router, Route, Switch } from "react-router-dom";
 const gererateClassName = createGenerateClassName({
     productionPrefix: "pa",
 });
-import Dashboard from './components/Dashboard'
+import Dashboard from './components/Dashboard/Dashboard';
+import "./styles/main.scss";
 
 interface AppInterface {
     history: any;

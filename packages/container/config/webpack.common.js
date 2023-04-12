@@ -39,7 +39,7 @@ const commonConfig = {
         test: /\.(woff2?|jpe?g|png|gif|ico)$/, 
         oneOf: [
           {
-            include: path.resolve(__dirname, "../node_modules/"),
+            exclude: path.resolve(__dirname, "../node_modules/"),
             use: "svg-inline-loader",
           },
           {
