@@ -10,7 +10,8 @@ import "./styles/main.scss";
 
 import DashboardApp from "./components/remotes/DashboardApp";
 import ProductApp from "./components/remotes/ProductApp";
-import { Router, Switch, Route } from "react-router-dom";
+import AuthApp from "./components/remotes/AuthApp";
+import { Router, Switch, Route, Link } from "react-router-dom";
 
 type Props = {}
 // Import all microfrontend here and then simply 
@@ -38,11 +39,16 @@ export default function App({ }: Props) {
     <>
       <Router history={history}>
         <Switch>
-          <Route path="/dashboard">
+          <Route exact path="/dashboard">
             <Container selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} >
               <DashboardApp onSingIn={() => { }} isSignIn={false} />
             </Container>
           </Route>
+
+          <Route path="/auth">
+            <AuthApp onSingIn={() => { }} isSignIn={false} />
+          </Route>
+
 
           <Route path="/product">
             <Container selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} >
@@ -53,6 +59,7 @@ export default function App({ }: Props) {
 
         </Switch>
       </Router>
+
     </>
 
   )

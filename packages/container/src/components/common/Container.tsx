@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import SideMenu from "../../components/common/SideMenu";
 import ArrowRight from "../../assets/svg/arrow-right.svg";
 import { menuIds, menuEnum } from "../../config/navMenu";
+import { Link } from "react-router-dom";
 
 
 interface ContainerInterface {
@@ -19,7 +20,8 @@ export default function Container({children, setSelectedMenu, selectedMenu }: Co
                     <ArrowRight />
                 </div>
             </label>
-
+            <Link to = "/auth/signin">Auth</Link>
+            <Link to = "/auth/signup">Signup</Link>
             <div className="container">
                 <div className="left side--navbar hide">
                     <SideMenu

@@ -9,9 +9,9 @@ const packageJson = require('../package.json');
 const PORT = 8083;
 
 let devConfig = {
-  optimization :{
-    runtimeChunk: "single",
-  },
+  // optimization :{
+  //   runtimeChunk: "single",
+  // },
   mode: 'development',
   output: {
     publicPath: `http://localhost:${PORT}/`,

@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createMemoryHistory, createBrowserHistory } from "history";
-import { useNavigate } from "react-router-dom";
 import App from "./App";
 
 // Mount function to start up the app

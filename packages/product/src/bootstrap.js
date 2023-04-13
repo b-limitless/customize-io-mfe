@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createMemoryHistory, createBrowserHistory } from "history";
-import {useNavigate} from "react-router-dom"; 
 import App from "./App";
 
 
@@ -17,7 +16,7 @@ const mount = (
     isSignedIn
   }
 ) => {
-  const navigate = useNavigate();
+  
   const history =
     defaultHistory ||
     createMemoryHistory({
@@ -41,9 +40,9 @@ const mount = (
   return {
     onParentNavigate({ pathname: nextPathname }) {
       const { pathname } = history.location;
-      console.log(nextPathname);
+      
       if (pathname !== nextPathname) {
-        navigate(nextPathname);
+        history.push(nextPathname);
       }
     },
   };
@@ -52,7 +51,7 @@ const mount = (
 // If we are in development and in isolation,
 // call mount immediately
 if (process.env.NODE_ENV === "development") {
-  const devRoot = document.querySelector("#_auth-dev-root");
+  const devRoot = document.querySelector("#customize-id-product");
 
   if (devRoot) {
     mount(devRoot, { defaultHistory: createBrowserHistory() });
