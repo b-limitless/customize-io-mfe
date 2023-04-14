@@ -16,6 +16,8 @@ export enum menuEnum {
     Product_Shirts = "Product_Shirts",
     Product_Pants = "Product_Pants",
     Product_Thread = "Product_Thread",
+    Auth_Signin = "Auth_Signin",
+    Auth_Signup = "Auth_Signup"
 }
 
 const keys = [...Object.keys(menuEnum)] as const;

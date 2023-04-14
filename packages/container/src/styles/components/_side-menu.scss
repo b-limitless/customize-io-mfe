@@ -3,34 +3,27 @@
   background-color: $light-gray1;
   position: fixed;
   width: pxToRem($left-menu-width);
-
   @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
     width: pxToRem(92);
   }
-
-  
   .menu-wrapper {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: pxToRem(72) 1rem 1rem 2rem;
-
     .top {
       .logo--arrow {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         .logo {
           display: flex;
           align-items: center;
           column-gap: 8.62px;
-
           @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
             display: none;
           }
-          
         }
         .arrow {
           .left-arrow-checkbox {
@@ -41,7 +34,6 @@
           }
         }
       }
-
       .navigation {
         top: 4rem;
         position: relative;
@@ -50,15 +42,12 @@
             padding: 0.5rem 0;
             overflow: hidden;
             a {
-              
               cursor: pointer ;
             }
-
             @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
               position: relative;
               overflow: visible;
             }
-
             .sub--ul {
               position: relative;
               margin-left: 2rem;
@@ -70,7 +59,6 @@
               -ms-transition: all 0.11s ease;
               -o-transition: all 0.11s ease;
               transition: all 0.11s ease;
-
               @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
                 position: absolute;
                 margin-left: pxToRem(44) !important;
@@ -79,7 +67,6 @@
                 background-color: $light-gray1;
                 padding: 1rem 1rem;
               }
-
               .sub--li {
                 padding: 4px 8px;
                 font-family: $secondary-font-family;
@@ -94,11 +81,9 @@
                   opacity: 1;
                 }
               }
-
               .sub-menu-checkbox {
                 display: none;
               }
-
               .sub-menu-checkbox:checked + label li {
                 font-weight: 600;
               }
@@ -113,17 +98,12 @@
               top: 0.5rem !important;
               visibility: visible !important;
               height: auto !important;
-            
-              
-
-
               @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
                 top: 2rem !important;
                 left: 22px !important;
               }
             }
             .major-list:checked ~ .title-icon .arrow {
-              //display: none;
               transform: rotate(0deg) !important;
             }
             .major-list:checked ~ .title-icon .title {
@@ -133,12 +113,10 @@
           .title-icon {
             display: flex;
             align-items: center;
-
             .arrow {
               transform: rotate(-90deg) !important;
               transition: all 0.25s ease;
             }
-
             .title {
               position: relative;
               left: 1rem;
@@ -160,28 +138,23 @@
         display: flex;
         flex-direction: column;
         row-gap: 1rem;
-
         .bottom-checkbox {
           display: none;
         }
-
         .switch--account {
           display: flex;
           column-gap: 0.5rem;
           background-color: $light-gray3;
           border-radius: 5px;
           padding: 1rem 0.5rem;
-
           @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
             display: none;
           }
-
           .details {
             display: flex;
             flex-direction: column;
             row-gap: 1rem;
             flex-grow: 1;
-
             .switch {
               font-size: pxToRem(18);
               color: $gray;
@@ -197,7 +170,6 @@
               color: $gray;
               line-height: 130%;
             }
-
             .ico-getpro {
               display: flex;
               align-items: center;
@@ -212,15 +184,12 @@
           display: flex;
           column-gap: pxToRem(18.21);
           position: relative;
-          
           .text {
             color: gray;
             font-style: normal;
             font-weight: 500;
             font-size: pxToRem(18);
-
             cursor: pointer;
-
             @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
               top: 0px;
               position: absolute;
@@ -236,11 +205,9 @@
         display: flex;
         align-items: center;
         column-gap: pxToRem(12);
-
         .avatar-profile-info {
           display: none;
         }
-
         .profile-logout {
           flex-grow: 1;
           display: flex;
@@ -250,7 +217,6 @@
             display: flex;
             flex-direction: column;
             row-gap: 4px;
-
             .name {
               font-weight: 500;
               font-size: 18px;
@@ -268,7 +234,6 @@
             }
           }
         }
-
         .logout {
           cursor: pointer;
         }
@@ -276,10 +241,7 @@
     }
   }
 }
-
-
 @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
- 
   .major-list:checked ~ .title-icon .title {
     display: block !important;
     left: pxToRem(66) !important;
@@ -289,21 +251,16 @@
     width: 200px !important;
     padding: 1rem;
   }
-
   .bottom {
     &--top {
       .bottom-checkbox:checked ~ label + .text {
         display: block !important;
       }
     }
-
     &--bottom {
-      
-
       .profile-logout {
         display: none !important;
       }
-
       .avatar-profile-info:checked ~ .profile-logout {
         display: flex !important;
         position: absolute;
@@ -315,16 +272,12 @@
       }
     }
   }
-
   .arrow,
   .title {
     display: none !important;
     background-color: $light-gray1;
   }
 }
-
-
 .side--navbar:has(.left-arrow-checkbox:checked) {
   left: -(pxToRem($left-menu-width)) ;
 }
-

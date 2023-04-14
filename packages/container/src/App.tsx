@@ -20,7 +20,9 @@ type Props = {}
 const history = createBrowserHistory();
 
 export default function App({ }: Props) {
-  const [selectedMenu, setSelectedMenu] = useState<menuIds>("Dashboard");
+  const [selectedMenu, setSelectedMenu] = useState<menuIds>("Auth_Signin");
+  const [auth, setAuth] = useState<null | {token: string}>(null);
+  
 
   useEffect(() => {
     if (selectedMenu === menuEnum.Dashboard) {
@@ -34,6 +36,28 @@ export default function App({ }: Props) {
       history.push(splitTitleToUrl(menuEnum.Product_Thread));
     }
   }, [selectedMenu]);
+
+  useEffect(() => {
+    if(auth) {
+      history.push(splitTitleToUrl(menuEnum.Dashboard));
+    }
+
+    if(!auth) {
+      history.push(splitTitleToUrl(menuEnum.Auth_Signin));
+    }
+  }, [auth]);
+
+  // If user is authenticated once 
+  // We can redirect user to dashboard
+  // Otherwise we can redirect to login page
+
+  // If user is logged in then they go to any auth route
+  // they should still logged in because we will have token set already
+  // It will resolve in auth is beign true or there will be token
+  // We will use redux for the container manage the auth state
+
+
+  // When menu is changed then oney route will be changed and not other things
 
   return (
     <>

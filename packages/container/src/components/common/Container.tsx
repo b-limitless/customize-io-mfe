@@ -3,15 +3,12 @@ import SideMenu from "../../components/common/SideMenu";
 import ArrowRight from "../../assets/svg/arrow-right.svg";
 import { menuIds, menuEnum } from "../../config/navMenu";
 import { Link } from "react-router-dom";
-
-
 interface ContainerInterface {
     setSelectedMenu: Function,
     selectedMenu: menuIds,
-    children:any
+    children: any
 }
-
-export default function Container({children, setSelectedMenu, selectedMenu }: ContainerInterface) {
+export default function Container({ children, setSelectedMenu, selectedMenu }: ContainerInterface) {
     return (
         <>
             <input type="radio" id="toggle-menu-checkbox" className="toggle-menu-checbox" name="toggle-menu-checkbox" />
@@ -20,8 +17,7 @@ export default function Container({children, setSelectedMenu, selectedMenu }: Co
                     <ArrowRight />
                 </div>
             </label>
-            <Link to = "/auth/signin">Auth</Link>
-            <Link to = "/auth/signup">Signup</Link>
+            { }
             <div className="container">
                 <div className="left side--navbar hide">
                     <SideMenu
@@ -29,8 +25,8 @@ export default function Container({children, setSelectedMenu, selectedMenu }: Co
                     />
                 </div>
                 <div className="right services">
-                    {}
-                    {/* {selectedMenu === menuEnum.Dashboard && <div>Dashboard</div>} */}
+                    { }
+                    { }
                     {children}
                 </div>
             </div>
