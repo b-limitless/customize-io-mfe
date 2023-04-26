@@ -8,7 +8,6 @@ const PORT = 8084;
 const devConfig = {
   // optimization: {
   //   runtimeChunk: "single",
-    
   // },
   mode: "development",
   output: {

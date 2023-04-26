@@ -3,6 +3,7 @@ import PriceSVG from "../../assets/svg/price.svg";
 import PositiveGrowth from "../../assets/svg/positive-growth.svg";
 import AnalyticCard from "../common/AnalyticCard";
 
+import {Button}  from "components/ComponentsApp";
 
 type Props = {}
 
@@ -45,6 +46,9 @@ export const analyticsData = [
 export default function Dashboard({ }: Props) {
   return (
     <div className="ci--dashboard">
+      <div className="test">
+       <Button variant="secondary"></Button>
+      </div>
       <div className="ci--dashboard__title">
         Welcome Back, Hello World
       </div>

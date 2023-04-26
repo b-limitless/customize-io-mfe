@@ -15,4 +15,4 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Otherwise export all components
-export * from "./components";
+export * from "./common/components";

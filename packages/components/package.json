@@ -3,11 +3,16 @@
     "version": "1.0.0",
     "scripts": {
         "start": "webpack serve --config config/webpack.dev.js",
-        "build": "webpack --config config/webpack.prod.js"
+        "build": "webpack --config config/webpack.prod.js",
+        "clean": "del ./build/*",
+        "buildTSC": "npm run clean && tsc"
     },
+    "main": "./build/index.js",
+    "types": "./build/index.d.ts",
     "dependencies": {
-        "@material-ui/core": "^4.11.0",
-        "@material-ui/icons": "^4.9.1",
+        "@emotion/react": "^11.10.6",
+        "@emotion/styled": "^11.10.6",
+        "@mui/material": "^5.12.1",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-redux": "^8.0.5",
@@ -23,6 +28,7 @@
         "babel-loader": "^8.1.0",
         "clean-webpack-plugin": "^3.0.0",
         "css-loader": "^5.2.7",
+        "del-cli": "^5.0.0",
         "file-loader": "^6.2.0",
         "html-webpack-plugin": "^4.5.0",
         "sass": "^1.60.0",
@@ -36,5 +42,10 @@
         "webpack-cli": "^4.1.0",
         "webpack-dev-server": "^4.13.2",
         "webpack-merge": "^5.2.0"
+    },
+    "bit": {
+        "env": {},
+        "componentsDefaultDirectory": "components/{name}",
+        "packageManager": "npm"
     }
 }
