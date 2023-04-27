@@ -2,6 +2,7 @@ import React from "react";
 import {Route, Router, Switch } from "react-router-dom";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
+
 import "./styles";
 
 interface AppInterface {

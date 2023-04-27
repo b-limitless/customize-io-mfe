@@ -1,26 +1,30 @@
+@import "../styles/base/functions";
+@import "../styles/base/variables";
 $header-margin: 3rem;
 
-// display: grid;
-// place-items: center;
-// height: calc(100vh - (26.5px + 48px));
+
 
 @mixin defaultGap {
   display: flex;
   flex-direction: column;
-  //   row-gap: $header-margin;
 }
 .cio--template {
   display: flex;
-//   column-gap: 3rem;
 
   .left {
     @include defaultGap;
+    padding-left: pxToRem(18);
+
+    @media only screen and (max-width: $bp-700) { 
+        display: none;
+      }
 
     .row.logo {
-      margin-top: 3rem;
+      margin-top: 81px;
       display: flex;
       column-gap: 0.5rem;
       align-items: center;
+      
     }
     .row.face {
       //   max-width: pxToRem(696);
@@ -74,17 +78,22 @@ $header-margin: 3rem;
           font-weight: 400;
           font-size: 18px;
           line-height: 28px;
-          /* or 156% */
-
           display: flex;
           align-items: center;
-
           color: #8692a6;
+          margin-top: 9px;
         }
         .form {
           display: flex;
           flex-direction: column;
           row-gap: 2rem;
+          margin-top: 74px;
+
+          .agreement {
+            display: flex;
+            align-items: center;
+            column-gap: 14px;
+          }
         }
       }
     }

@@ -16,9 +16,7 @@
     border-radius: 12px;
     flex-wrap: wrap;
 
-    @media only screen and (max-width: $bp-700) { 
-      flex-direction: column;
-    }
+   
 
     .col {
       padding-right: pxToRem(38);

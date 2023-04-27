@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Input, Select } from './common/components';
+import { Button, Input, Select, Checkbox } from './common/components';
 
 export default function App() {
     return (
@@ -18,6 +18,7 @@ export default function App() {
                 helperText="Incorrect entry."
             />
             <Select test="Hi ther"/>
+            <Checkbox/>
         </>
     )
 }

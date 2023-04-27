@@ -1,5 +1,5 @@
 import React from "react";
-import { Select, Button, Input } from "components/ComponentsApp";
+import { Select, Button, Input, Checkbox } from "components/ComponentsApp";
 import facePNG from "../assets/img/face.png";
 import LogoICON from "../assets/svg/logo-icon.svg";
 import LogoText from "../assets/svg/logo-text.svg";
@@ -54,30 +54,43 @@ export default function Template({ children }: TemplateInterface) {
 
             <div className="form">
               <Input
-                label="Required"
-                id="tex2434"
-                defaultValue="Hello World"
+                label="Full name*"
+                id="full-name"
+                // defaultValue="Hello World"
                 type="text"
-                //  error={true}
-                helperText="Incorrect entry."
+              //  error={true}
+              // helperText="Incorrect entry."
               />
               <Input
-                label="Required"
-                id="tex2434"
-                defaultValue="Hello World"
-                type="text"
-                //  error={true}
-                helperText="Incorrect entry."
+                label="Email address*"
+                id="email-address"
+                defaultValue=""
+                type="email"
+              //  error={true}
+              // helperText="Incorrect entry."
               />
               <Input
-                label="Required"
-                id="tex2434"
-                defaultValue="Hello World"
-                type="text"
-                //  error={true}
-                helperText="Incorrect entry."
+                label="Password*"
+                id="password"
+                // defaultValue="Hello World"
+                type="password*"
+              //  error={true}
+              // helperText="Incorrect entry."
               />
-              <input type="checkbox" name="" id="" />
+              <Input
+                label="Confirm password*"
+                id="confirm-password"
+                // defaultValue="Hello World"
+                type="password*"
+              //  error={true}
+              // helperText="Incorrect entry."
+              />
+              <div className="agreement">
+                <Checkbox id="check-me"/>
+                <label htmlFor="check-me">I agree to terms & conditions</label>
+
+              </div>
+
               <Button variant="primary">Register Account</Button>
             </div>
           </div>
