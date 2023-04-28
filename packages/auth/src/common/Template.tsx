@@ -1,5 +1,5 @@
 import React from "react";
-import { Select, Button, Input, Checkbox } from "components/ComponentsApp";
+import { Select, Button, Input, Checkbox, InputWihtIcon, InputAdornments } from "components/ComponentsApp";
 import facePNG from "../assets/img/face.png";
 import LogoICON from "../assets/svg/logo-icon.svg";
 import LogoText from "../assets/svg/logo-text.svg";
@@ -69,24 +69,17 @@ export default function Template({ children }: TemplateInterface) {
               //  error={true}
               // helperText="Incorrect entry."
               />
-              <Input
-                label="Password*"
-                id="password"
-                // defaultValue="Hello World"
-                type="password*"
-              //  error={true}
-              // helperText="Incorrect entry."
+              <InputAdornments
+                label="Password"
               />
-              <Input
-                label="Confirm password*"
-                id="confirm-password"
-                // defaultValue="Hello World"
-                type="password*"
-              //  error={true}
-              // helperText="Incorrect entry."
+
+              <InputAdornments
+                label="Confirm password"
               />
+
+
               <div className="agreement">
-                <Checkbox id="check-me"/>
+                <Checkbox id="check-me" />
                 <label htmlFor="check-me">I agree to terms & conditions</label>
 
               </div>

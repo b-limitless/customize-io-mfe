@@ -7,6 +7,10 @@ export const colors = {
     lightGray: "#0000006b"
 }
 
+export const fonts =  {
+    secondaryFontFamily: "'Figtree', sans-serif"
+}
+
 
 // $gray:#848484;
 // $light-gray: #E5E5E5;

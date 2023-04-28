@@ -8,13 +8,15 @@ interface InputInterfae {
   [x: string]: any;
 }
 
-export default function Input({ ...rest }: InputInterfae) {
+export default function Input({...rest }: InputInterfae) {
   return (
     <TextField
       sx={
         style
       }
       {...rest}
-    />
+    >
+      
+    </TextField>
   )
 }

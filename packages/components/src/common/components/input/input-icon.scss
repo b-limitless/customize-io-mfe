@@ -1,0 +1,20 @@
+.cio-input-with-toggle {
+  position: relative;
+  display: flex;
+  width: 100%;
+
+  flex-direction: column;
+  .input-icon {
+    position: absolute;
+    right: 25px;
+    // 55px is parent and 17.73 is icon itself
+    top: calc(49% - 17.73px / 2);
+    cursor: pointer;
+    font-family: "Figtree", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+  }
+}
