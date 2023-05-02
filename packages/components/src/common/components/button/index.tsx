@@ -29,10 +29,11 @@ const styles = (variant: variantType) => {
 
 export interface ButtonInterface {
     variant: variantType;
+    text: string
 }
 
-const Button: React.FC<ButtonInterface> = ({ variant }) => {
-    return (<MButton sx={styles(variant)}>Register Account</MButton>)
+const Button: React.FC<ButtonInterface> = ({ text, variant }) => {
+    return (<MButton sx={styles(variant)}>{text}</MButton>)
 }
 
 

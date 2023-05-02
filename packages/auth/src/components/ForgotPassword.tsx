@@ -2,8 +2,10 @@ import React from "react";
 import Template from "../common/Template";
 import { Select, Button, Input, Checkbox, InputWihtIcon, InputAdornments } from "components/ComponentsApp";
 import BackLeftIcon from "../assets/svg/back-left-icon.svg";
+import ForgotPasswordFeature from "./features/forgot-password.feature";
+import ForgotPasswordSuccess from "./features/forgot-password-success";
 
-export default function Signin() {
+export default function ForgotPassword() {
   return (
     <Template>
       <div className="right col">
@@ -23,31 +25,9 @@ export default function Signin() {
           </div>
 
         </div>
-        <div className="group-elements">
-          <div className="row registration">
-
-            <div className="title">
-              Sigin
-            </div>
-            <div className="purpose">For the purpose of industry regulation, your details are required.</div>
-
-            <div className="form">
-             
-              <Input
-                label="Email address*"
-                id="email-address"
-                defaultValue=""
-                type="email"
-              //  error={true}
-              // helperText="Incorrect entry."
-              />
-              <InputAdornments
-                label="Password"
-              />
-              <Button variant="primary" text="Signin"></Button>
-            </div>
-          </div>
-        </div>
+        {/* <ForgotPasswordFeature/> */}
+        <ForgotPasswordSuccess/>
+        
       </div>
     </Template>
 
