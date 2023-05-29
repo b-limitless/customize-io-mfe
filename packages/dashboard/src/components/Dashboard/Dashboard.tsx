@@ -2,8 +2,9 @@ import React from "react"
 import PriceSVG from "../../assets/svg/price.svg";
 import PositiveGrowth from "../../assets/svg/positive-growth.svg";
 import AnalyticCard from "../common/AnalyticCard";
+import { Button } from "components/ComponentsApp";
+import Profile from "../Profile";
 
-import {Button}  from "components/ComponentsApp";
 
 type Props = {}
 
@@ -45,28 +46,29 @@ export const analyticsData = [
 
 export default function Dashboard({ }: Props) {
   return (
-    <div className="ci--dashboard">
-      <div className="test">
-       <Button variant="secondary"></Button>
-      </div>
-      <div className="ci--dashboard__title">
-        Welcome Back, Hello World
-      </div>
-      <div className="ci--dashboard__staticstic">
-        {analyticsData.map((item, i) => <AnalyticCard
-          key={i}
-          title={item.title}
-          Icon={item.Icon}
-          titleText={item.titleText}
-          growthIcon={item.growthIcon}
-          amount={item.amount}
-          weekGrowth={item.weekGrowth}
-        />)}
-      </div>
-      <div className="ci--dashboard__graphs">
-        Show your graphs here
+    <>
+      <Profile />
+      <div className="ci--dashboard">
+        <div className="ci--dashboard__title">
+          Welcome Back, Hello World
+        </div>
+        <div className="ci--dashboard__staticstic">
+          {analyticsData.map((item, i) => <AnalyticCard
+            key={i}
+            title={item.title}
+            Icon={item.Icon}
+            titleText={item.titleText}
+            growthIcon={item.growthIcon}
+            amount={item.amount}
+            weekGrowth={item.weekGrowth}
+          />)}
+        </div>
+        <div className="ci--dashboard__graphs">
+          Show your graphs here
+        </div>
+
       </div>
 
-    </div>
+    </>
   )
 }

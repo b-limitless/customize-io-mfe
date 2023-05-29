@@ -43,7 +43,7 @@ export default function App({ }: Props) {
     }
 
     if(!auth) {
-      history.push(splitTitleToUrl(menuEnum.Auth_Signin));
+      // history.push(splitTitleToUrl(menuEnum.Auth_Signin));
     }
   }, [auth]);
 
@@ -79,8 +79,6 @@ export default function App({ }: Props) {
               <ProductApp onSingIn={() => { }} isSignIn={false} />
             </Container>
           </Route>
-
-
         </Switch>
       </Router>
 
