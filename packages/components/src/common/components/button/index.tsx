@@ -3,15 +3,29 @@ import { Button as MButton } from '@mui/material';
 import { colors } from '../../config/colors';
 
 
-export type variantType = "primary" | "secondary";
+export type variantType = "primary" | "secondary" | "light";
 
 const styles = (variant: variantType) => {
-    let background = variant === 'primary' ? colors.primary : variant === 'secondary' ? colors.secondary : colors.primary;
-    let color = variant === 'primary' ? colors.light : variant === 'secondary' ? colors.primary : colors.primary;
+    let background = variant === 'primary' ? colors.primary 
+        : variant === 'secondary' ? colors.secondary 
+        : variant === 'light' ? colors.light
+        : colors.primary;
+    let color = variant === 'primary' ? colors.light 
+    : variant === 'secondary' ? colors.primary 
+    : variant === 'light' ? colors.primary
+    : colors.primary;
+
+    const optionalProps = {} as any;
+
+    if(variant === 'light') {
+        optionalProps.border = `1px solid ${colors.primary}`;
+    }
+    
 
     return {
         background: background,
-        borderRadius: "6px",
+        // borderRadius: "6px",
+        borderRadius: "0px",
         padding: "22px 0",
         color: color,
         width: "100%",
@@ -22,7 +36,9 @@ const styles = (variant: variantType) => {
         '&:hover': {
             backgroundColor: background,
             opacity: 1
-        }
+        },
+        ...optionalProps
+
 
     }
 }

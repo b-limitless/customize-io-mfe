@@ -5,7 +5,7 @@ export default function App() {
     return (
         <>
         {/* //variant='secondary' */}
-            <Button variant="secondary"  text="Restister"/>
+            <Button variant="light"  text="Restister"/>
             <br />
             <br />
             <br />

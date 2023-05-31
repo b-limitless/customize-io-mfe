@@ -1,3 +1,19 @@
+@import "../../styles/abstract/variables";
 .model {
-    display: block;
+    width: 562px;
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    .model__side {
+        .close {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 28px;
+            margin-left: auto;
+            svg {
+                cursor: pointer;
+            }
+        }
+    }
 }
