@@ -1,9 +1,24 @@
 @import "../../styles/abstract/variables";
-.model {
-    width: 562px;
-    height: 100vh;
-    position: absolute;
+
+$model_width: 562px;
+
+.model.show {
     right: 0;
+    
+}
+.model.hide {
+    // display: none;
+    right: -($model_width);
+    // position: absolute;
+}
+
+.model {
+    width: $model_width;
+    height: 100vh;
+    position: fixed;
+    transition: all 0.2s ease-out;
+    // right: -562px;
+    
     background-color: #fff;
     .model__side {
         .close {
@@ -17,3 +32,4 @@
         }
     }
 }
+

@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { mount } from "dashboard/DashboardApp";
 import { useHistory } from "react-router-dom";
 
-export default ({ onSingIn, isSignIn }) => {
+export default ({ onSingIn, isSignIn, showProfileSideModel, setShowProfileSideModel }) => {
   const ref = useRef(null);
   const history = useHistory();
 
@@ -18,9 +18,11 @@ export default ({ onSingIn, isSignIn }) => {
       },
       onSingIn,
       isSignIn,
+      showProfileSideModel, 
+      setShowProfileSideModel
     });
     history.listen(onParentNavigate);
-  }, [isSignIn]);
+  }, [isSignIn, showProfileSideModel, setShowProfileSideModel]);
 
   return <div ref={ref}></div>;
 };

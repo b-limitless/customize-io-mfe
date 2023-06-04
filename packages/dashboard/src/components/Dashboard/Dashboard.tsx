@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import PriceSVG from "../../assets/svg/price.svg";
 import PositiveGrowth from "../../assets/svg/positive-growth.svg";
 import AnalyticCard from "../common/AnalyticCard";
@@ -6,7 +6,10 @@ import { Button } from "components/ComponentsApp";
 import Profile from "../Profile";
 
 
-type Props = {}
+type Props = {
+  showProfileSideModel:boolean;
+  setShowProfileSideModel:Function;
+}
 
 export const analyticsData = [
   {
@@ -44,10 +47,12 @@ export const analyticsData = [
 ]
 
 
-export default function Dashboard({ }: Props) {
+export default function Dashboard({showProfileSideModel, setShowProfileSideModel}: Props) {
+ 
   return (
     <>
-      <Profile />
+      <Profile showModel={showProfileSideModel} setShowModel={setShowProfileSideModel}/>
+      showModel{ showProfileSideModel === true}
       <div className="ci--dashboard">
         <div className="ci--dashboard__title">
           Welcome Back, Hello World
@@ -68,6 +73,7 @@ export default function Dashboard({ }: Props) {
         </div>
 
       </div>
+      
 
     </>
   )

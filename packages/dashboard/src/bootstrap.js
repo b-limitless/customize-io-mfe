@@ -12,9 +12,12 @@ const mount = (
     defaultHistory,
     initialPath,
     onSignIn,
-    isSignedIn
+    isSignedIn,
+    showProfileSideModel, 
+    setShowProfileSideModel
   }
 ) => {
+
   const history =
     defaultHistory ||
     createMemoryHistory({
@@ -24,12 +27,17 @@ const mount = (
   if (onNavigate) {
     history.listen(onNavigate);
   }
+
+ 
+  
   ReactDOM.render(
    
       <App
         history={history}
         onSignIn={onSignIn}
         isSignedIn={isSignedIn}
+        showProfileSideModel={showProfileSideModel}
+        setShowProfileSideModel={setShowProfileSideModel}
       />
       ,
 

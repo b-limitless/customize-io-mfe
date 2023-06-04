@@ -13,9 +13,10 @@ import NavList from './NavList';
 
 interface SideMenuInterface {
   setSelectedMenu: Function
+  setShowProfileSideModel:Function
 }
 
-export default function SideMenu({ setSelectedMenu }: SideMenuInterface) {
+export default function SideMenu({ setSelectedMenu, setShowProfileSideModel }: SideMenuInterface) {
   return (
     <div className="left-menu">
       <div className="menu-wrapper">
@@ -85,7 +86,7 @@ export default function SideMenu({ setSelectedMenu }: SideMenuInterface) {
               <div className="text settings">FAQ</div>
             </div>
           </div>
-          <div className="bottom--bottom">
+          <div className="bottom--bottom" onClick={() => setShowProfileSideModel((prevState:boolean) => !prevState)}>
             <input type="checkbox" id="avatar-profile-info" className="avatar-profile-info" />
             <label htmlFor="avatar-profile-info" >
               <div className="col avatar">

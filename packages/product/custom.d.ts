@@ -7,3 +7,4 @@ declare module "*.jpg";
 declare module "*.png";
 declare module "*.jpeg";
 declare module "*.gif";s
+declare module "components/ComponentsApp";

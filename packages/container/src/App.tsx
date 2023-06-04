@@ -5,13 +5,11 @@ import ArrowRight from "./assets/svg/arrow-right.svg";
 import { menuIds, menuEnum } from "./config/navMenu";
 import Container from "./components/common/Container";
 import { splitTitleToUrl } from "./pure-functions/splitTitleToUrl";
-
-import "./styles/main.scss";
-
 import DashboardApp from "./components/remotes/DashboardApp";
 import ProductApp from "./components/remotes/ProductApp";
 import AuthApp from "./components/remotes/AuthApp";
 import { Router, Switch, Route, Link } from "react-router-dom";
+import "./styles/main.scss";
 
 type Props = {}
 // Import all microfrontend here and then simply 
@@ -21,8 +19,9 @@ const history = createBrowserHistory();
 
 export default function App({ }: Props) {
   const [selectedMenu, setSelectedMenu] = useState<menuIds>("Auth_Signin");
-  const [auth, setAuth] = useState<null | {token: string}>(null);
-  
+  const [auth, setAuth] = useState<null | { token: string }>(null);
+  const [showProfileSideModel, setShowProfileSideModel] = useState<boolean>(false);
+
 
   useEffect(() => {
     if (selectedMenu === menuEnum.Dashboard) {
@@ -38,11 +37,11 @@ export default function App({ }: Props) {
   }, [selectedMenu]);
 
   useEffect(() => {
-    if(auth) {
+    if (auth) {
       history.push(splitTitleToUrl(menuEnum.Dashboard));
     }
 
-    if(!auth) {
+    if (!auth) {
       // history.push(splitTitleToUrl(menuEnum.Auth_Signin));
     }
   }, [auth]);
@@ -59,13 +58,18 @@ export default function App({ }: Props) {
 
   // When menu is changed then oney route will be changed and not other things
 
+  
   return (
     <>
       <Router history={history}>
         <Switch>
           <Route exact path="/dashboard">
-            <Container selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} >
-              <DashboardApp onSingIn={() => { }} isSignIn={false} />
+            <Container 
+                 selectedMenu={selectedMenu} 
+                 setSelectedMenu={setSelectedMenu} 
+                 setShowProfileSideModel={setShowProfileSideModel}
+            >
+              <DashboardApp onSingIn={() => { }} isSignIn={false} setShowProfileSideModel={setShowProfileSideModel} showProfileSideModel={showProfileSideModel} />
             </Container>
           </Route>
 

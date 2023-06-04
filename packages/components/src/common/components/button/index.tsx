@@ -17,10 +17,9 @@ const styles = (variant: variantType) => {
 
     const optionalProps = {} as any;
 
-    if(variant === 'light') {
+    if(variant === 'light' || variant ===  'primary') {
         optionalProps.border = `1px solid ${colors.primary}`;
     }
-    
 
     return {
         background: background,

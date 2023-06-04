@@ -8,3 +8,4 @@ declare module "*.png";
 declare module "*.jpeg";
 declare module "*.gif";s
 declare module "*.module.scss";
+declare module "*.json"

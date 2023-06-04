@@ -15,17 +15,18 @@ import "./styles/main.scss";
 interface AppInterface {
     history: any;
     onSignin: Function,
-    isSignedIn: boolean
+    isSignedIn: boolean,
+    [x:string]:any
 }
 
-export default function App({ history, onSignin, isSignedIn }: AppInterface) {
+export default function App({ history, onSignin, isSignedIn, showProfileSideModel, setShowProfileSideModel }: AppInterface) {
     return (
         <>
             <StylesProvider generateClassName={gererateClassName}>
                 <Router history={history}>
                     <Switch>
                         <Route path="/dashboard">
-                            <Dashboard />
+                            <Dashboard showProfileSideModel={showProfileSideModel} setShowProfileSideModel={setShowProfileSideModel}/>
                         </Route>
                     </Switch>
                 </Router>

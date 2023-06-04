@@ -6,10 +6,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const PORT = 8081;
 
 const devConfig = {
-  optimization: {
-    runtimeChunk: "single",
+  // optimization: {
+  //   runtimeChunk: "single",
 
-  },
+  // },
   mode: "development",
   output: {
     publicPath: `http://localhost:${PORT}/`,
@@ -25,10 +25,11 @@ const devConfig = {
       name: "dashboard",
       filename: "remoteEntry.js",
       exposes: {
-        "./DashboardApp": "./src/bootstrap",
+        "./DashboardApp": "./src/bootstrap"
       },
       remotes: {
         components: "components@http://localhost:8084/remoteEntry.js",
+        
       },
       shared: packageJson.dependencies,
     }),

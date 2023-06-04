@@ -8,9 +8,7 @@
         display: flex;
         column-gap: 22px;
         align-items:center;
-        .avatar {
-            
-        }
+        
         .actions {
             display: flex;
             flex-grow: 1;
@@ -36,12 +34,15 @@
             // .tab__option__input:checked ~ .tab__contents > .item {
             //     display: block;
             // }
+            
             input[data-name="personal-info"]:checked ~ .tab__contents > div[data-name="personal-info"],
             input[data-name="security"]:checked ~ .tab__contents > div[data-name="security"] {
-                display: block;
+                display: flex;
+                flex-direction: column;
+                row-gap: pxToRem(40.3);
             }
             
-            label {
+            .tab__label {
                 font-style: normal;
                 font-weight: 500;
                 font-size: 14px;
@@ -60,9 +61,21 @@
             }
             .tab__contents {
                 margin-top: pxToRem(40.53);
+                padding: 0 9px;
 
                 .item {
                     display: none;
+
+                    .form__row {
+                        display: flex;
+                        column-gap: pxToRem(23);
+                        width: 100%;
+                        // .MuiFormControl-root {
+                        //     flex:1 !important;
+                        // }
+                       
+                    }
+
                 }
             }
         }
@@ -76,4 +89,10 @@
             
         }
     }
+}
+
+.form__row > div {
+    
+        flex:1;
+    
 }

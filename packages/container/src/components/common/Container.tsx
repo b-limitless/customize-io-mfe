@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 interface ContainerInterface {
     setSelectedMenu: Function,
     selectedMenu: menuIds,
-    children: any
+    children: any;
+    [x:string]:any;
 }
-export default function Container({ children, setSelectedMenu, selectedMenu }: ContainerInterface) {
+export default function Container({ children, setSelectedMenu, selectedMenu, setShowProfileSideModel }: ContainerInterface) {
     return (
         <>
             <input type="radio" id="toggle-menu-checkbox" className="toggle-menu-checbox" name="toggle-menu-checkbox" />
@@ -22,6 +23,7 @@ export default function Container({ children, setSelectedMenu, selectedMenu }: C
                 <div className="left side--navbar hide">
                     <SideMenu
                         setSelectedMenu={setSelectedMenu}
+                        setShowProfileSideModel={setShowProfileSideModel}
                     />
                 </div>
                 <div className="right services">
