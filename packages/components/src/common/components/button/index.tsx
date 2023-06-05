@@ -25,7 +25,7 @@ const styles = (variant: variantType) => {
         background: background,
         // borderRadius: "6px",
         borderRadius: "0px",
-        padding: "22px 0",
+        padding: "22px 44px",
         color: color,
         width: "100%",
         opacity: 0.9,

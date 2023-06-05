@@ -23,6 +23,10 @@ const devConfig = {
         auth: "auth@http://localhost:8083/remoteEntry.js", 
         components: "components@http://localhost:8084/remoteEntry.js", 
       },
+      exposes: {
+        './scssVariables': './src/styles/abstract/_variables.scss',
+      },
+
       shared: packageJson.dependencies,
       
     }),

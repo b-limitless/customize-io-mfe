@@ -6,7 +6,7 @@ import {
 } from "@material-ui/core/styles";
 
 import Thread from "./components/Thread";
-import Febric from "./components/Febric";
+import Febric from "./components/Febric/Febric";
 
 const gereateClassName = createGenerateClassName({
   productionPrefix: "ci-product",
