@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { mockFebrics } from '../../mock-data/febric';
 import { Button, BasicTable } from "components/ComponentsApp";
 import styles from "./febric-style.module.scss";
+import FebricDetails from './FebricDetails';
 // type Props = {}
 //{}: Props
 // We can show the table list of febric with some most important details 
@@ -19,9 +20,7 @@ export default function Febric() {
 
   const tableHeader = ['title', 'type', 'price', 'material', 'season', 'action'];
 
-  const showFebricDetailsHandler = (i:number) => {
-    console.log(`$show the detail for the febric index ${i}`)
-  }
+  
   let tableData:any = [{
     title: "Hello World",
     price: 123,
@@ -127,18 +126,30 @@ export default function Febric() {
     
   }
   ]
+  const [showFebricDetailsModel, setShowFebricDetailsModel] = useState<number>(-1);
+
+  const showModelHandler = (i:number) => {
+    setShowFebricDetailsModel(i);
+  }
 
   tableData = tableData.map((row:any, i:number) => {
-    row.action = <><a style={customStyle} onClick={() => showFebricDetailsHandler(i)}>Details</a>{' '}<a>Edit</a></>;
+    row.action = <><a style={customStyle} onClick={() => showModelHandler(i)}>Details</a>{' '}<a>Edit</a></>;
     return row;
   });
 
+  
+  
+
   return (
+    <>
+    {showFebricDetailsModel !== -1 && <FebricDetails setShowFebricDetailsModel = {setShowFebricDetailsModel} showFebricDetailsModel={showFebricDetailsModel}/>}
+    
+    <div className={styles.febric__wrapper}>
     <div className={styles.febric__container}>
       <div className={styles.row}>
         <div className={styles.title}>Product Febric - List</div>
         <div className={styles.add__new}>
-          <Button variant="primary" text="Add Febric" />
+          <a href="/product/febric/add"><Button variant="primary" text="Add Febric" /></a>
         </div>
       </div>
 
@@ -156,5 +167,9 @@ export default function Febric() {
         </div>
       </div>
     </div>
+    </div>
+    
+    </>
+    
   )
 }
