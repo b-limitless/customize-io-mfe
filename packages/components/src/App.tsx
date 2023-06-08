@@ -12,6 +12,7 @@ import {
 } from './common/components';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { BasicTableInterface } from './common/components/table';
+import { CheckboxWithLabel } from './common/components/checkbox';
 const style = {
     cursor: 'pointer'
 }
@@ -205,6 +206,7 @@ export default function App() {
             <TextArea setter={setAboutYou} getter={aboutYou} placeholder="About you" />
             
             <BasicTable tableHeader={tableHeader}  tableData={tableData} tableRow={tableData[0]}/>
+            <CheckboxWithLabel/>
         </>
     )
 }

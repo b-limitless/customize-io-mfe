@@ -29,7 +29,7 @@ export default function StepSix({ }: Props) {
         
         // Its remember old values
         getComposition[0].persantage = 0;
-        
+
         const updatedAvailableComposition = availableComposition.filter((composition) => composition.code !== value);
 
         setAvailableComposition(updatedAvailableComposition);
@@ -94,7 +94,7 @@ export default function StepSix({ }: Props) {
 
             <div className={styles.form__row}>
                 <div className={styles.compositions}>
-                    {compositions.map((composition, i) => <div className={styles.item}>
+                    {compositions.map((composition, i) => <div key={`composition-${i}`}className={styles.item}>
                         <div className={styles.col}>
                             <span className={styles.title}>{composition.name}</span>
                         </div>

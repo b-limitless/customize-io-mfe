@@ -11,4 +11,5 @@ export {default as InputAdornments} from "./input/InputAdornments";
 export {default as MultipleSelectChip} from "./chip";
 export {default as TextArea} from "./textarea";
 export {default as BasicTable} from "./table";
+export {CheckboxWithLabel} from "./checkbox"
 

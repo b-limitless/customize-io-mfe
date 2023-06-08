@@ -47,7 +47,11 @@
             column-gap: 1rem;
             flex-basis: 100%;
 
-            
+            .characters__label {
+                display: grid;
+                column-gap: 1rem;
+                grid-template-columns: repeat(auto-fill, pxToRem(220));
+            }
 
             .febric__media {
                 display: flex;

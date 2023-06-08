@@ -9,6 +9,7 @@ import { addFebricType, addFebricSteps } from "../../../types&Enums/febric";
 import StepFour from "./Steps/Four";
 import StepFive from "./Steps/Five";
 import StepSix from "./Steps/Six";
+import StepSeven from "./Steps/Seven";
 
 
 type Props = {}
@@ -25,7 +26,8 @@ export default function AddFebric({ }: Props) {
             {/* <StepThree/> */}
             {/* <StepFour/> */}
             {/* <StepFive/> */}
-            <StepSix/>
+            {/* <StepSix/> */}
+            <StepSeven/>
         </FormTemplate>
     )
 }

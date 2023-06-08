@@ -1,16 +1,16 @@
 export const febricTypes = [
-  { name: 'Cotton', code: 'cotton' },
-  { name: 'Denim', code: 'denim' },
-  { name: 'Fleece', code: 'fleece' },
-  { name: 'Linen', code: 'linen' },
-  { name: 'Lycra/Spandex', code: 'lycra_spandex' },
-  { name: 'Nylon', code: 'nylon' },
-  { name: 'Polyester', code: 'polyester' },
-  { name: 'Rayon', code: 'rayon' },
-  { name: 'Satin', code: 'satin' },
-  { name: 'Silk', code: 'silk' },
-  { name: 'Velvet', code: 'velvet' },
-  { name: 'Wool', code: 'wool' }
+  { name: "Cotton", code: "cotton" },
+  { name: "Denim", code: "denim" },
+  { name: "Fleece", code: "fleece" },
+  { name: "Linen", code: "linen" },
+  { name: "Lycra/Spandex", code: "lycra_spandex" },
+  { name: "Nylon", code: "nylon" },
+  { name: "Polyester", code: "polyester" },
+  { name: "Rayon", code: "rayon" },
+  { name: "Satin", code: "satin" },
+  { name: "Silk", code: "silk" },
+  { name: "Velvet", code: "velvet" },
+  { name: "Wool", code: "wool" },
 ];
 
 export const febricSeasons = [
@@ -77,4 +77,78 @@ export const waterProof = [
   { name: "Not Waterproof", code: "not_waterproof" },
   { name: "Water-Resistant", code: "water_resistant" },
   { name: "Waterproof", code: "waterproof" },
+];
+
+export const characters = [
+  {
+    name: "New",
+    code: "New",
+    description: "Indicates newly manufactured fabrics.",
+  },
+  {
+    name: "Eco-Friendly/Sustainable",
+    code: "Eco-Friendly/Sustainable",
+    description:
+      "Denotes fabrics made from environmentally friendly materials or produced using sustainable manufacturing practices.",
+  },
+  {
+    name: "Easy Iron",
+    code: "Easy_Iron",
+    description:
+      "Refers to fabrics that are designed to be easily ironed and require minimal effort to remove wrinkles.",
+  },
+  {
+    name: "Breathable",
+    code: "Breathable",
+    description:
+      "Indicates fabrics that allow air circulation, promoting comfort and reducing moisture buildup.",
+  },
+  {
+    name: "Stretchy/Elastic",
+    code: "Stretchy_Elastic",
+    description:
+      "Refers to fabrics with stretch properties, allowing them to stretch and recover without losing their shape.",
+  },
+  {
+    name: "Wrinkle-Resistant",
+    code: "Wrinkle-Resistant",
+    description:
+      "Indicates that the fabric is less prone to wrinkling, requiring minimal ironing or maintaining a smoother appearance.",
+  },
+  {
+    name: "Lightweight",
+    code: "Lightweight",
+    description:
+      "Describes fabrics that are light in weight, often preferred for warm weather or when a lighter feel is desired.",
+  },
+  {
+    name: "UV-Resistant",
+    code: "UV-Resistant",
+    description:
+      "Refers to fabrics that offer protection against harmful UV rays, reducing the risk of sunburn and skin damage.",
+  },
+  {
+    name: "Quick-Drying",
+    code: "Quick-Drying",
+    description:
+      "Indicates that the fabric has moisture-wicking properties and dries rapidly, making it suitable for activewear or situations where fast drying is desired.",
+  },
+  {
+    name: "Anti-Microbial",
+    code: "Anti-Microbial",
+    description:
+      "Describes fabrics that inhibit the growth of microorganisms, reducing odors and maintaining freshness.",
+  },
+  {
+    name: "Flame-Retardant",
+    code: "Flame-Retardant",
+    description:
+      "Indicates that the fabric has been treated to reduce its flammability or slow down the spread of flames.",
+  },
+  {
+    name: "Stain-Resistant",
+    code: "Stain-Resistant",
+    description:
+      "Refers to fabrics that are resistant to staining, making it easier to clean and maintain their appearance.",
+  },
 ];
