@@ -1,16 +1,16 @@
 export const febricTypes = [
-  { name: "Cotton", code: "cotton" },
-  { name: "Silk", code: "silk" },
-  { name: "Wool", code: "wool" },
-  { name: "Polyester", code: "polyester" },
-  { name: "Nylon", code: "nylon" },
-  { name: "Rayon", code: "rayon" },
-  { name: "Linen", code: "linen" },
-  { name: "Denim", code: "denim" },
-  { name: "Satin", code: "satin" },
-  { name: "Velvet", code: "velvet" },
-  { name: "Lycra/Spandex", code: "lycra_spandex" },
-  { name: "Fleece", code: "fleece" },
+  { name: 'Cotton', code: 'cotton' },
+  { name: 'Denim', code: 'denim' },
+  { name: 'Fleece', code: 'fleece' },
+  { name: 'Linen', code: 'linen' },
+  { name: 'Lycra/Spandex', code: 'lycra_spandex' },
+  { name: 'Nylon', code: 'nylon' },
+  { name: 'Polyester', code: 'polyester' },
+  { name: 'Rayon', code: 'rayon' },
+  { name: 'Satin', code: 'satin' },
+  { name: 'Silk', code: 'silk' },
+  { name: 'Velvet', code: 'velvet' },
+  { name: 'Wool', code: 'wool' }
 ];
 
 export const febricSeasons = [
