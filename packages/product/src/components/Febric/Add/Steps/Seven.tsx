@@ -21,7 +21,7 @@ export default function StepSeven({ }: Props) {
     }
 
     return (
-        <div className={styles.row}>
+        <div className={`${styles.row} ${styles.childrens}` }>
             <div className={styles.form__row}>
                 <div className={styles.characters__label}>
                 {characters.map((character, i) => <CheckboxWithLabel checked = {selectedCharacters.indexOf(character.code) !== -1} name={character.code} onChange={onChangeHanlder} key={i} label={character.name}/>)}

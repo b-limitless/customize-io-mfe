@@ -44,8 +44,6 @@ export default function Febric() {
     stretchy: "",
     mis: ["new", "eco", "easy iron", "none iron"],
     type: ["shirt", "pants", "suits"],
-    
-
   },
   {
     title: "Hello World",

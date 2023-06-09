@@ -82,7 +82,7 @@ export default function StepSix({ }: Props) {
 
 
     return (
-        <div className={styles.row}>
+        <div className={`${styles.row} ${styles.childrens}` }>
             <div className={styles.form__row}>
                 <Select options={availableComposition}
                     value={""}

@@ -47,8 +47,8 @@ export interface ButtonInterface {
     text: string
 }
 
-const Button: React.FC<ButtonInterface> = ({ text, variant }) => {
-    return (<MButton sx={styles(variant)}>{text}</MButton>)
+const Button: React.FC<ButtonInterface> = ({ text, variant, ...rest }) => {
+    return (<MButton sx={styles(variant)} {...rest}>{text}</MButton>)
 }
 
 

@@ -10,7 +10,7 @@ const warmthOptions = [{ name: 1, code: 1 }, { name: 2, code: 2 }]
 export default function StepFive({ }: Props) {
 
     return (
-        <div className={styles.row}>
+        <div className={`${styles.row} ${styles.childrens}` }>
             <div className={styles.form__row}>
                 <span className={styles.febric__media}>
                     <input type="file" id="febric-images" hidden />

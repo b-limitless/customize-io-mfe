@@ -55,6 +55,7 @@ export const brightness = [
 ];
 
 export const superShiny = [
+  { name: "", code: "" },
   { name: "Yes", code: true },
   { name: "No", code: false },
 ];
@@ -152,3 +153,33 @@ export const characters = [
       "Refers to fabrics that are resistant to staining, making it easier to clean and maintain their appearance.",
   },
 ];
+
+export const warmth = [
+  {
+    name: "Thermal Conductivity",
+    code: "Thermal_Conductivity",
+    description:
+      "This measures the ability of a fabric to conduct heat. A lower thermal conductivity indicates better insulation as it restricts the transfer of heat through the fabric.",
+  },
+  {
+    name: "Thermal Resistance",
+    code: "Thermal_Resistance",
+    description:
+      "Also known as R-value, it represents the fabric's resistance to heat flow. Higher thermal resistance implies better insulation and increased warmth.",
+  },
+  {
+    name: "Clo Value",
+    code: "Clo_Value",
+    description:
+      "The clo value measures the insulation level provided by a specific fabric. One clo is equal to the amount of insulation needed to maintain comfort at rest in a typical indoor setting.",
+  },
+  {
+    name: "TOG Rating",
+    code: "TOG_Rating",
+    description:
+      "Commonly used for bedding and sleepwear, TOG rating measures the thermal resistance of the fabric. The higher the TOG rating, the warmer the fabric.",
+  },
+];
+
+
+export const excellence = [{name: 0, code: 0},{name: 1, code: 1}, {name: 2, code: 2}]

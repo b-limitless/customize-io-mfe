@@ -1,29 +1,45 @@
 import React from 'react'
 import { Button, Input, Select, MultipleSelectChip, TextArea, InputAdornments } from 'components/ComponentsApp';
 import styles from "../add-febric.module.scss";
-type Props = {}
+import { excellence, warmth } from '../../../../config/febric';
+import { commonFebricStepType } from '../../types/febrics';
 
-const warmthOptions = [{name: 1, code: 1}, {name: 2, code: 2}]
 
-export default function StepOne({ }: Props) {
+
+
+export default function StepOne({ onChangeHandler, febric, errors, setErrors }: commonFebricStepType) {
+
+    const nextStepHandler = () => {
+        setErrors({});
+        
+        if(febric.title !== "") {
+            setErrors({...errors, title: "Title field is required"});
+        }
+    }
 
     return (
-        <div className={styles.row}>
+        <div className={`${styles.row} ${styles.childrens}`}>
             <div className={styles.form__row}>
                 <Input
                     label="Title"
                     id="title"
-                    defaultValue=""
+                    value={febric.title ?? ""}
                     type="text"
-                //  error={true}
-                // helperText="Incorrect entry."
+                    name="title"
+
+                    error={errors.title ? true : false}
+                    helperText={errors.title ? "Incorrect entry." : false} 
+                    onChange={onChangeHandler}
                 />
                 <Input
                     label="Price"
                     id="price"
                     defaultValue=""
-                    type="text"
-                //  error={true}
+                    type="number"
+                    name="price"
+                    onChange={onChangeHandler}
+
+                // error={true}
                 // helperText="Incorrect entry."
                 />
             </div>
@@ -32,22 +48,26 @@ export default function StepOne({ }: Props) {
                 <Input
                     label="Delivery time(days)"
                     id="delivery-time"
-                    defaultValue=""
+                    value={febric.deliveryTime ?? 0}
                     type="number"
+                    name="deliveryTime"
+                    onChange={onChangeHandler}
                 //  error={true}
                 // helperText="Incorrect entry."
                 />
-                <Select options={warmthOptions}
-                value={""}
-                label={"Excellence"}
-                onChange={() => { }}
-            />
+                <Select options={excellence}
+                    value={febric.excellence ?? 0}
+                    label={"Excellence"}
+                    name="excellence"
+                    onChange={onChangeHandler}
+                />
 
-                <Select options={warmthOptions}
-                value={""}
-                label={"Warmth"}
-                onChange={() => { }}
-            />
+                <Select options={warmth}
+                    value={febric.warmth ?? ""}
+                    label={"Warmth"}
+                    name="warmth"
+                    onChange={onChangeHandler}
+                />
             </div>
 
         </div>

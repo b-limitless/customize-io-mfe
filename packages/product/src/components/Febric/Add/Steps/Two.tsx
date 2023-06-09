@@ -1,54 +1,60 @@
 import React from 'react'
 import { Button, Input, Select, MultipleSelectChip, TextArea, InputAdornments } from 'components/ComponentsApp';
 import styles from "../add-febric.module.scss";
-
-type Props = {}
+import { commonFebricStepType } from '../../types/febrics';
 
 import { brightness, febricSeasons, febricTypes, superShiny, threadTypes } from '../../../../config/febric';
 
 
-export default function StepTwo({ }: Props) {
+export default function StepTwo({onChangeHandler, febric }: commonFebricStepType) {
 
     return (
-        <div className={styles.row}>
+        <div className={`${styles.row} ${styles.childrens}` }>
             <div className={styles.form__row}>
                 <Input
                     label="Weight(mg^2)"
                     id="weight"
-                    defaultValue=""
+                    value={febric.weight ?? ""}
                     type="number"
+                    name="weight"
+                    onChange={onChangeHandler}
                     //  error={true}
                     // helperText="Incorrect entry."
                 />
                 <Select options={febricSeasons}
-                    value={""}
+                    value={febric.season ?? ""}
                     label={"Season"}
-                    onChange={() => { }}
+                    name="season"
+                    onChange={onChangeHandler}
                 />
 
                 <Select options={febricTypes}
-                    value={""}
+                    value={febric.type ?? ""}
                     label={"Type"}
-                    onChange={() => { }}
+                    name="type"
+                    onChange={onChangeHandler}
                 />
             </div>
 
             <div className={styles.form__row}>
             <Select options={threadTypes}
-                    value={""}
+                    value={febric.threadType ?? ""}
                     label={"Thread Type"}
-                    onChange={() => { }}
+                    name="threadType"
+                    onChange={onChangeHandler}
                 />
                 <Select options={brightness}
-                    value={""}
+                    value={febric.brightness ?? ""}
                     label={"Bringtness"}
-                    onChange={() => { }}
+                    name="brightness"
+                    onChange={onChangeHandler}
                 />
 
                 <Select options={superShiny}
-                    value={""}
+                    value={febric.shperShiny ?? ""}
                     label={"Super Shiny"}
-                    onChange={() => { }}
+                    name="shperShiny"
+                    onChange={onChangeHandler}
                 />
             </div>
 

@@ -9,7 +9,7 @@ const warmthOptions = [{ name: 1, code: 1 }, { name: 2, code: 2 }]
 export default function StepFour({ }: Props) {
 
     return (
-        <div className={styles.row}>
+        <div className={`${styles.row} ${styles.childrens}` }>
             <div className={styles.form__row}>
                 <Select options={threadCounts}
                     value={""}
