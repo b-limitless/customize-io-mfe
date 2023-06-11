@@ -1,0 +1,18 @@
+{
+  "name": "@pasal/common-functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "del ./dist/*",
+    "build": "npm run clean && tsc --outDir dist",
+    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish --access public"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "del-cli": "^5.0.0",
+    "tsc": "^2.0.4",
+    "typescript": "^5.1.3"
+  }
+}
