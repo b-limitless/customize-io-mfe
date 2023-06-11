@@ -26,9 +26,8 @@ export default function StepOne({ onChangeHandler, febric, errors, setErrors }: 
                     value={febric.title ?? ""}
                     type="text"
                     name="title"
-
                     error={errors.title ? true : false}
-                    helperText={errors.title ? "Incorrect entry." : false} 
+                    helperText={errors.title ? errors.title : false} 
                     onChange={onChangeHandler}
                 />
                 <Input
@@ -38,6 +37,8 @@ export default function StepOne({ onChangeHandler, febric, errors, setErrors }: 
                     type="number"
                     name="price"
                     onChange={onChangeHandler}
+                    error={errors.price ? true : false}
+                    helperText={errors.price ? errors.price : false} 
 
                 // error={true}
                 // helperText="Incorrect entry."
@@ -52,21 +53,27 @@ export default function StepOne({ onChangeHandler, febric, errors, setErrors }: 
                     type="number"
                     name="deliveryTime"
                     onChange={onChangeHandler}
-                //  error={true}
-                // helperText="Incorrect entry."
+                    error={errors.deliveryTime ? true : false}
+                    helperText={errors.deliveryTime ? errors.deliveryTime : false} 
                 />
                 <Select options={excellence}
                     value={febric.excellence ?? 0}
                     label={"Excellence"}
                     name="excellence"
                     onChange={onChangeHandler}
+                    error={errors.excellence ? true : false}
+                    helpertext={errors.excellence ? errors.excellence : undefined} 
+                    
                 />
+                
 
                 <Select options={warmth}
                     value={febric.warmth ?? ""}
                     label={"Warmth"}
                     name="warmth"
                     onChange={onChangeHandler}
+                    error={errors.warmth ? true : false}
+                    helpertext={errors.warmth ? errors.warmth: undefined}
                 />
             </div>
 

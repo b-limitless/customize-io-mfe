@@ -6,7 +6,7 @@ import { commonFebricStepType } from '../../types/febrics';
 import { brightness, febricSeasons, febricTypes, superShiny, threadTypes } from '../../../../config/febric';
 
 
-export default function StepTwo({onChangeHandler, febric }: commonFebricStepType) {
+export default function StepTwo({onChangeHandler, febric, errors }: commonFebricStepType) {
 
     return (
         <div className={`${styles.row} ${styles.childrens}` }>
@@ -18,8 +18,8 @@ export default function StepTwo({onChangeHandler, febric }: commonFebricStepType
                     type="number"
                     name="weight"
                     onChange={onChangeHandler}
-                    //  error={true}
-                    // helperText="Incorrect entry."
+                     error={errors.weight ? true : false}
+                    helperText={errors.weight ? errors.weight : null}
                 />
                 <Select options={febricSeasons}
                     value={febric.season ?? ""}

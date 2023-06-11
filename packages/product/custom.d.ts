@@ -10,3 +10,4 @@ declare module "*.gif";
 declare module "components/ComponentsApp";
 declare module "*.module.scss";
 declare module "*.scss";
+declare module "@pasal/common-functions"

@@ -6,6 +6,8 @@ import { default as MUISelect } from '@mui/material/Select';
 import { style } from "../styles";
 import { SelectChangeEvent } from '@mui/material/Select';
 
+import { FormHelperText } from '@mui/material';
+
 interface SelectInterface {
     options: any[];
     value: string;
@@ -21,7 +23,10 @@ const Select: React.FC<SelectInterface> = ({options, label, value, onChange, id,
 
         <FormControl sx={
             { ...style, minWidth: 140 }
-        }>
+            
+        }
+        error={rest.error}
+        >
             <InputLabel id={id}>{label}</InputLabel>
             <MUISelect
                 labelId={id}
@@ -33,6 +38,7 @@ const Select: React.FC<SelectInterface> = ({options, label, value, onChange, id,
             >
                 {options.map((option: any, i: number) => <MenuItem key={i} value={option.code}>{option.name}</MenuItem>)}
             </MUISelect>
+            {rest.error && <FormHelperText sx={{color: "#d32f2f"}}>Please select {label.toLowerCase()}</FormHelperText>}
         </FormControl>
 
     );
