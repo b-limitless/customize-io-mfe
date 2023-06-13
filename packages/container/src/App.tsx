@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react"
-import { createBrowserHistory } from "history"
-import SideMenu from "./components/common/SideMenu";
-import ArrowRight from "./assets/svg/arrow-right.svg";
-import { menuIds, menuEnum } from "./config/navMenu";
+import { createBrowserHistory } from "history";
+import React, { useEffect, useState } from "react";
+import { Route, Router, Switch } from "react-router-dom";
 import Container from "./components/common/Container";
-import { splitTitleToUrl } from "./pure-functions/splitTitleToUrl";
+import AuthApp from "./components/remotes/AuthApp";
 import DashboardApp from "./components/remotes/DashboardApp";
 import ProductApp from "./components/remotes/ProductApp";
-import AuthApp from "./components/remotes/AuthApp";
 import UserApp from "./components/remotes/UserApp";
-import { Router, Switch, Route, Link } from "react-router-dom";
+import { menuEnum, menuIds } from "./config/navMenu";
+import { splitTitleToUrl } from "./pure-functions/splitTitleToUrl";
 import "./styles/main.scss";
 
 type Props = {}
@@ -58,11 +56,8 @@ export default function App({ }: Props) {
   // they should still logged in because we will have token set already
   // It will resolve in auth is beign true or there will be token
   // We will use redux for the container manage the auth state
-
-
   // When menu is changed then oney route will be changed and not other things
-
-
+ 
   return (
     <>
       <Router history={history}>

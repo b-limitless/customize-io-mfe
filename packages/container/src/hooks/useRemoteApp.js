@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-function useRemoteApp(mount, { onSingIn, isSignIn }) {
+function useRemoteApp(mount, { onSingIn, isSignIn, showProfileSideModel, setShowProfileSideModel }) {
 
   const ref = useRef(null);
   const history = useHistory();
@@ -18,9 +18,11 @@ function useRemoteApp(mount, { onSingIn, isSignIn }) {
       },
       onSingIn,
       isSignIn,
+      showProfileSideModel, 
+      setShowProfileSideModel
     });
     history.listen(onParentNavigate);
-  }, [isSignIn]);
+  }, [isSignIn, showProfileSideModel, setShowProfileSideModel]);
 
   return <div ref={ref}></div>;
 };

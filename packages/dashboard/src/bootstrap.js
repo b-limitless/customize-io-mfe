@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { createMemoryHistory, createBrowserHistory } from "history";
 import App from "./App";
 
-
 // Mount function to start up the app
 const mount = (
   el,
@@ -13,11 +12,10 @@ const mount = (
     initialPath,
     onSignIn,
     isSignedIn,
-    showProfileSideModel, 
-    setShowProfileSideModel
+    showProfileSideModel,
+    setShowProfileSideModel,
   }
 ) => {
-
   const history =
     defaultHistory ||
     createMemoryHistory({
@@ -28,19 +26,14 @@ const mount = (
     history.listen(onNavigate);
   }
 
- 
-  
   ReactDOM.render(
-   
-      <App
-        history={history}
-        onSignIn={onSignIn}
-        isSignedIn={isSignedIn}
-        showProfileSideModel={showProfileSideModel}
-        setShowProfileSideModel={setShowProfileSideModel}
-      />
-      ,
-
+    <App
+      history={history}
+      onSignIn={onSignIn}
+      isSignedIn={isSignedIn}
+      showProfileSideModel={showProfileSideModel}
+      setShowProfileSideModel={setShowProfileSideModel}
+    />,
     el
   );
 

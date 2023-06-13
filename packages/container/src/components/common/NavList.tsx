@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import ArrowDown from "../../assets/svg/arrow-down.svg";
-import { Link } from "react-router-dom";
 interface NavListInterface {
     row: any;
     i: number;
