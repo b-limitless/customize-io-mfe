@@ -8,10 +8,10 @@ type Props = {
     setStep: Function;
     step: addFebricType;
     nextStepHandler: Function;
-
+    lastStep: boolean
 }
 
-export default function FormTemplate({ children, step, nextStepHandler }: Props) {
+export default function FormTemplate({ children, step, nextStepHandler, lastStep }: Props) {
 
     return (
         <div className={styles.addfebric__container}>
@@ -23,7 +23,7 @@ export default function FormTemplate({ children, step, nextStepHandler }: Props)
                     {children}
                     <div className={`${styles.row} ${styles.button__row}`}>
                         <div className={styles.actions}>
-                            <Button variant="primary" text="Nexddt" onClick={() => nextStepHandler(step)} />
+                            {!lastStep && <Button variant="primary" text="Nexddt" onClick={() => nextStepHandler(step)} />}
                         </div>
                     </div>
                 </div>

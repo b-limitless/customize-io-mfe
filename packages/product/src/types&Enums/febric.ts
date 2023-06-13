@@ -5,7 +5,8 @@ export enum addFebricSteps {
     four="four",
     five="five", 
     six="six", 
-    seven="seven"
+    seven="seven",
+    eight="eight"
 }
 
 export type addFebricType = `${addFebricSteps}`;

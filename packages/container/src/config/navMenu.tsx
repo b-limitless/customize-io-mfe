@@ -3,11 +3,12 @@ import ProductIcon from "../assets/svg/product-icon.svg";
 import DashboardIcon from "../assets/svg/dashboard.svg";
 import PricingIcon from "../assets/svg/pricing.svg";
 import ArrowDown from "../assets/svg/arrow-down.svg";
-
+import Users from "../assets/svg/users.svg";
 export const menuIcons = {
     product: <ProductIcon />,
     dashboard: <DashboardIcon />,
-    pricing: <PricingIcon />
+    pricing: <PricingIcon />, 
+    users: <Users />
 }
 
 export enum menuEnum {
@@ -17,7 +18,8 @@ export enum menuEnum {
     Product_Pants = "Product_Pants",
     Product_Thread = "Product_Thread",
     Auth_Signin = "Auth_Signin",
-    Auth_Signup = "Auth_Signup"
+    Auth_Signup = "Auth_Signup", 
+    User = "User"
 }
 
 const keys = [...Object.keys(menuEnum)] as const;
@@ -37,6 +39,10 @@ export const sideNavConfig = [
     {
         title: "Orders", icon: menuIcons.pricing,
         children: [{ title: "Pricing one" }, { title: "Pricing Two" }]
+    },
+    {
+        title: "User", icon: menuIcons.users,
+        children: []
     }
 ];
 

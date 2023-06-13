@@ -4,7 +4,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const packageJson = require("../package.json");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const PORT = 8082;
+const PORT = 8085;
 
 const devConfig = {
   // optimization: {
@@ -22,10 +22,10 @@ const devConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "product",
+      name: "user",
       filename: "remoteEntry.js",
       exposes: {
-        "./ProductApp": "./src/bootstrap",
+        "./UserApp": "./src/bootstrap",
       },
       remotes: {
         components: "components@http://localhost:8084/remoteEntry.js",

@@ -9,8 +9,9 @@ import StepSeven from "./Steps/Seven";
 import StepSix from "./Steps/Six";
 import StepThree from "./Steps/Three";
 import StepTwo from "./Steps/Two";
+import StepEight from "./Steps/Eight";
 import { validDigit, validString } from "../../../config/regrex";
-
+import SuccessMessage from "../../common/success/SuccessMessage";
 
 type Props = {}
 
@@ -159,7 +160,7 @@ export default function AddFebric({ }: Props) {
 
     console.log("errors", errors);
     return (
-        <FormTemplate step={step} setStep={setStep} nextStepHandler={nextStepHandler}>
+        <FormTemplate step={step} setStep={setStep} nextStepHandler={nextStepHandler} lastStep={step === addFebricSteps.eight}>
             {step === addFebricSteps.one && <StepOne onChangeHandler={onChangeHandler} febric={febric} errors={errors} setErrors={setErrors} />}
             {step === addFebricSteps.two && <StepTwo onChangeHandler={onChangeHandler} febric={febric} errors={errors} setErrors={setErrors} />}
             {step === addFebricSteps.three && <StepThree />}
@@ -167,6 +168,8 @@ export default function AddFebric({ }: Props) {
             {step === addFebricSteps.five && <StepFive />}
             {step === addFebricSteps.six && <StepSix />}
             {step === addFebricSteps.seven && <StepSeven />}
+            {step === addFebricSteps.eight && <SuccessMessage/>}
+            
         </FormTemplate>
     )
 }

@@ -8,6 +8,7 @@ import { splitTitleToUrl } from "./pure-functions/splitTitleToUrl";
 import DashboardApp from "./components/remotes/DashboardApp";
 import ProductApp from "./components/remotes/ProductApp";
 import AuthApp from "./components/remotes/AuthApp";
+import UserApp from "./components/remotes/UserApp";
 import { Router, Switch, Route, Link } from "react-router-dom";
 import "./styles/main.scss";
 
@@ -34,6 +35,9 @@ export default function App({ }: Props) {
     if (selectedMenu === menuEnum.Product_Thread) {
       history.push(splitTitleToUrl(menuEnum.Product_Thread));
     }
+    if (selectedMenu === menuEnum.User) {
+      history.push(splitTitleToUrl(menuEnum.User));
+    }
   }, [selectedMenu]);
 
   useEffect(() => {
@@ -58,16 +62,16 @@ export default function App({ }: Props) {
 
   // When menu is changed then oney route will be changed and not other things
 
-  
+
   return (
     <>
       <Router history={history}>
         <Switch>
           <Route exact path="/dashboard">
-            <Container 
-                 selectedMenu={selectedMenu} 
-                 setSelectedMenu={setSelectedMenu} 
-                 setShowProfileSideModel={setShowProfileSideModel}
+            <Container
+              selectedMenu={selectedMenu}
+              setSelectedMenu={setSelectedMenu}
+              setShowProfileSideModel={setShowProfileSideModel}
             >
               <DashboardApp onSingIn={() => { }} isSignIn={false} setShowProfileSideModel={setShowProfileSideModel} showProfileSideModel={showProfileSideModel} />
             </Container>
@@ -75,6 +79,13 @@ export default function App({ }: Props) {
 
           <Route path="/auth">
             <AuthApp onSingIn={() => { }} isSignIn={false} />
+          </Route>
+
+          <Route path="/user">
+            <Container selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} >
+              <UserApp onSingIn={() => { }} isSignIn={false} />
+            </Container>
+            {/* <UserApp onSingIn={() => { }} isSignIn={false} /> */}
           </Route>
 
 

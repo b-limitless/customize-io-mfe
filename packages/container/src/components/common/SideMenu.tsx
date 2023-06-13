@@ -17,8 +17,6 @@ interface SideMenuInterface {
 }
 
 export default function SideMenu({ setSelectedMenu, setShowProfileSideModel }: SideMenuInterface) {
-
-  console.log("setShowProfileSideModel", setShowProfileSideModel);
   return (
     <div className="left-menu">
       <div className="menu-wrapper">
