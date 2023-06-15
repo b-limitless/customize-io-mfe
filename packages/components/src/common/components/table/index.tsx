@@ -12,17 +12,18 @@ import { defaultFont } from '../styles';
 export interface BasicTableInterface<T, U> {
     tableData: T[];
     tableHeader: U[];
-    tableRow: T
+    tableRow: T;
+    showTableHead:boolean
 }
 
-export default function BasicTable<T, R>({ tableData, tableHeader }: BasicTableInterface<T, R>) {
+export default function BasicTable<T, R>({ tableData, tableHeader, showTableHead }: BasicTableInterface<T, R>) {
     return (
         <TableContainer component={Paper}>
             <Table aria-label="simple table">
-                <TableHead sx={defaultFont}>
-                    <TableRow sx={defaultFont}>
+                 <TableHead sx={defaultFont}>
+                    {showTableHead && <TableRow sx={defaultFont}>
                         {tableHeader.map((head: any, i: number) => <TableCell key={`tb-cell-${i}`} sx={defaultFont} align="right">{firstLetterUpperCase(head)}</TableCell>)}
-                    </TableRow>
+                    </TableRow>}
                 </TableHead>
                 <TableBody>
                     {tableData.map((row: any, j: number) => (

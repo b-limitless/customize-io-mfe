@@ -15,7 +15,6 @@ import SuccessMessage from "../../common/success/SuccessMessage";
 
 type Props = {}
 
-
 const steps = {
     one: [
         {
@@ -48,8 +47,6 @@ const steps = {
             errorMessage:  "",
             type: 'select'
         }
-
-
     ], 
     two: [
         {
@@ -91,59 +88,29 @@ const steps = {
     ]
 }
 
-
 export default function AddFebric({ }: Props) {
     const [step, setStep] = useState<addFebricType>(addFebricSteps.one);
     const [errors, setErrors] = useState<any>({});
     const [febric, setFebric] = useState<any>({title: "", warmth:""});
     const [moveToNextStep, setMoveToNextStep] = useState(false);
-
-    console.log(febric)
+    
     const nextStepHandler = (step: addFebricSteps) => {
         setErrors({});
-        // You have to check here all validation 
-        // Based on steps you can check the validation
         if (step === addFebricSteps.one) {
-            // Get the validation
             const validation = steps[addFebricSteps.one];
-
-            // console.log("validation", validation)
-            // console.log("validation", validation);
-            // Validation for f ew fields
             const catchError:any = {};
-
             validation.map((field, i) => {
                 if(!field.regrex.test(febric[field.name])) {
                     const {name} = field;
                     catchError[name] = ` ${firstLetterUpperCase(name)} is required `;
                 }
             });
-
             setErrors(catchError);
         }
-
-        // if (step === addFebricSteps.two) {
-            
-        //     if (!febric.weight) {
-        //         setErrors({ ...errors, weight: "Please enter the title" });
-        //         return;
-
-        //     }
-        // }
-
-
-        // if(Object.entries(errors).length !== 0) {
-        //     return;
-        // }
-
-        // const getTheIndexOfStep = Object.keys(addFebricSteps).indexOf(step);
-        // setStep(Object.values(addFebricSteps)[getTheIndexOfStep + 1]);
         setMoveToNextStep(true);
-
     }
 
-    console.log("febric", febric)
-
+    
     const onChangeHandler = (e: any) => {
         const { name, value } = e.target;
         setFebric({ ...febric, [name]: value });
@@ -157,8 +124,7 @@ export default function AddFebric({ }: Props) {
         }
     }, [moveToNextStep, step, errors]);
 
-
-    console.log("errors", errors);
+    
     return (
         <FormTemplate step={step} setStep={setStep} nextStepHandler={nextStepHandler} lastStep={step === addFebricSteps.eight}>
             {step === addFebricSteps.one && <StepOne onChangeHandler={onChangeHandler} febric={febric} errors={errors} setErrors={setErrors} />}
@@ -169,7 +135,6 @@ export default function AddFebric({ }: Props) {
             {step === addFebricSteps.six && <StepSix />}
             {step === addFebricSteps.seven && <StepSeven />}
             {step === addFebricSteps.eight && <SuccessMessage/>}
-            
         </FormTemplate>
     )
 }

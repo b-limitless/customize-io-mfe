@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
+
+
 function useRemoteApp(mount, { onSingIn, isSignIn, showProfileSideModel, setShowProfileSideModel }) {
 
   const ref = useRef(null);

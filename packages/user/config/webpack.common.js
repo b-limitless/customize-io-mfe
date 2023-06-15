@@ -1,3 +1,4 @@
+const path = require("path");
 const commonConfig = {
   module: {
     rules: [
@@ -31,6 +32,24 @@ const commonConfig = {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(woff2?|jpe?g|png|gif|ico)$/, 
+        oneOf: [
+          {
+            include: path.resolve(__dirname, "../node_modules/"),
+            use: "svg-inline-loader",
+          },
+          {
+            exclude: path.resolve(__dirname, "../node_modules/"),
+            use: "url-loader",
+          },
+        ],
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
       },
     ],
   },

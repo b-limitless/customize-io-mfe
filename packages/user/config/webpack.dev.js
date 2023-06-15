@@ -7,9 +7,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const PORT = 8085;
 
 const devConfig = {
-  // optimization: {
-  //   runtimeChunk: "single",
-  // },
+  optimization: {
+    runtimeChunk: "single",
+  },
   mode: "development",
   output: {
     publicPath: `http://localhost:${PORT}/`,

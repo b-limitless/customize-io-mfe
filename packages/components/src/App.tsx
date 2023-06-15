@@ -205,7 +205,7 @@ export default function App() {
             <MultipleSelectChip options={names} handleChange={handleChange} label={"Langugaes"} id="languages" value={personName} />
             <TextArea setter={setAboutYou} getter={aboutYou} placeholder="About you" />
             
-            <BasicTable tableHeader={tableHeader}  tableData={tableData} tableRow={tableData[0]}/>
+            <BasicTable showTableHead tableHeader={tableHeader}  tableData={tableData} tableRow={tableData[0]}/>
             <CheckboxWithLabel/>
         </>
     )

@@ -13,7 +13,7 @@
         "@mui/material": "5.12",
         "@mui/styled-engine": "^5.13.2",
         "@pasal/common-functions": "^1.0.1",
-        "@pasal/common-style": "^1.0.7",
+        "@pasal/common-style": "^1.0.14",
         "@reduxjs/toolkit": "^1.9.3",
         "@types/react-router-dom": "^5.3.3",
         "react": "^17.0.1",

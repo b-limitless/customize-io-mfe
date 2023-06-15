@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { mockFebrics } from '../../mock-data/febric';
 import { Button, BasicTable } from "components/ComponentsApp";
-import styles from "./febric-style.module.scss";
+import styles from "@pasal/common-style/styles/components/_table.module.scss";
 import FebricDetails from './FebricDetails';
 // type Props = {}
 //{}: Props
@@ -157,7 +157,7 @@ export default function Febric() {
             <div>Filter Will be shown</div>
           </div>
           <div className={styles.table}>
-              <BasicTable tableHeader={tableHeader} tableData={tableData} tableRow={tableData[0]} />
+              <BasicTable tableHeader={tableHeader} tableData={tableData} tableRow={tableData[0]} showTableHead/>
           </div>
           <div className={styles.pagination}>
             <div>Pagination</div>
