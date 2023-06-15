@@ -1,6 +1,11 @@
 import React from "react";
-import Button from "./components/Button/Button";
+import {Button, Checkbox} from "./components";
 
 export default function App() {
-    return (<Button />);
+    return (
+        <>
+        <Button />
+        <Checkbox/>
+        </>
+    );
 }

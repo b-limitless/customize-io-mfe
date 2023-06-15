@@ -1,10 +1,3 @@
-import React from 'react';
-import styles from './style.module.scss';
+import Checkbox from "./Checkbox";
 
-type Props = {}
-
-export default function Index({}: Props) {
-  return (
-    <div className={styles.root}>Checkbox</div>
-  )
-}
+export default Checkbox;

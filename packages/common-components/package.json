@@ -1,13 +1,13 @@
 {
   "name": "@pasal/common-components",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "src/index.js",
   "scripts": {
     "start": "webpack serve --config config/webpack.dev.js",
     "clean": "del ./dist/*",
     "build": "npm run clean && webpack --config config/webpack.prod.js",
-    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish --access public"
+    "pub": " npm version patch && npm run build && npm publish --access public"
   },
   "author": "",
   "license": "ISC",
