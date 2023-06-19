@@ -6,12 +6,13 @@
   "scripts": {
     "clean": "del ./dist/*",
     "build": "npm run clean && tsc --outDir dist",
-    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish --access public"
+    "publish:major": "git add . && git commit -m \"$MESSAGE\" && npm version $(semver $npm_package_version -i major) && npm publish --access public --tag latest --no-email"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "del-cli": "^5.0.0",
+    "semver": "^7.5.2",
     "tsc": "^2.0.4",
     "typescript": "^5.1.3"
   }
