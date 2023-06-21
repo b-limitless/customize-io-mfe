@@ -7,6 +7,8 @@ import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import * as React from 'react';
 import { style } from "./style";
+import { FormHelperText } from '@mui/material';
+import { colors } from '../../config/colors';
 
 export default function InputAdornments({...props}) {
     const [showPassword, setShowPassword] = React.useState(false);
@@ -39,6 +41,8 @@ export default function InputAdornments({...props}) {
                     }
                     
                 />
+                
+                {props.error && <FormHelperText sx={{color: `${colors.red}`}}>{props.helperText}</FormHelperText>}
             </FormControl>
         </>
     );

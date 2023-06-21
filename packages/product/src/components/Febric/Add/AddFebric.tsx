@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { addFebricSteps, addFebricType } from "../../../types&Enums/febric";
+import { formStepEnum, forStepType } from "../../../types&Enums/febric";
 import {firstLetterUpperCase} from "@pasal/common-functions";
 import FormTemplate from "./FormTemplate";
 import StepFive from "./Steps/Five";
@@ -12,6 +12,7 @@ import StepTwo from "./Steps/Two";
 import StepEight from "./Steps/Eight";
 import { validDigit, validString } from "../../../config/regrex";
 import SuccessMessage from "../../common/success/SuccessMessage";
+
 
 type Props = {}
 
@@ -89,15 +90,15 @@ const steps = {
 }
 
 export default function AddFebric({ }: Props) {
-    const [step, setStep] = useState<addFebricType>(addFebricSteps.one);
+    const [step, setStep] = useState<forStepType>(formStepEnum.one);
     const [errors, setErrors] = useState<any>({});
     const [febric, setFebric] = useState<any>({title: "", warmth:""});
     const [moveToNextStep, setMoveToNextStep] = useState(false);
     
-    const nextStepHandler = (step: addFebricSteps) => {
+    const nextStepHandler = (step: formStepEnum) => {
         setErrors({});
-        if (step === addFebricSteps.one) {
-            const validation = steps[addFebricSteps.one];
+        if (step === formStepEnum.one) {
+            const validation = steps[formStepEnum.one];
             const catchError:any = {};
             validation.map((field, i) => {
                 if(!field.regrex.test(febric[field.name])) {
@@ -118,23 +119,24 @@ export default function AddFebric({ }: Props) {
 
     useEffect(() => {
         if (Object.entries(errors).length === 0 && moveToNextStep) {
-            const getTheIndexOfStep = Object.keys(addFebricSteps).indexOf(step);
-            setStep(Object.values(addFebricSteps)[getTheIndexOfStep + 1]);
+            const getTheIndexOfStep = Object.keys(formStepEnum).indexOf(step);
+            setStep(Object.values(formStepEnum)[getTheIndexOfStep + 1]);
             setMoveToNextStep(false);
         }
     }, [moveToNextStep, step, errors]);
 
     
     return (
-        <FormTemplate step={step} setStep={setStep} nextStepHandler={nextStepHandler} lastStep={step === addFebricSteps.eight}>
-            {step === addFebricSteps.one && <StepOne onChangeHandler={onChangeHandler} febric={febric} errors={errors} setErrors={setErrors} />}
-            {step === addFebricSteps.two && <StepTwo onChangeHandler={onChangeHandler} febric={febric} errors={errors} setErrors={setErrors} />}
-            {step === addFebricSteps.three && <StepThree />}
-            {step === addFebricSteps.four && <StepFour />}
-            {step === addFebricSteps.five && <StepFive />}
-            {step === addFebricSteps.six && <StepSix />}
-            {step === addFebricSteps.seven && <StepSeven />}
-            {step === addFebricSteps.eight && <SuccessMessage/>}
+        <FormTemplate step={step} setStep={setStep} nextStepHandler={nextStepHandler} lastStep={step === formStepEnum.eight}>
+            {step === formStepEnum.one && <StepOne onChangeHandler={onChangeHandler} febric={febric} errors={errors} setErrors={setErrors} />}
+            {step === formStepEnum.two && <StepTwo onChangeHandler={onChangeHandler} febric={febric} errors={errors} setErrors={setErrors} />}
+            {step === formStepEnum.three && <StepThree />}
+            {step === formStepEnum.four && <StepFour />}
+            {step === formStepEnum.five && <StepFive />}
+            {step === formStepEnum.six && <StepSix />}
+            {step === formStepEnum.seven && <StepSeven />}
+            {step === formStepEnum.eight && <SuccessMessage/>}
+            
         </FormTemplate>
     )
 }

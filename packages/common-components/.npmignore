@@ -1,6 +1,6 @@
 node_modules
 public
-dist
+!dist/
 config
 src/App.tsx
 src/index.js 

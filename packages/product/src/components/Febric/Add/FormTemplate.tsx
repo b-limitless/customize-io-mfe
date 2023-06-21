@@ -1,12 +1,12 @@
 import { Button } from 'components/ComponentsApp';
 import React, { ReactNode } from "react";
-import { addFebricType } from "../../../types&Enums/febric";
+import { forStepType } from "../../../types&Enums/febric";
 import styles from "./add-febric.module.scss";
 
 type Props = {
     children: ReactNode
     setStep: Function;
-    step: addFebricType;
+    step: forStepType;
     nextStepHandler: Function;
     lastStep: boolean
 }

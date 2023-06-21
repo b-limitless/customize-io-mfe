@@ -1,4 +1,4 @@
-export enum addFebricSteps {
+export enum formStepEnum {
     one = "one",
     two="two",
     three="three", 
@@ -9,6 +9,6 @@ export enum addFebricSteps {
     eight="eight"
 }
 
-export type addFebricType = `${addFebricSteps}`;
+export type forStepType = `${formStepEnum}`;
 
-export const addFebricStepsArray = Object.values(addFebricSteps);
+export const formStepArray = Object.values(formStepEnum);

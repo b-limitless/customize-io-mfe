@@ -1,13 +1,16 @@
 {
   "name": "@pasal/common-components",
-  "version": "1.0.2",
+  "version": "1.0.9",
   "description": "",
-  "main": "src/index.js",
+  "main": "build/components/index.js",
   "scripts": {
     "start": "webpack serve --config config/webpack.dev.js",
-    "clean": "del ./dist/*",
+    "clean": "del ./build/*",
     "build": "npm run clean && webpack --config config/webpack.prod.js",
-    "pub": " npm version patch && npm run build && npm publish --access public"
+    "pub": "npm version patch && tsc && npm publish --access public",
+    "tscBuild": "npm run build:ts && npm run build:scss", 
+    "build:ts": "tsc",
+    "build:scss": "sass --output-style compressed -o"
   },
   "author": "",
   "license": "ISC",
