@@ -2,7 +2,6 @@ export const pngCDNAssetsURIs = {
   febric1:
     "http://res.cloudinary.com/dun5p8e5d/image/upload/v1685971320/lgzm022qmy39xq1xaidx.png",
 };
-
 export const svgCDNAssets = {
   crossIcon:
     "http://res.cloudinary.com/dun5p8e5d/image/upload/v1685971300/fybtpbqt0cnalvwddcul.svg",
