@@ -43,10 +43,14 @@ export default function App({ }: Props) {
       history.push(splitTitleToUrl(menuEnum.Dashboard));
     }
 
-    if (!auth) {
-      // history.push(splitTitleToUrl(menuEnum.Auth_Signin));
-    }
+    // if (!auth) {
+    //   history.push(splitTitleToUrl(menuEnum.Auth_Signin));
+    // }
   }, [auth]);
+
+  useEffect(() => {
+    // history.push(splitTitleToUrl(menuEnum.Auth_Signin));
+  }, [])
 
   // If user is authenticated once 
   // We can redirect user to dashboard

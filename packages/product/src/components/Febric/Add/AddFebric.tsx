@@ -12,6 +12,8 @@ import StepTwo from "./Steps/Two";
 import StepEight from "./Steps/Eight";
 import { validDigit, validString } from "../../../config/regrex";
 import SuccessMessage from "../../common/success/SuccessMessage";
+import { svgCDNAssets } from "../../../config/assets";
+import { Message } from '@pasal/cio-component-library';
 
 
 type Props = {}
@@ -135,7 +137,7 @@ export default function AddFebric({ }: Props) {
             {step === formStepEnum.five && <StepFive />}
             {step === formStepEnum.six && <StepSix />}
             {step === formStepEnum.seven && <StepSeven />}
-            {step === formStepEnum.eight && <SuccessMessage/>}
+            {step === formStepEnum.eight && <Message title ={"Febric added sucessfully"} buttonText = {"List Febric"} buttonVariant={"primary"} icon={svgCDNAssets.successCheck} redirectLink="/products/list"/>}
             
         </FormTemplate>
     )

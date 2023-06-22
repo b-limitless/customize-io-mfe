@@ -8,6 +8,7 @@ import {emailRegex} from "@pasal/common-functions";
 import { authorizations } from '../../../../mock/authorization';
 
 import styles from './add.module.scss';
+import StepThree from './Steps/Three';
 
 type Props = {}
 
@@ -94,9 +95,10 @@ export default function index({ }: Props) {
     return (
         // <div><Button/></div>
         <div className={styles.root}>
-            <FormTemplate title= "Add user step"step={step === formStepEnum.two ? "Select Permission" : step} setStep={setStep} nextStepHandler={nextStepHandler} lastStep={step === formStepEnum.eight}>
+            <FormTemplate title= "Add user step"step={step === formStepEnum.two ? "Select Permission" : step} setStep={setStep} nextStepHandler={nextStepHandler} lastStep={step === formStepEnum.three}>
                 {step === formStepEnum.one && <StepOne onChangeHandler={onChangeHandler} setFormData={setFormData} formData={formData} errors={errors} setErrors={setErrors} />}
                 {step === formStepEnum.two && <StepTwo onChangeHandler={onChangeHandler} setFormData={setFormData} formData={formData} errors={errors} setErrors={setErrors} />}
+                {step === formStepEnum.three && <StepThree onChangeHandler={onChangeHandler} setFormData={setFormData} formData={formData} errors={errors} setErrors={setErrors} />}
             </FormTemplate>
         </div>
     )

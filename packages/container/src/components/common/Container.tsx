@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import SideMenu from "../../components/common/SideMenu";
+import SideMenu from "./SideMenu";
 import ArrowRight from "../../assets/svg/arrow-right.svg";
 import { menuIds, menuEnum } from "../../config/navMenu";
 import { Link } from "react-router-dom";
