@@ -10,7 +10,7 @@ import { menuEnum, menuIds } from "./config/navMenu";
 import { splitTitleToUrl } from "./pure-functions/splitTitleToUrl";
 import "./styles/main.scss";
 
-// I have to change something inside
+
 type Props = {}
 // Import all microfrontend here and then simply 
 // Use them based on the clicked menu we can load the required component
