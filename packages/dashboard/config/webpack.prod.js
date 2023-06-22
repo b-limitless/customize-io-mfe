@@ -18,6 +18,9 @@ const prodConfig = {
       exposes: {
         "./DashboardApp": "./src/bootstrap",
       },
+      remotes: {
+        components: `components@${domain}/components/latest/remoteEntry.js`, 
+      },
     }),
   ],
 };

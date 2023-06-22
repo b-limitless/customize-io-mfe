@@ -16,10 +16,10 @@ const prodConfig = {
     new ModuleFederationPlugin({
       name: "container",
       remotes: {
-        dashboard: `dashboard@http://${domain}/dashboard/latest/remoteEntry.js`,
-        product: `product@http://${domain}/product/latestremoteEntry.js`,
-        auth: `auth@http://${domain}/auth/latest/remoteEntry.js`,
-        user: `user@http://${domain}/user/latest/remoteEntry.js`,
+        dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`,
+        product: `product@${domain}/product/latest/remoteEntry.js`,
+        auth: `auth@${domain}/auth/latest/remoteEntry.js`,
+        user: `user@${domain}/user/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     }),

@@ -7,6 +7,7 @@ const packageJson = require('../package.json');
 
 
 const PORT = 8083;
+const domain = process.env.PRODUCTION_DOMAIN;
 
 let devConfig = {
   // optimization :{
