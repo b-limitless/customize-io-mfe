@@ -62,7 +62,6 @@ export default function App({ }: Props) {
   // It will resolve in auth is beign true or there will be token
   // We will use redux for the container manage the auth state
   // When menu is changed then oney route will be changed and not other things
-  // Hi there
   return (
     <>
       <Router history={history}>
