@@ -68,7 +68,7 @@ export default function App({ }: Props) {
     <>
       <Router history={history}>
         <Switch>
-          <Route exact path="/dashboard">
+          {/* <Route exact path="/dashboard">
             <Container
               selectedMenu={selectedMenu}
               setSelectedMenu={setSelectedMenu}
@@ -77,25 +77,25 @@ export default function App({ }: Props) {
               <DashboardApp onSingIn={() => { }} isSignIn={false} setShowProfileSideModel={setShowProfileSideModel} showProfileSideModel={showProfileSideModel} />
             <h1>Hello This is test</h1>
             </Container>
-          </Route>
+          </Route> */}
 
           <Route path="/auth">
             <AuthApp onSingIn={() => { }} isSignIn={false} />
           </Route>
 
-          <Route path="/user">
+          {/* <Route path="/user">
             <Container selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} >
               <UserApp onSingIn={() => { }} isSignIn={false} />
             </Container>
-            {/* <UserApp onSingIn={() => { }} isSignIn={false} /> */}
-          </Route>
+          
+          </Route> */}
 
 
-          <Route path="/product">
+          {/* <Route path="/product">
             <Container selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} >
               <ProductApp onSingIn={() => { }} isSignIn={false} />
             </Container>
-          </Route>
+          </Route> */}
         </Switch>
       </Router>
 
