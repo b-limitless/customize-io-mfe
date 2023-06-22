@@ -1,11 +1,12 @@
 import { createBrowserHistory } from "history";
 import React, { useEffect, useState } from "react";
 import { Route, Router, Switch } from "react-router-dom";
-import Container from "./components/common/Container";
+// import Container from "./components/common/Container";
+// import DashboardApp from "./components/remotes/DashboardApp";
+// import ProductApp from "./components/remotes/ProductApp";
+// import UserApp from "./components/remotes/UserApp";
 import AuthApp from "./components/remotes/AuthApp";
-import DashboardApp from "./components/remotes/DashboardApp";
-import ProductApp from "./components/remotes/ProductApp";
-import UserApp from "./components/remotes/UserApp";
+
 import { menuEnum, menuIds } from "./config/navMenu";
 import { splitTitleToUrl } from "./pure-functions/splitTitleToUrl";
 import "./styles/main.scss";
@@ -82,7 +83,7 @@ export default function App({ }: Props) {
           <Route path="/auth">
             <AuthApp onSingIn={() => { }} isSignIn={false} />
           </Route>
-
+ {/*  */}
           {/* <Route path="/user">
             <Container selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} >
               <UserApp onSingIn={() => { }} isSignIn={false} />
