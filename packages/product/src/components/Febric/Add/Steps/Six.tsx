@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Input, Select, MultipleSelectChip, TextArea, InputAdornments } from 'components/ComponentsApp';
+import { Button, Input, Select, Chip as MultipleSelectChip, TextArea, InputAdornments } from '@pasal/cio-component-library';
 import styles from "../add-febric.module.scss";
 import { febricTypes } from '../../../../config/febric';
 import { SelectChangeEvent } from '@mui/material/Select';

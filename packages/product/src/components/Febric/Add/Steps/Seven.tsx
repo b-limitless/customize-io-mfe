@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Checkbox, CheckboxWithLabel } from 'components/ComponentsApp';
+import { Checkbox, CheckboxWithLabel } from '@pasal/cio-component-library';
 import styles from "../add-febric.module.scss";
 type Props = {}
 import { characters } from '../../../../config/febric';

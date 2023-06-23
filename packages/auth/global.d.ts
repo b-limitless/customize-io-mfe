@@ -1,4 +1,4 @@
-declare module "components/ComponentsApp";
+
 
 declare module "*.svg" {
     const content: any;

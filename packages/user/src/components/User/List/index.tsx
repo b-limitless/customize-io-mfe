@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, BasicTable } from "components/ComponentsApp";
+import { Button, BasicTable } from "@pasal/cio-component-library"
 import styles from "@pasal/common-style/styles/components/_table.module.scss";
 import tableStyle from "./list.module.scss";
 import avatar from "../../../assets/img/avatar.png";
@@ -73,7 +73,7 @@ export default function List({ }: Props) {
               <div>Filter Will be shown</div>
             </div>
             <div className={styles.table}>
-              <BasicTable tableHeader={tableHeader} tableData={tableData} tableRow={tableData[0]} showTableHeade />
+              <BasicTable tableHeader={tableHeader} tableData={tableData} tableRow={tableData[0]} showTableHead />
             </div>
             <div className={styles.pagination}>
               <div>Pagination</div>

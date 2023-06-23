@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { mockFebrics } from '../../mock-data/febric';
-import { Button, BasicTable } from "components/ComponentsApp";
+import { Button, BasicTable } from "@pasal/cio-component-library"
 import styles from "@pasal/common-style/styles/components/_table.module.scss";
 import FebricDetails from './FebricDetails';
 // type Props = {}

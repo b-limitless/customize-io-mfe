@@ -1,4 +1,4 @@
-import { Select } from 'components/ComponentsApp';
+import { Select } from '@pasal/cio-component-library';
 import React from 'react';
 import { opacity, threadCounts, waterProof } from '../../../../config/febric';
 import styles from "../add-febric.module.scss";

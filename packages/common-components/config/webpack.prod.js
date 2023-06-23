@@ -15,7 +15,7 @@ const prodConfig = {
       name: "common_components",
       filename: "remoteEntry.js",
       remotes: {
-        components: "components@http://localhost:8084/remoteEntry.js",
+        
       },
       shared: packageJson.dependencies,
     }),

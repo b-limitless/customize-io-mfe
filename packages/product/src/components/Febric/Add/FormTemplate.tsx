@@ -1,4 +1,4 @@
-import { Button } from 'components/ComponentsApp';
+import { Button } from '@pasal/cio-component-library';
 import React, { ReactNode } from "react";
 import { forStepType } from "../../../types&Enums/febric";
 import styles from "./add-febric.module.scss";

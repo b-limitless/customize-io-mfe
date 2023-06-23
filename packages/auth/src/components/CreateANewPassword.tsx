@@ -1,6 +1,6 @@
 import React from "react";
 import Template from "../common/Template";
-import { Select, Button, Input, Checkbox, InputWihtIcon, InputAdornments } from "components/ComponentsApp";
+import { Select, Button, Input, Checkbox, InputWithIcon, InputAdornments } from "@pasal/cio-component-library"
 import BackLeftIcon from "../assets/svg/back-left-icon.svg";
 
 export default function CreateANewPassword() {

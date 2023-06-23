@@ -21,7 +21,6 @@ const devConfig = {
         dashboard: "dashboard@http://localhost:8081/remoteEntry.js", 
         product: "product@http://localhost:8082/remoteEntry.js", 
         auth: "auth@http://localhost:8083/remoteEntry.js", 
-        components: "components@http://localhost:8084/remoteEntry.js", 
         user: "user@http://localhost:8085/remoteEntry.js", 
       },
       exposes: {

@@ -3,7 +3,7 @@ import {
   Checkbox,
   Input,
   InputAdornments,
-} from "components/ComponentsApp";
+} from "@pasal/cio-component-library"
 import React from "react";
 import BackLeftIcon from "../assets/svg/back-left-icon.svg";
 import Template from "../common/Template";

@@ -1,6 +1,6 @@
 import React from "react";
 import Template from "../common/Template";
-import { Select, Button, Input, Checkbox, InputWihtIcon, InputAdornments } from "components/ComponentsApp";
+import { Select, Button, Input, Checkbox, InputWithIcon, InputAdornments } from "@pasal/cio-component-library"
 import BackLeftIcon from "../assets/svg/back-left-icon.svg";
 import ForgotPasswordFeature from "./features/forgot-password.feature";
 import ForgotPasswordSuccess from "./features/forgot-password-success";

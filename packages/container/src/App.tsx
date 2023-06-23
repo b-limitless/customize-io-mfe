@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Route, Router, Switch } from "react-router-dom";
 import Container from "./components/common/Container";
 import DashboardApp from "./components/remotes/DashboardApp";
-// import ProductApp from "./components/remotes/ProductApp";
-// import UserApp from "./components/remotes/UserApp";
-// import AuthApp from "./components/remotes/AuthApp";
+import ProductApp from "./components/remotes/ProductApp";
+import UserApp from "./components/remotes/UserApp";
+import AuthApp from "./components/remotes/AuthApp";
 
 import { menuEnum, menuIds } from "./config/navMenu";
 import { splitTitleToUrl } from "./pure-functions/splitTitleToUrl";
@@ -64,7 +64,7 @@ export default function App({ }: Props) {
   // We will use redux for the container manage the auth state
   // When menu is changed then oney route will be changed and not other things
   // Build was failing
-  
+
   return (
     <>
       <Router history={history}>
@@ -76,27 +76,27 @@ export default function App({ }: Props) {
               setShowProfileSideModel={setShowProfileSideModel}
             >
               <DashboardApp onSingIn={() => { }} isSignIn={false} setShowProfileSideModel={setShowProfileSideModel} showProfileSideModel={showProfileSideModel} />
-            <h1>Hello This is test</h1>
+              <h1>Hello This is test</h1>
             </Container>
           </Route>
 
-          {/* <Route path="/auth">
+          <Route path="/auth">
             <AuthApp onSingIn={() => { }} isSignIn={false} />
-          </Route> */}
- {/*  */}
-          {/* <Route path="/user">
+          </Route>
+
+          <Route path="/user">
             <Container selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} >
               <UserApp onSingIn={() => { }} isSignIn={false} />
             </Container>
-          
-          </Route> */}
+
+          </Route>
 
 
-          {/* <Route path="/product">
+          <Route path="/product">
             <Container selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} >
               <ProductApp onSingIn={() => { }} isSignIn={false} />
             </Container>
-          </Route> */}
+          </Route>
         </Switch>
       </Router>
 

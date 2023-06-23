@@ -2,7 +2,6 @@ import React, {useState} from "react"
 import PriceSVG from "../../assets/svg/price.svg";
 import PositiveGrowth from "../../assets/svg/positive-growth.svg";
 import AnalyticCard from "../common/AnalyticCard";
-// import { Button } from "components/ComponentsApp";
 import Profile from "../Profile";
 
 

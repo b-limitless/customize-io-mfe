@@ -28,7 +28,7 @@ const devConfig = {
         "./ProductApp": "./src/bootstrap",
       },
       remotes: {
-        components: "components@http://localhost:8084/remoteEntry.js",
+        
       },
       shared: packageJson.dependencies,
     }),

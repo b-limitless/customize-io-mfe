@@ -18,9 +18,6 @@ const prodConfig = {
       exposes: {
         "./ProductApp": "./src/bootstrap",
       },
-      remotes: {
-        components: `components@${domain}/components/latest/remoteEntry.js`,
-      },
       shared: packageJson.dependencies,
     }),
   ],

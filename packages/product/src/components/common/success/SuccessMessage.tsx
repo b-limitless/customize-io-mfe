@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button } from "components/ComponentsApp";
+import { Button } from "@pasal/cio-component-library"
 import styles from './message.module.scss';
 import { svgCDNAssets } from '../../../config/assets';
 
 interface SucessMessageInterface {
     title: string;
     buttonText: string;
-    buttonVariant: 'primary' | 'secoundary' | string;
+    buttonVariant: any;
     icon:string;
 }
 

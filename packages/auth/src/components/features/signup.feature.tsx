@@ -4,7 +4,7 @@ import {
     Checkbox,
     Input,
     InputAdornments,
-} from "components/ComponentsApp";
+} from "@pasal/cio-component-library"
 
 type Props = {}
 

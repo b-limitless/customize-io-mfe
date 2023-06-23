@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Select, MultipleSelectChip, TextArea, InputAdornments } from 'components/ComponentsApp';
+import { Input, Select, Chip as MultipleSelectChip, TextArea, InputAdornments } from '@pasal/cio-component-library';
 import styles from "../../form-steps.module.scss";
 import { CommonFormInterfaceStep } from '../../user.common.interface';
 import { roles } from '../../../../config/role';
