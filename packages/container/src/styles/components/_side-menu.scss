@@ -3,6 +3,7 @@
   background-color: $light-gray1;
   position: fixed;
   width: pxToRem($left-menu-width);
+ 
   @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
     width: pxToRem(92);
   }

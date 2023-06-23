@@ -45,4 +45,11 @@ li {
   .services {
      padding: 1rem 1rem 1rem 0rem;
   }
+
+  @media only screen and (max-width:$bp-700) {
+    display: flex;
+    // grid-template-columns: 1fr !important;
+    // padding: 0px;
+   
+  }
 }

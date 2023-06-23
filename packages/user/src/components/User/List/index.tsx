@@ -73,7 +73,7 @@ export default function List({ }: Props) {
               <div>Filter Will be shown</div>
             </div>
             <div className={styles.table}>
-              <BasicTable tableHeader={tableHeader} tableData={tableData} tableRow={tableData[0]} showTableHead />
+              <BasicTable tableHeader={tableHeader} tableData={tableData} tableRow={tableData[0]} showTableHead={false} />
             </div>
             <div className={styles.pagination}>
               <div>Pagination</div>

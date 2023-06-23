@@ -6,6 +6,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 
+  @media only screen and (max-width: $bp-700) {
+    grid-template-columns: 1fr;
+  }
+
   .permission__col {
     flex-grow: 1;
   }
