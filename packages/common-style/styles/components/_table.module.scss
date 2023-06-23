@@ -6,19 +6,29 @@
   justify-content: center;
     height:100vh;
     width: 100%;
-
+  
     .febric__container {
         display: flex;
         flex-direction: column;
         row-gap: 2rem;
         // new styles 
         width: 100%;
+        @media only screen and (max-width: $bp-700) {
+            width: 100vw;
+        }
+
 
         .row {
             display: flex;
             width: 100%;
             flex-direction: row;
             align-items: center;
+
+            @media only screen and (max-width: $bp-700) {
+                flex-direction: column;
+                align-items: flex-start;
+                row-gap: 1rem;
+            }
     
             .title {
                 margin-right: auto;
@@ -44,3 +54,4 @@
         }
     }
 }
+
