@@ -1,8 +1,7 @@
-import React, { useState } from "react"
-import SideMenu from "./SideMenu";
+import React from "react";
 import ArrowRight from "../../assets/svg/arrow-right.svg";
-import { menuIds, menuEnum } from "../../config/navMenu";
-import { Link } from "react-router-dom";
+import { menuIds } from "../../config/navMenu";
+import SideMenu from "./SideMenu";
 interface ContainerInterface {
     setSelectedMenu: Function,
     selectedMenu: menuIds,
@@ -27,8 +26,7 @@ export default function Container({ children, setSelectedMenu, selectedMenu, set
                     />
                 </div>
                 <div className="right services">
-                    { }
-                    { }
+                   
                     {children}
                 </div>
             </div>

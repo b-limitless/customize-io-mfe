@@ -25,8 +25,6 @@ export default function SideMenu({ setSelectedMenu, setShowProfileSideModel }: S
             <div className="item logo">
               <LogoIcon />
               <LogoText />
-              { }
-              { }
             </div>
             <div className="item arrow">
               <input type="radio" className="left-arrow-checkbox" name="toggle-menu-checkbox" id="left-arrow-checkbox" />

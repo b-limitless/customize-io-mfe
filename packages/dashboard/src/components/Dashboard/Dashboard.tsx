@@ -51,7 +51,7 @@ export default function Dashboard({showProfileSideModel, setShowProfileSideModel
   return (
     <>
       <Profile showModel={showProfileSideModel} setShowModel={setShowProfileSideModel}/>
-      showModel{ showProfileSideModel === true}
+      { showProfileSideModel === true}
       <div className="ci--dashboard">
         <div className="ci--dashboard__title">
           Welcome Back, Hello World
