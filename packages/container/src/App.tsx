@@ -76,7 +76,7 @@ export default function App({ }: Props) {
               setShowProfileSideModel={setShowProfileSideModel}
             >
               <DashboardApp onSingIn={() => { }} isSignIn={false} setShowProfileSideModel={setShowProfileSideModel} showProfileSideModel={showProfileSideModel} />
-              <h1>Hello This is test</h1>
+              
             </Container>
           </Route>
 
