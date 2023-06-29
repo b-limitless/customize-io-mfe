@@ -8,3 +8,5 @@ export enum OrderStatusEnum {
 }
 
 export const OrderTypes = `${OrderStatusEnum}`;
+
+export const OrderStatus = Object.keys(OrderStatusEnum);

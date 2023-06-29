@@ -7,3 +7,5 @@ export enum paymentStatusEnum {
 }
 
 export type paymentStatusType = `${paymentStatusEnum}`
+
+export const paymentStatus = Object.keys(paymentStatusEnum);
