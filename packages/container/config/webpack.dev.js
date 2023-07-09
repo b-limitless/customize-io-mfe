@@ -22,6 +22,9 @@ const devConfig = {
         product: "product@http://localhost:8082/remoteEntry.js", 
         auth: "auth@http://localhost:8083/remoteEntry.js", 
         user: "user@http://localhost:8085/remoteEntry.js", 
+        order: "order@http://localhost:8086/remoteEntry.js",
+        payment: "payment@http://localhost:8087/remoteEntry.js",
+        
       },
       exposes: {
         './scssVariables': './src/styles/abstract/_variables.scss',

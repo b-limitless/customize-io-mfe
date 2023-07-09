@@ -11,7 +11,7 @@ export default function StepThree({ }: Props) {
             buttonText='List User'
             buttonVariant='secondary'
             icon={svgCDNAssets.successCheck}
-            redirectLink={'/user'}
+            redirectLink={'/users'}
         />
     )
 }

@@ -1,8 +1,12 @@
+.left {
+  z-index: 10;
+}
 .left-menu {
   height: 100vh;
-  background-color: $light-gray1;
+  background-color: $light;
   position: fixed;
   width: pxToRem($left-menu-width);
+  z-index: 10;
  
   @media only screen and (max-width: $bp-largest) and (min-width: $bp-medium) {
     width: pxToRem(92);

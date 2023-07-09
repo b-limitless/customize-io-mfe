@@ -3,11 +3,14 @@ import PriceSVG from "../../assets/svg/price.svg";
 import PositiveGrowth from "../../assets/svg/positive-growth.svg";
 import AnalyticCard from "../common/AnalyticCard";
 import Profile from "../Profile";
+import Seetings from "../Settings/Setting";
 
 
 type Props = {
   showProfileSideModel:boolean;
   setShowProfileSideModel:Function;
+  setShowSettingModel:Function;
+  showSettingModel:boolean;
 }
 
 export const analyticsData = [
@@ -46,10 +49,11 @@ export const analyticsData = [
 ]
 
 
-export default function Dashboard({showProfileSideModel, setShowProfileSideModel}: Props) {
- 
+export default function Dashboard({setShowSettingModel, showSettingModel, showProfileSideModel, setShowProfileSideModel}: Props) {
+  
   return (
     <>
+     <Seetings showModel ={showSettingModel} setShowModel = {setShowSettingModel}/>
       <Profile showModel={showProfileSideModel} setShowModel={setShowProfileSideModel}/>
       { showProfileSideModel === true}
       <div className="ci--dashboard">

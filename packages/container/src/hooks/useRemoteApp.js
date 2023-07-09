@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 
 
-function useRemoteApp(mount, { onSingIn, isSignIn, showProfileSideModel, setShowProfileSideModel }) {
+function useRemoteApp(mount, {setShowSettingModel, showSettingModel, onSingIn, isSignIn, showProfileSideModel, setShowProfileSideModel }) {
 
   const ref = useRef(null);
   const history = useHistory();
@@ -21,10 +21,12 @@ function useRemoteApp(mount, { onSingIn, isSignIn, showProfileSideModel, setShow
       onSingIn,
       isSignIn,
       showProfileSideModel, 
-      setShowProfileSideModel
+      setShowProfileSideModel, 
+      setShowSettingModel, 
+      showSettingModel
     });
     history.listen(onParentNavigate);
-  }, [isSignIn, showProfileSideModel, setShowProfileSideModel]);
+  }, [isSignIn, showProfileSideModel, setShowProfileSideModel, setShowSettingModel, showSettingModel]);
 
   return <div ref={ref}></div>;
 };

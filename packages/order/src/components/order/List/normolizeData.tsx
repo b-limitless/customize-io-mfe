@@ -13,12 +13,14 @@ export enum colorsForTableFields {
 }
 
 export enum colorsForPaymentStatus {
-    paid = "green",
-    pending="skyblue",
+    Paid = "green",
+    Pending="skyblue",
     due="lightbrown",
     failedOrDeclined="lightred",
     Refunded="green"
 }
+
+
 
 
 export function normalizeDataForVisual(data: any, field: string, filedColorEnum:any) {

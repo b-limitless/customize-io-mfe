@@ -13,10 +13,35 @@ import NavList from './NavList';
 
 interface SideMenuInterface {
   setSelectedMenu: Function
-  setShowProfileSideModel:Function
+  setShowProfileSideModel:Function, 
+  setShowSettingModel:Function, 
+  showSettingModel:boolean;
 }
 
-export default function SideMenu({ setSelectedMenu, setShowProfileSideModel }: SideMenuInterface) {
+enum sidebarNavClick  {
+  profile="profile", 
+  settings= "settings"
+}
+
+type sidebarNavClicktype = `${sidebarNavClick}`
+
+export default function SideMenu({setShowSettingModel, showSettingModel, setSelectedMenu, setShowProfileSideModel }: SideMenuInterface) {
+  
+  const sideModelToggleHandler = (type:sidebarNavClicktype) => {
+    if(type==sidebarNavClick.profile) {
+      setShowSettingModel(false);
+      setShowProfileSideModel((prevState:boolean) => !prevState);
+      return;
+    }
+
+    if(type===sidebarNavClick.settings) {
+      setShowProfileSideModel(false);
+      setShowSettingModel((prevState:boolean) => !prevState);
+      return;
+    }
+  }
+
+  
   return (
     <div className="left-menu">
       <div className="menu-wrapper">
@@ -57,7 +82,7 @@ export default function SideMenu({ setSelectedMenu, setShowProfileSideModel }: S
                 </div>
               </div>
             </div>
-            <div className="row item">
+            <div className="row item" onClick={() => sideModelToggleHandler(sidebarNavClick.settings)}>
               <input type="radio"
                 name="bottom-checkbox"
                 id="settings"
@@ -84,7 +109,7 @@ export default function SideMenu({ setSelectedMenu, setShowProfileSideModel }: S
               <div className="text settings">FAQ</div>
             </div>
           </div>
-          <div className="bottom--bottom" onClick={() => setShowProfileSideModel((prevState:boolean) => !prevState)}>
+          <div className="bottom--bottom" onClick={() => sideModelToggleHandler(sidebarNavClick.profile)}>
             <input type="checkbox" id="avatar-profile-info" className="avatar-profile-info" />
             <label htmlFor="avatar-profile-info" >
               <div className="col avatar">

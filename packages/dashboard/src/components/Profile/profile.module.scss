@@ -8,6 +8,11 @@
         display: flex;
         column-gap: 22px;
         align-items:center;
+
+        @media only screen and (max-width: $bp-700) {
+            flex-direction: column;
+            row-gap: 1rem;
+        }
         
         .actions {
             display: flex;
@@ -62,6 +67,15 @@
             .tab__contents {
                 margin-top: pxToRem(40.53);
                 padding: 0 9px;
+                
+
+                 @media only screen and (max-width:$bp-700) {
+                    height: 300px;
+                    overflow: auto;
+                 }
+                
+
+              
 
                 .item {
                     display: none;

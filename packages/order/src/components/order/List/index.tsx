@@ -17,13 +17,13 @@ const filterData = [
     data:  OrderStatus.map(item => camelCaseToNormal(item, true)),
     id: "orderStatus"
   },
-  // {
-  //   label: "Payment Status",
-  //   data: paymentStatus,
-  //   id: "paymentStatus"
-  // },
+  {
+    label: "Payment Status",
+    data: paymentStatus,
+    id: "paymentStatus"
+  },
 ];
-const count = 10;
+const count = 8;
 export default function ListOrder({ }: Props) {
 
   const [showModel, setShowModel] = useState<boolean>(false);
@@ -32,44 +32,18 @@ export default function ListOrder({ }: Props) {
  
   const tableHeader = ["orderId", "customerId", "orderData", "price", "orderStatus", "paymentStatus", "action"];
 
-
-
-  // orderMockData.map((item: any) => {
-
-  //   if (item.orderStatus === OrderStatusEnum.canceled) {
-  //     // item.orderStatusRaw = item.orderStatus;
-  //     item.orderStatus = <Chip label={camelCaseToNormal(item.orderStatus, true)} chipVariant="lightred" />
-  //   }
-  //   if (item.orderStatus === OrderStatusEnum.completed) {
-  //     // item.orderStatusRaw = item.orderStatus;
-  //     item.orderStatus = <Chip label={camelCaseToNormal(item.orderStatus, true)} chipVariant="green" />
-  //   }
-  //   if (item.orderStatus === OrderStatusEnum.inProgress) {
-  //     // item.orderStatusRaw = item.orderStatus;
-  //     item.orderStatus = <Chip label={camelCaseToNormal(item.orderStatus, true)} chipVariant="lightbrown" />
-  //   }
-  //   if (item.orderStatus === OrderStatusEnum.pending) {
-  //     // item.orderStatusRaw = item.orderStatus;
-  //     item.orderStatus = <Chip label={camelCaseToNormal(item.orderStatus, true)} chipVariant="skyblue" />
-  //   }
-  //   if (item.orderStatus === OrderStatusEnum.onHold) {
-  //     // item.orderStatusRaw = item.orderStatus;
-  //     item.orderStatus = <Chip label={camelCaseToNormal(item.orderStatus, true)} chipVariant="skyblue" />
-  //   }
-
-  //   if (item.orderStatus === OrderStatusEnum.pendingVerification) {
-  //     // item.orderStatusRaw = item.orderStatus;
-  //     item.orderStatus = <Chip label={camelCaseToNormal(item.orderStatus, true)} chipVariant="green" />
-  //   }
-
-  //   //  For the payment status
-
-  // })
-
   normalizeDataForVisual(orderMockData, "orderStatus", colorsForTableFields);
   normalizeDataForVisual(orderMockData, "paymentStatus", colorsForPaymentStatus);
 
  
+  useEffect(() => {
+
+    // You can implement filter approache in one of many way
+    // data structure for the filter would for for this instance is { orderStatus: [], paymentStatus: [] }
+    // Just monitor in filters status is changing or not 
+    // Check each value it should not be difficult to implement after ward
+    // Close this and moving toward another part
+  }, [])
 
   return (
     <>
@@ -81,12 +55,12 @@ export default function ListOrder({ }: Props) {
         <DataTable
           setShowModel={setShowModel}
           tableHeader={tableHeader}
-          tableData={orderMockData.slice(page * count, count + (page * count))}
+          tableData={orderMockData.slice(0, 8)}
           showFebricModels={false}
           detailsComponents={null}
           showDetailReactNode={"Edit"}
           tableTitle={"Order"}
-          showToLeftButton={false}
+          showToLeftButton={null}
           setShowSelectRowId={() => { }}
           filterData={filterData}
           filters={filters} 
@@ -95,6 +69,7 @@ export default function ListOrder({ }: Props) {
           page={page}
           setPage={setPage}
           count={count}
+          loading={false}
         />
       </div>
 

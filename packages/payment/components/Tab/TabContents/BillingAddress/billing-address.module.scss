@@ -1,0 +1,57 @@
+@import "@pasal/common-style/styles/base/functions.scss";
+@import "@pasal/common-style/styles/abstract/variables.scss";
+.templates {
+    display: flex;
+    flex-direction: column;
+    row-gap: pxToRem(calc(83 / 2));
+    margin-top: pxToRem(calc(59/ 2));
+    padding: 0 1rem;
+
+    .item {
+        display: flex;
+        flex-direction: column;
+        row-gap: pxToRem(calc(31 / 2));
+
+        .subject {
+            color: #000;
+            font-family: "Poppins";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 20px;
+            letter-spacing: 0.2px;
+            text-transform: uppercase;
+
+        }
+        .contents {
+            display: flex;
+            flex-direction: column;
+
+            .row {
+                display: flex;
+                justify-content: space-between;
+
+                .col {
+                    color: #000;
+                    font-family: Poppins;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 60px;
+                    letter-spacing: 0.18px;
+                    padding: 0 1rem;
+                }
+                
+            }
+
+            .shadow {
+                    background-color: #F5F6F8;
+                }
+                .light {
+                    background-color: transparent;
+                }
+
+        }
+    }
+}
+

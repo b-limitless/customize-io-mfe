@@ -11,13 +11,13 @@ export default ({ history, onSignIn, isSignedIn }) => {
     <div>
       <Router history={history}>
         <Switch>
-        <Route exact path="/user/add">
+        <Route exact path="/users/add">
             <Suspense fallback={"Please wait...."}>
               <AddUserLazy />
             </Suspense>
           </Route>
           
-          <Route path="/user">
+          <Route path="/users">
             <Suspense fallback={"Please wait...."}>
               <ListUserLazy />
             </Suspense>

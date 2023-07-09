@@ -17,17 +17,21 @@ interface AppInterface {
     history: any;
     onSignin: Function,
     isSignedIn: boolean,
-    [x:string]:any
+    setShowSettingModel: Function,
+    showSettingModel: boolean,
+    [x: string]: any
 }
 
-export default function App({ history, onSignin, isSignedIn, showProfileSideModel, setShowProfileSideModel }: AppInterface) {
+export default function App({ setShowSettingModel, showSettingModel, history, onSignin, isSignedIn, showProfileSideModel, setShowProfileSideModel }: AppInterface) {
+    console.log("showSettingModel", showSettingModel)
     return (
         <>
             <StylesProvider generateClassName={gererateClassName}>
                 <Router history={history}>
                     <Switch>
                         <Route path="/dashboard">
-                            <Dashboard showProfileSideModel={showProfileSideModel} setShowProfileSideModel={setShowProfileSideModel}/>
+                            <Dashboard setShowSettingModel={setShowSettingModel}
+                                showSettingModel={showSettingModel} showProfileSideModel={showProfileSideModel} setShowProfileSideModel={setShowProfileSideModel} />
                         </Route>
                     </Switch>
                 </Router>

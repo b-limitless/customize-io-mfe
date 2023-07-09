@@ -4,22 +4,28 @@ import DashboardIcon from "../assets/svg/dashboard.svg";
 import PricingIcon from "../assets/svg/pricing.svg";
 import ArrowDown from "../assets/svg/arrow-down.svg";
 import Users from "../assets/svg/users.svg";
+import Payments from "../assets/svg/payment.svg";
+
 export const menuIcons = {
     product: <ProductIcon />,
     dashboard: <DashboardIcon />,
     pricing: <PricingIcon />, 
-    users: <Users />
+    users: <Users />, 
+    payments: <Payments/>
+
 }
 
 export enum menuEnum {
     Dashboard = "Dashboard",
-    Product_Febric = "Product_Febric",
+    Products_Febric = "Products_Febric",
     Product_Shirts = "Product_Shirts",
     Product_Pants = "Product_Pants",
     Product_Thread = "Product_Thread",
     Auth_Signin = "Auth_Signin",
     Auth_Signup = "Auth_Signup", 
-    User = "User"
+    Users = "Users", 
+    Orders="Orders",
+    Payments="Payments"
 }
 
 const keys = [...Object.keys(menuEnum)] as const;
@@ -33,15 +39,20 @@ export const sideNavConfig = [
         component: <div></div>
     },
     {
-        title: "Product", icon: menuIcons.product,
+        title: "Products", icon: menuIcons.product,
         children: [{ title: "Febric", component: "" }, { title: "Thread", component: "" }, { title: "Shirts", component: "" }, { title: "Pants", component: "" }]
     },
     {
         title: "Orders", icon: menuIcons.pricing,
-        children: [{ title: "Pricing one" }, { title: "Pricing Two" }]
+        children: []
+        // children: [{ title: "Pricing one" }, { title: "Pricing Two" }]
     },
     {
-        title: "User", icon: menuIcons.users,
+        title: "Users", icon: menuIcons.users,
+        children: []
+    }, 
+    {
+        title: "Payments", icon: menuIcons.payments,
         children: []
     }
 ];

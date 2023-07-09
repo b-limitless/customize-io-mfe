@@ -1,8 +1,22 @@
 import React, {useState} from 'react';
 import { mockFebrics } from '../../mock-data/febric';
-import { Button, BasicTable } from "@pasal/cio-component-library"
-import styles from "@pasal/common-style/styles/components/_table.module.scss";
+import { Button, BasicTable, DataTable, camelCaseToNormal, svgCDNAssets } from "@pasal/cio-component-library"
+
 import FebricDetails from './FebricDetails';
+
+export enum OrderStatusEnum {
+  pending="pending",
+  inProgress="inProgress",
+  completed="completed",
+  canceled="canceled",
+  pendingVerification="pendingVerification",
+  onHold="onHold"
+}
+
+export const OrderTypes = `${OrderStatusEnum}`;
+
+export const OrderStatus = Object.keys(OrderStatusEnum);
+
 // type Props = {}
 //{}: Props
 // We can show the table list of febric with some most important details 
@@ -12,137 +26,54 @@ import FebricDetails from './FebricDetails';
 
 // Some basic details which you can show in the table is
 // 5 items you need check choose title, category, price , material, season
+
+const filterData = [
+  {
+    label: "Order Status",
+    data:  OrderStatus.map(item => camelCaseToNormal(item, true)),
+    id: "orderStatus"
+  },
+  // {
+  //   label: "Payment Status",
+  //   data: paymentStatus,
+  //   id: "paymentStatus"
+  // },
+];
+
 export default function Febric() {
   // Loading the febrics for the  users
   const customStyle = {
     cursor: 'pointer'
   }
 
+
+  
   const tableHeader = ['title', 'type', 'price', 'material', 'season', 'action'];
 
   
-  let tableData:any = [{
-    title: "Hello World",
-    price: 123,
-    delivery_time: "days in time",
-    image_link: "Url of the image",
-    excellence: "in 5 rating star",
-    warmth: "5 rating start",
-    weight: "300 gr/m^2",
-    yarn: "",
-    composition: " - 78% Terylene & 18% Rayon & 4% Spandex",
-    season: "Year round",
-    thread_style: "Twill",
-    brightness: "",
-    super_shiny: 0,
-    material: "Cotton",
-    tone: " - Navy Blue",
-    thread_count: "",
-    opacity: "",
-    waterproof: true,
-    stretchy_text: "Stretchy",
-    stretchy: "",
-    mis: ["new", "eco", "easy iron", "none iron"],
-    type: ["shirt", "pants", "suits"],
-  },
-  {
-    title: "Hello World",
-    price: 123,
-    delivery_time: "days in time",
-    image_link: "Url of the image",
-    excellence: "in 5 rating star",
-    warmth: "5 rating start",
-    weight: "300 gr/m^2",
-    yarn: "",
-    composition: " - 78% Terylene & 18% Rayon & 4% Spandex",
-    season: "Year round",
-    thread_style: "Twill",
-    brightness: "",
-    super_shiny: 0,
-    material: "Cotton",
-    tone: " - Navy Blue",
-    thread_count: "",
-    opacity: "",
-    waterproof: true,
-    stretchy_text: "Stretchy",
-    stretchy: "",
-    mis: ["new", "eco", "easy iron", "none iron"],
-    type: ["shirt", "pants", "suits"],
 
-    
-  },
-  {
-    title: "Hello World",
-    price: 123,
-    delivery_time: "days in time",
-    image_link: "Url of the image",
-    excellence: "in 5 rating star",
-    warmth: "5 rating start",
-    weight: "300 gr/m^2",
-    yarn: "",
-    composition: " - 78% Terylene & 18% Rayon & 4% Spandex",
-    season: "Year round",
-    thread_style: "Twill",
-    brightness: "",
-    super_shiny: 0,
-    material: "Cotton",
-    tone: " - Navy Blue",
-    thread_count: "",
-    opacity: "",
-    waterproof: true,
-    stretchy_text: "Stretchy",
-    stretchy: "",
-    mis: ["new", "eco", "easy iron", "none iron"],
-    type: ["shirt", "pants", "suits"],
-
-    
-  },
-  {
-    title: "Hello World",
-    price: 123,
-    delivery_time: "days in time",
-    image_link: "Url of the image",
-    excellence: "in 5 rating star",
-    warmth: "5 rating start",
-    weight: "300 gr/m^2",
-    yarn: "",
-    composition: " - 78% Terylene & 18% Rayon & 4% Spandex",
-    season: "Year round",
-    thread_style: "Twill",
-    brightness: "",
-    super_shiny: 0,
-    material: "Cotton",
-    tone: " - Navy Blue",
-    thread_count: "",
-    opacity: "",
-    waterproof: true,
-    stretchy_text: "Stretchy",
-    stretchy: "",
-    mis: ["new", "eco", "easy iron", "none iron"],
-    type: ["shirt", "pants", "suits"],
-
-    
-  }
-  ]
   const [showFebricDetailsModel, setShowFebricDetailsModel] = useState<number>(-1);
+  const [showModel, setShowModel] = useState<boolean>(false);
+  const [filters, setFilters] = React.useState<any>({ orderStatus: [], paymentStatus: [] });
+  const [page, setPage] = useState<number>(1);
 
   const showModelHandler = (i:number) => {
     setShowFebricDetailsModel(i);
   }
 
-  tableData = tableData.map((row:any, i:number) => {
+  mockFebrics.map((row:any, i:number) => {
     row.action = <><a style={customStyle} onClick={() => showModelHandler(i)}>Details</a>{' '}<a>Edit</a></>;
     return row;
   });
 
   
   
-
+  const count = 8;
   return (
     <>
     {showFebricDetailsModel !== -1 && <FebricDetails setShowFebricDetailsModel = {setShowFebricDetailsModel} showFebricDetailsModel={showFebricDetailsModel}/>}
     
-    <div className={styles.febric__wrapper}>
+    {/* <div className={styles.febric__wrapper}>
     <div className={styles.febric__container}>
       <div className={styles.row}>
         <div className={styles.title}>Product Febric - List</div>
@@ -154,7 +85,7 @@ export default function Febric() {
       <div className={styles.row}>
         <div className={styles.table__container}>
           <div className={styles.filters}>
-            <div>Filter Will be shown</div>
+            <div>Hack</div>
           </div>
           <div className={styles.table}>
               <BasicTable tableHeader={tableHeader} tableData={tableData} tableRow={tableData[0]} showTableHead/>
@@ -165,7 +96,31 @@ export default function Febric() {
         </div>
       </div>
     </div>
-    </div>
+    </div> */}
+
+
+
+        <DataTable
+          setShowModel={setShowFebricDetailsModel}
+          tableHeader={tableHeader}
+          tableData={mockFebrics.slice(page * count, count + (page * count))}
+          showFebricModels={false}
+          detailsComponents={null}
+          showDetailReactNode={<img src ={svgCDNAssets.eye}/>}
+          tableTitle={"Febric"}
+          showToLeftButton={{url: "/products/febric/add", label: "Add Febric"}}
+          setShowSelectRowId={() => { }}
+          filterData={filterData}
+          filters={filters} 
+          setFilters={setFilters}
+          paginate={true}
+          page={page}
+          setPage={setPage}
+          count={count}
+          loading={false}
+          
+        />
+      
     
     </>
     

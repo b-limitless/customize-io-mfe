@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Input, Select,  Chip as MultipleSelectChip, TextArea, InputAdornments } from '@pasal/cio-component-library';
+import { Button, Input, Select,   MultipleSelect, TextArea, InputAdornments } from '@pasal/cio-component-library';
 import React from 'react';
 import AvatarPNG from '../../assets/img/avatar-1.png';
 import SideModel from '../SideModel';
@@ -51,7 +51,7 @@ export default function Profile({ showModel, setShowModel }: Props) {
             <img src={AvatarPNG} alt='' />
           </div>
           <div className={styles.actions}>
-            <Button variant='primary' text='Upload Image' />
+            <Button variant='primary' text='Upload' />
             <Button variant='light' text='Delete' />
           </div>
         </div>
@@ -131,7 +131,7 @@ export default function Profile({ showModel, setShowModel }: Props) {
                   />
                 </div>
                 <div className={styles.form__row}>
-                  <MultipleSelectChip options={getLanguagesInArray} handleChange={handleChange} label={"Langugaes"} id="languages" value={userLanguage} />
+                  <MultipleSelect size="large" options={getLanguagesInArray} handleChange={handleChange} label={"Langugaes"} id="languages" value={userLanguage} />
 
                 </div>
 

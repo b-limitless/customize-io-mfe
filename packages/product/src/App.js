@@ -11,14 +11,14 @@ export default ({ history, onSignIn, isSignedIn }) => {
     <div>
         <Router history={history}>
           <Switch>
-          <Route path="/product/febric/add">
+          <Route path="/products/febric/add">
               <AddFebric/>
             </Route>
-            <Route path="/product/febric">
+            <Route path="/products/febric">
               <Febric/>
             </Route>
             
-            <Route path="/product/thread">
+            <Route path="/products/thread">
               <Thread/>
             </Route>
           </Switch>

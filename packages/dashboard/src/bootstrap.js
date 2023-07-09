@@ -14,6 +14,8 @@ const mount = (
     isSignedIn,
     showProfileSideModel,
     setShowProfileSideModel,
+    setShowSettingModel, 
+    showSettingModel
   }
 ) => {
   const history =
@@ -26,6 +28,7 @@ const mount = (
     history.listen(onNavigate);
   }
 
+  console.log("d bootstrapjs", showSettingModel)
   ReactDOM.render(
     <App
       history={history}
@@ -33,6 +36,8 @@ const mount = (
       isSignedIn={isSignedIn}
       showProfileSideModel={showProfileSideModel}
       setShowProfileSideModel={setShowProfileSideModel}
+      setShowSettingModel={setShowSettingModel}
+      showSettingModel={showSettingModel}
     />,
     el
   );

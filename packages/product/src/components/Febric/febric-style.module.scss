@@ -4,9 +4,10 @@
 
 .febric__wrapper {
     display: flex;
-  justify-content: center;
-    height:100vh;
+    justify-content: center;
+    height:auto !important;
     width: 100%;
+    
 
     .febric__container {
         display: flex;

@@ -17,7 +17,12 @@ $model_width: 562px;
     height: 100vh;
     position: fixed;
     transition: all 0.2s ease-out;
+    top:0;
     // right: -562px;
+
+    @media only screen and (max-width: $bp-700) {
+        width: 100%;
+    }
     
     background-color: #fff;
     .model__side {

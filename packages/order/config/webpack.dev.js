@@ -7,9 +7,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const PORT = 8086;
 
 const devConfig = {
-  optimization: {
-    runtimeChunk: "single",
-  },
+  // optimization: {
+  //   runtimeChunk: "single",
+  // },
   mode: "development",
   output: {
     publicPath: `http://localhost:${PORT}/`,
@@ -22,10 +22,10 @@ const devConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "user",
+      name: "order",
       filename: "remoteEntry.js",
       exposes: {
-        "./UserApp": "./src/bootstrap",
+        "./OrderApp": "./src/bootstrap",
       },
       remotes: {
         

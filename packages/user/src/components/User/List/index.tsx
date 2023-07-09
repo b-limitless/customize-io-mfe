@@ -63,7 +63,7 @@ export default function List({ }: Props) {
         <div className={styles.row}>
           <div className={styles.title}>Users - List</div>
           <div className={styles.add__new}>
-            <a href="/user/add"><Button variant="primary" text="Create a user" /></a>
+            <a href="/users/add"><Button variant="primary" text="Create a user" /></a>
           </div>
         </div>
 

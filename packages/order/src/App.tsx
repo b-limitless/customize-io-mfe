@@ -14,7 +14,7 @@ export default ({ history, onSignIn, isSignedIn }: AppInterface) => {
     <div>
       <Router history={history}>
         <Switch>
-        <Route exact path="/order">
+        <Route exact path="/orders">
             <Suspense fallback={"Please wait...."}>
               <ListOrderLazyLoad />
             </Suspense>

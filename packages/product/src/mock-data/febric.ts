@@ -1,4 +1,4 @@
-export const mockFebrics = [
+export let mockFebrics:any = [
 	{
 		"title": "Dr",
 		"price": 675007,

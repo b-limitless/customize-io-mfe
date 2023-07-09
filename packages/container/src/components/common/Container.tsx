@@ -5,10 +5,13 @@ import SideMenu from "./SideMenu";
 interface ContainerInterface {
     setSelectedMenu: Function,
     selectedMenu: menuIds,
+    setShowSettingModel:Function, 
+    showSettingModel:boolean;
     children: any;
     [x:string]:any;
+    
 }
-export default function Container({ children, setSelectedMenu, selectedMenu, setShowProfileSideModel }: ContainerInterface) {
+export default function Container({setShowSettingModel, showSettingModel, children, setSelectedMenu, selectedMenu, setShowProfileSideModel }: ContainerInterface) {
     return (
         <>
             <input type="radio" id="toggle-menu-checkbox" className="toggle-menu-checbox" name="toggle-menu-checkbox" />
@@ -23,6 +26,8 @@ export default function Container({ children, setSelectedMenu, selectedMenu, set
                     <SideMenu
                         setSelectedMenu={setSelectedMenu}
                         setShowProfileSideModel={setShowProfileSideModel}
+                        setShowSettingModel={setShowSettingModel}
+                        showSettingModel={showSettingModel}
                     />
                 </div>
                 <div className="right services">

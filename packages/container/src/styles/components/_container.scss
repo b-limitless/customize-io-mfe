@@ -8,9 +8,13 @@
         grid-template-columns: pxToRem(92) 1fr;
     }
 
+    @media only screen and (max-width: $bp-700) {
+        grid-template-columns:1fr;
+    }
+
 
     .right {
-        // margin-top: 1rem;
+        padding: 1rem 1rem 1rem 0;
     }
 
     // .hide {

@@ -32,7 +32,7 @@
     
             .title {
                 margin-right: auto;
-                font-family: $secondary-font-family;
+                font-family: $default-font-family;
             }
     
             .table__container {
@@ -41,13 +41,13 @@
                     display: flex;
                     justify-content: flex-end;
                     padding: 1rem 0;
-                    font-family: $secondary-font-family;
+                    font-family: $default-font-family;
                 }
                 .pagination {
                     display: flex;
                     justify-content: flex-end;
                     padding: 1rem 0;
-                    font-family: $secondary-font-family;
+                    font-family: $default-font-family;
                 }
             }
     
