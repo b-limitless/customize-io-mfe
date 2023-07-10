@@ -4,7 +4,7 @@ import DashboardIcon from "../assets/svg/dashboard.svg";
 import PricingIcon from "../assets/svg/pricing.svg";
 import ArrowDown from "../assets/svg/arrow-down.svg";
 import Users from "../assets/svg/users.svg";
-import Payments from "../assets/svg/payment.svg";
+import Payments from "../assets/svg/users.svg";
 
 export const menuIcons = {
     product: <ProductIcon />,

@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route, Router, BrowserRouter } from "react-router-dom";
-import Payment from "../components/Payment/Payment";
+import Payment from "../components/Payment";
 
 
 interface AppInterface {
