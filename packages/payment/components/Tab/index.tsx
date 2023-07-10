@@ -1,18 +1,17 @@
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
-import { TabICO, TabPanel, a11yProps } from '@pasal/cio-component-library';
+import { TabICO, TabPanel, a11yProps, TabContentTemplate } from '@pasal/cio-component-library';
 import * as React from 'react';
 import styles from "./tab.module.scss";
 import BillingAddress from "./TabContents/BillingAddress";
 import ShippingAddress from "./TabContents/ShippingAddress";
-import TabContentTemplate from '../TabContentTemplate/TabContentTemplate';
+
 
 
 export default function PaymentTabs() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-
     setValue(newValue);
   };
 

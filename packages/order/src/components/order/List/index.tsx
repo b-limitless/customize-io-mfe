@@ -1,30 +1,31 @@
-import React, { useEffect, useRef, useState } from "react";
-import { DataTable, Chip, camelCaseToNormal } from "@pasal/cio-component-library";
-import orderMockData from "../../../../mock/order.json";
-import { OrderStatus, OrderStatusEnum } from "../../../../enums&Types/order";
+import React, { useEffect, useState } from "react";
+import { DataTable, camelCaseToNormal } from "@pasal/cio-component-library";
 
-import styles from "./list.module.scss";
-import OrderSideModel from "../../SideModel";
-import { SelectChangeEvent } from "@mui/material";
+import { OrderStatus } from "../../../../enums&Types/order";
+import orderMockData from "../../../../mock/order.json";
+
 import { paymentStatus } from "../../../../enums&Types/paymenStatus";
-import {colorsForPaymentStatus, normalizeDataForVisual} from "./normolizeData";
-import { colorsForTableFields } from "./normolizeData";
+import OrderSideModel from "../../SideModel";
+import styles from "./list.module.scss";
+// import { colorsForPaymentStatus, colorsForTableFields, normalizeDataForVisual } from "./normolizeData";
 type Props = {}
 
-const filterData = [
-  {
-    label: "Order Status",
-    data:  OrderStatus.map(item => camelCaseToNormal(item, true)),
-    id: "orderStatus"
-  },
-  {
-    label: "Payment Status",
-    data: paymentStatus,
-    id: "paymentStatus"
-  },
-];
-const count = 8;
+
+
 export default function ListOrder({ }: Props) {
+  const filterData = [
+    {
+      label: "Order Status",
+      data:  OrderStatus.map(item => camelCaseToNormal(item, true)),
+      id: "orderStatus"
+    },
+    {
+      label: "Payment Status",
+      data: paymentStatus,
+      id: "paymentStatus"
+    },
+  ];
+  const count = 8;
 
   const [showModel, setShowModel] = useState<boolean>(false);
   const [filters, setFilters] = React.useState<any>({ orderStatus: [], paymentStatus: [] });
@@ -32,25 +33,17 @@ export default function ListOrder({ }: Props) {
  
   const tableHeader = ["orderId", "customerId", "orderData", "price", "orderStatus", "paymentStatus", "action"];
 
-  normalizeDataForVisual(orderMockData, "orderStatus", colorsForTableFields);
-  normalizeDataForVisual(orderMockData, "paymentStatus", colorsForPaymentStatus);
+  // normalizeDataForVisual(orderMockData, "orderStatus", colorsForTableFields);
+  // normalizeDataForVisual(orderMockData, "paymentStatus", colorsForPaymentStatus);
 
  
-  useEffect(() => {
-
-    // You can implement filter approache in one of many way
-    // data structure for the filter would for for this instance is { orderStatus: [], paymentStatus: [] }
-    // Just monitor in filters status is changing or not 
-    // Check each value it should not be difficult to implement after ward
-    // Close this and moving toward another part
-  }, [])
-
+  
   return (
     <>
-      <OrderSideModel
+       <OrderSideModel
         showModel={showModel}
         setShowModel={setShowModel}
-      />
+      /> 
       <div className={styles.dataTableContainer}>
         <DataTable
           setShowModel={setShowModel}
@@ -72,7 +65,7 @@ export default function ListOrder({ }: Props) {
           loading={false}
         />
       </div>
-
+   
     </>
 
 

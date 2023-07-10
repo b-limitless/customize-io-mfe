@@ -1,12 +1,11 @@
+import * as React from 'react';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import { TabICO, TabPanel, a11yProps } from '@pasal/cio-component-library';
-import * as React from 'react';
-import styles from "./tab.module.scss";
-import Customize from './TabContents/customize';
-import Measurement from './TabContents/measurement';
 import Shipping from './TabContents/Shipping';
 import Assignment from './TabContents/assignment';
+import Customize from './TabContents/customize';
+import Measurement from './TabContents/measurement';
 
 
 export default function OrderTabs() {
@@ -40,10 +39,7 @@ export default function OrderTabs() {
 
       <TabPanel value={value} index={0}>
 
-        {/* <div className={styles.tab__panel}>
-            Please wait...
-        </div> */}
-        {/* Item One */}
+       
         <Customize/>
         
       </TabPanel>

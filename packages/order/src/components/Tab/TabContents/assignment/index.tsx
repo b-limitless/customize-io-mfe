@@ -3,27 +3,30 @@ import { Button, Input, Select, MultipleSelect, TextArea, InputAdornments, Selec
 import styles from "./assignment.module.scss";
 import data from "../../../../../mock/asignee.json";
 
-export const languages = [
-  {
-    title: "English",
-    value: "en",
-  },
-  {
-    title: "Nepali",
-    value: "np",
-  },
-  {
-    title: "Italian",
-    value: "it",
-  }
-];
 
-const getLanguagesInArray = languages.map((language) => language.title);
+
+
 
 type Props = {}
 
 export default function Assignment({ }: Props) {
 
+   const languages = [
+    {
+      title: "English",
+      value: "en",
+    },
+    {
+      title: "Nepali",
+      value: "np",
+    },
+    {
+      title: "Italian",
+      value: "it",
+    }
+  ];
+
+  const getLanguagesInArray = languages.map((language) => language.title);
   const [userLanguage, setUserLanguage] = useState("");
 
   const handleChange = (event: any) => {

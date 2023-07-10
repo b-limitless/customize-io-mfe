@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { SideModel } from '@pasal/cio-component-library';
+import React from 'react';
 import OrderTabs from '../Tab';
 
 export interface OrderSideModel {
