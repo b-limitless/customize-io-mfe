@@ -7,15 +7,17 @@ import PaymentSideModel from "../SideModel/index";
 
 type Props = {}
 
-const filterData = [
-  {
-    label: "Payment Status",
-    data: Object.keys(PaymentStatus).map((item: any) => camelCaseToNormal(item, true)),
-    id: "paymentStatus"
-  },
-];
-const count = 8;
+
 export default function Payment({ }: Props) {
+  const filterData = [
+    {
+      label: "Payment Status",
+      data: Object.keys(PaymentStatus).map((item: any) => camelCaseToNormal(item, true)),
+      id: "paymentStatus"
+    },
+  ];
+  const count = 8;
+
 
   const [showModel, setShowModel] = useState<boolean>(false);
   const [filters, setFilters] = React.useState<any>({ orderStatus: [], paymentStatus: [] });

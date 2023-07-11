@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { DataTable, camelCaseToNormal } from "@pasal/cio-component-library";
-
+import { DataTable, camelCaseToNormal, Button } from "@pasal/cio-component-library";
 import { OrderStatus } from "../../../../enums&Types/order";
 import orderMockData from "../../../../mock/order.json";
 
 import { paymentStatus } from "../../../../enums&Types/paymenStatus";
 import OrderSideModel from "../../SideModel";
 import styles from "./list.module.scss";
+
 // import { colorsForPaymentStatus, colorsForTableFields, normalizeDataForVisual } from "./normolizeData";
 type Props = {}
 
@@ -65,7 +65,9 @@ export default function ListOrder({ }: Props) {
           loading={false}
         />
       </div>
-   
+      {/* <Button text="sdf" variant="primary"/> */}
+      {/* <Button text="all" variant="secondary"/>
+    */}
     </>
 
 
