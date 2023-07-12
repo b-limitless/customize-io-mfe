@@ -1,0 +1,22 @@
+<script src="path/to/remoteEntry.js"></script>
+
+<script>
+  // Load the manifest file
+  fetch('path/to/manifest.json')
+    .then((response) => response.json())
+    .then((manifest) => {
+      // Get the filename of the main JavaScript file from the manifest
+      const mainFileName = manifest['main.js'];
+
+      // Dynamically load the main JavaScript file
+      const script = document.createElement('script');
+      script.src = `path/to/${mainFileName}`;
+      script.onload = () => {
+        // Main JavaScript file loaded
+      };
+      document.head.appendChild(script);
+    })
+    .catch((error) => {
+      // Handle any error that occurs during fetching the manifest file
+    });
+</script>
