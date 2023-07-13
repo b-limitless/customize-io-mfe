@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import styles from './welcome.module.scss';
-import logo from "@assets/images/logo.png"
-import smallAvatar from "@assets/images/small-avatar.png"
-import Star from "@assets/icons/star.svg";
+import logo from '@assets/images/logo.png'
+import smallAvatar from '@assets/images/small-avatar.png'
+import Star from '@assets/icons/star.svg';
 import Button from '@components/common/Button';
 import { Skeleton } from '@mui/material';
 import { CircularSkleton, TextSkleton } from '../common/Skleton';
+import { Link } from 'react-router-dom';
 type Props = {}
 
 export default function Welcome({ }: Props) {
@@ -77,7 +78,7 @@ export default function Welcome({ }: Props) {
       </div>
       <div className={styles.row}>
         {loading && <TextSkleton width='60px' />}
-        {!loading && userData.length > 0 && <Button text='Contact us' variant='primary' />}
+        {!loading && userData.length > 0 && <Link to ='/agents'><Button text='Contact us' variant='primary' ></Button></Link>}
 
       </div>
     </div>

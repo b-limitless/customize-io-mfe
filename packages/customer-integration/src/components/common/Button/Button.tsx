@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styles from './button.module.scss';
 
 type button = 'primary' | 'secondary';
 
 interface Props {
-    text: string;
+    text: string | ReactNode;
     variant: button;
 }
 
