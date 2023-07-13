@@ -9,19 +9,23 @@ import { CircularSkleton, TextSkleton } from '../common/Skleton';
 import { Link } from 'react-router-dom';
 type Props = {}
 
+interface style {
+    [x:string]:string;
+}
 interface TemplateInterface {
-    loading: false;
-    welcome: boolean;
-    data: any[]
+    loading: boolean;
+    welcome?: boolean;
+    data: any[];
+    addStyles: style
 }
 
-export default function Template({ welcome, loading, data }: TemplateInterface) {
+export default function Template({ welcome, loading, data,  addStyles}: TemplateInterface) {
 
 
     const count = new Array(3).fill(0);
 
     return (
-        <div className={styles.welcome}>
+        <div className={styles.welcome} style={addStyles}>
             <div className={styles.row}>
                 <div className={styles.col}>
                     {loading && <CircularSkleton width='40px' height='40px' />}
@@ -83,8 +87,7 @@ export default function Template({ welcome, loading, data }: TemplateInterface) 
             </div>
             <div className={styles.row}>
                 {loading && <TextSkleton width='60px' />}
-                {!loading && data.length > 0 && <Link to='/agents'><Button text='Contact us' variant='primary' ></Button></Link>}
-
+                {!loading && data.length > 0 && <Link to='/agents'> {!welcome && <Button text={'Book an appointment'} variant='secondary' />} <Button text={welcome ? 'Contact us' : 'Make a call'} variant='primary' /></Link>}
             </div>
         </div>
     )
