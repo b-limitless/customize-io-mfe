@@ -21,7 +21,7 @@ export default function ListAgents({ }: Props) {
   const data: any = [];
   const [userData, setUserData] = useState([{ hello: 'world' }]);
   return (
-    <DefaultTemplate>
+    <DefaultTemplate rightIcon={<QuestionSVG />}>
       <div className={styles.search}>
         <div className={styles.form}><input className={styles.search__input} type='text' placeholder='Searh...' /></div>
         <button className={styles.search__btn}>

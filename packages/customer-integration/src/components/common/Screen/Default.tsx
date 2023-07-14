@@ -14,33 +14,35 @@ import styles from './default.module.scss';
 
 
 type Props = {
-    children: ReactNode
+    children: ReactNode;
+    rightIcon: ReactNode
 }
 
-export default function DefaultTemplate({children }: Props) {
-  const count = new Array(5).fill(0);
-  const data: any = [];
-  const [userData, setUserData] = useState([{ hello: 'world' }]);
-  return (
-    <div className={styles.list__agents}>
-      <div className={styles.row}>
-        <div className={styles.time}>9:41</div>
-        <div className={styles.indicators}>
-          <NetWorkSVG />
-          <WifiSVG />
-          <BatteriesSVG />
-        </div>
-      </div>
+export default function DefaultTemplate({ children, rightIcon }: Props) {
+    const count = new Array(5).fill(0);
+    const data: any = [];
+    const [userData, setUserData] = useState([{ hello: 'world' }]);
+    return (
+        <div className={styles.list__agents}>
+            <div className={styles.row}>
+                <div className={styles.time}>9:41</div>
+                <div className={styles.indicators}>
+                    <NetWorkSVG />
+                    <WifiSVG />
+                    <BatteriesSVG />
+                </div>
+            </div>
 
-      <div className={styles.navigation}>
-        <BackIcon />
-        <div className={styles.title}>
-          Select an agent
-        </div>
-        <QuestionSVG />
-      </div>
+            <div className={styles.navigation}>
+                <BackIcon />
+                <div className={styles.title}>
+                    Select an agent
+                </div>
+                {rightIcon}
 
-      {/* <div className={styles.search}>
+            </div>
+
+            {/* <div className={styles.search}>
         <div className={styles.form}><input className={styles.search__input} type='text' placeholder='Searh...' /></div>
         <button className={styles.search__btn}>
           <Search />
@@ -51,7 +53,7 @@ export default function DefaultTemplate({children }: Props) {
           {count.map((item) => <Template data={userData} addStyles={{ position: 'relative' }} loading={false} />)}
        
       </div> */}
-      {children}
-    </div>
-  )
+            {children}
+        </div>
+    )
 }
