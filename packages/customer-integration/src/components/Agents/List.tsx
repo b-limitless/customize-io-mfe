@@ -7,8 +7,9 @@ import QuestionSVG from '@assets/icons/question.svg';
 import SquireAvtar from '@assets/icons/squire-avatar.svg'
 import Search from '@assets/icons/search.svg'
 import { Input } from '@pasal/cio-component-library';
-import Button from '../common/Button/Button';
-import Template from '../Welcome/Template';
+import Button from '@components/common/Button/Button';
+import Template from '@components/Welcome/Template';
+import DefaultTemplate from '@components/common/Screen/Default';
 
 import styles from './list.module.scss';
 
@@ -20,24 +21,7 @@ export default function ListAgents({ }: Props) {
   const data: any = [];
   const [userData, setUserData] = useState([{ hello: 'world' }]);
   return (
-    <div className={styles.list__agents}>
-      <div className={styles.row}>
-        <div className={styles.time}>9:41</div>
-        <div className={styles.indicators}>
-          <NetWorkSVG />
-          <WifiSVG />
-          <BatteriesSVG />
-        </div>
-      </div>
-
-      <div className={styles.navigation}>
-        <BackIcon />
-        <div className={styles.title}>
-          Select an agent
-        </div>
-        <QuestionSVG />
-      </div>
-
+    <DefaultTemplate>
       <div className={styles.search}>
         <div className={styles.form}><input className={styles.search__input} type='text' placeholder='Searh...' /></div>
         <button className={styles.search__btn}>
@@ -46,9 +30,29 @@ export default function ListAgents({ }: Props) {
       </div>
 
       <div className={styles.agents}>
-          {count.map((item) => <Template data={userData} addStyles={{ position: 'relative' }} loading={false} />)}
-       
+        {count.map((item) => <Template data={userData} addStyles={{ position: 'relative' }} loading={false} />)}
+
       </div>
-    </div>
+    </DefaultTemplate>
+    // <div className={styles.list__agents}>
+    //   <div className={styles.row}>
+    //     <div className={styles.time}>9:41</div>
+    //     <div className={styles.indicators}>
+    //       <NetWorkSVG />
+    //       <WifiSVG />
+    //       <BatteriesSVG />
+    //     </div>
+    //   </div>
+
+    //   <div className={styles.navigation}>
+    //     <BackIcon />
+    //     <div className={styles.title}>
+    //       Select an agent
+    //     </div>
+    //     <QuestionSVG />
+    //   </div>
+
+
+    // </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './welcome.module.scss';
+import styles from './template.module.scss';
 import logo from '@assets/images/logo.png'
 import smallAvatar from '@assets/images/small-avatar.png'
 import Star from '@assets/icons/star.svg';
@@ -29,7 +29,11 @@ export default function Template({ welcome, loading, data,  addStyles}: Template
             <div className={styles.row}>
                 <div className={styles.col}>
                     {loading && <CircularSkleton width='40px' height='40px' />}
-                    {!loading && data.length > 0 && <img src={logo} />}
+                    {!loading && data.length > 0 && 
+                    <div className={styles.logo}>
+                        <img src={logo} />
+                        <span className={styles.online}></span>
+                    </div>}
                 </div>
                 <div className={styles.col + ' ' + styles.details}>
                     <div className={styles.child__row}>

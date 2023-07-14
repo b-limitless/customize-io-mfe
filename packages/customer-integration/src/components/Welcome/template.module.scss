@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 body {
-  background-color: antiquewhite;
+  // background-color: antiquewhite;
 }
 .welcome {
   position: fixed;
@@ -108,6 +108,28 @@ body {
 
             }
 
+        }
+      }
+    }
+    .col {
+      .logo {
+        position: relative;
+
+        .online, .offline{
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 10px;
+          height: 10px;
+          border: 2px solid #FFF;
+          border-radius: 100%;
+          
+        }
+        .online {
+          background-color: #44D300;
+        }
+        .offline {
+          background-color: #CCC; 
         }
       }
     }
