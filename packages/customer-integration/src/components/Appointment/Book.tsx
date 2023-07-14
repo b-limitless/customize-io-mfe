@@ -5,6 +5,9 @@ import avatar from '@assets/images/avatar.png';
 import { Input } from '@pasal/cio-component-library';
 import Button from '../common/Button/Button';
 import TextField from '../common/TextField/TextField';
+import Model from './Model';
+import SelectTime from './SelectTime';
+import SelectDate from './SelectDate';
 
 type Props = {}
 
@@ -20,8 +23,8 @@ export default function BookAnAppointment({ }: Props) {
   }
 
   const inputStyle = {
-    padding: '13px', 
-    height:'44px',
+    padding: '13px',
+    height: '44px',
     color: "#000",
     textAlign: "center",
     fontFamily: "Poppins",
@@ -32,24 +35,26 @@ export default function BookAnAppointment({ }: Props) {
   }
   return (
     <DefaultTemplate rightIcon={avatarEl()}>
-      <div className='styles appointments'>
-        <div className='styles row'>
-          <div className='styles title'></div>
-          <div className='styles description'>Lorem Ipsum is simply dummy text of the printing and
+      {/* <SelectTime /> */}
+      <SelectDate/>
+      <div className={styles.appointments}>
+        <div className={styles.row}>
+          <div className={styles.title}>Marketing Conference</div>
+          <div className={styles.description}>Lorem Ipsum is simply dummy text of the printing and
             typesetting  industry.</div>
         </div>
-        <div className='styles row'>
+        <div className={styles.row}>
           {/* <Input label='Full Name' size="small"/> */}
-          <TextField label='Full Name' id='full-name' defaultValue=''/>
-          <TextField label='Phone Number' id='phone-number' defaultValue=''/>
-          <TextField label='Email Address' id='email-address' defaultValue=''/>
-          <Button text='Pick date' variant='secondary'/>
-          <Button text='Pick available time' variant='secondary'/>
+          <TextField label='Full Name' id='full-name' defaultValue='' />
+          <TextField label='Phone Number' id='phone-number' defaultValue='' />
+          <TextField label='Email Address' id='email-address' defaultValue='' />
+          <Button text='Pick date' variant='secondary' />
+          <Button text='Pick available time' variant='secondary' />
         </div>
 
-        <div className="styles row">
-        <Button text='Confirm' variant='primary'/>
-          <Button text='Cancel' variant='secondary'/>
+        <div className={styles.row}>
+          <Button text='Confirm' variant='primary' />
+          <Button text='Cancel' variant='secondary' />
         </div>
 
       </div>
