@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 type Props = {}
 
 interface style {
-    [x:string]:string;
+    [x: string]: string;
 }
 interface TemplateInterface {
     loading: boolean;
@@ -19,7 +19,7 @@ interface TemplateInterface {
     addStyles: style
 }
 
-export default function Template({ welcome, loading, data,  addStyles}: TemplateInterface) {
+export default function Template({ welcome, loading, data, addStyles }: TemplateInterface) {
 
 
     const count = new Array(3).fill(0);
@@ -29,11 +29,11 @@ export default function Template({ welcome, loading, data,  addStyles}: Template
             <div className={styles.row}>
                 <div className={styles.col}>
                     {loading && <CircularSkleton width='40px' height='40px' />}
-                    {!loading && data.length > 0 && 
-                    <div className={styles.logo}>
-                        <img src={logo} />
-                        <span className={styles.online}></span>
-                    </div>}
+                    {!loading && data.length > 0 &&
+                        <div className={styles.logo}>
+                            <img src={logo} />
+                            <span className={styles.online}></span>
+                        </div>}
                 </div>
                 <div className={styles.col + ' ' + styles.details}>
                     <div className={styles.child__row}>
@@ -91,7 +91,7 @@ export default function Template({ welcome, loading, data,  addStyles}: Template
             </div>
             <div className={styles.row}>
                 {loading && <TextSkleton width='60px' />}
-                {!loading && data.length > 0 && <Link to='/agents'> {!welcome && <Button text={'Book an appointment'} variant='secondary' />} <Button text={welcome ? 'Contact us' : 'Make a call'} variant='primary' /></Link>}
+                {!loading && data.length > 0 && <> {!welcome && <Link to='/book-an-appointment'><Button text={'Book an appointment'} variant='secondary' /></Link>} <Link to='/agents'> <Button text={welcome ? 'Contact us' : 'Make a call'} variant='primary' /></Link></>}
             </div>
         </div>
     )
