@@ -1,5 +1,5 @@
 import React from 'react';
-import Model from './Model';
+import Model from '../Model/Model';
 import styles from './select-time.module.scss';
 
 type Props = {}

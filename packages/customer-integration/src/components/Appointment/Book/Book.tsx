@@ -3,11 +3,13 @@ import DefaultTemplate from '@components/common/Screen/Default';
 import styles from './book.module.scss';
 import avatar from '@assets/images/avatar.png';
 import { Input } from '@pasal/cio-component-library';
-import Button from '../common/Button/Button';
-import TextField from '../common/TextField/TextField';
-import Model from './Model';
-import SelectTime from './SelectTime';
-import SelectDate from './SelectDate';
+import Button from '../../common/Button/Button';
+import TextField from '../../common/TextField/TextField';
+import Model from '../Model/Model';
+// import SelectTime from '../SelectTime';
+// import SelectDate from '../SelectDate';
+import SelectDate from '../SelectDateAndTime/SelectDate';
+import SelectTime from '../SelectDateAndTime/SelectTime';
 
 type Props = {}
 

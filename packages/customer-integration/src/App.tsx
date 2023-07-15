@@ -3,7 +3,7 @@ import '@styles/index.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Welcome from '@components/Welcome';
 import ListAgents from '@components/Agents';
-import BookAnAppointment from '@components/Appointment';
+import BookAnAppointment from '@components/Appointment/Book';
 
 type Props = {}
 

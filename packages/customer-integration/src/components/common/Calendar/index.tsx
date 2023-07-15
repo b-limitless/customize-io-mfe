@@ -51,6 +51,9 @@ const calendarSx = {
     },
     "& .MuiPickersDay-root.Mui-selected ": {
         backgroundColor: "#333 !important"
+    },
+    "& .MuiPickersYear-yearButton": {
+        fontFamily: "Poppins"
     }
   };
 

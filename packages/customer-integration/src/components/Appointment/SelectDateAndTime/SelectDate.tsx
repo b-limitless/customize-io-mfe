@@ -1,7 +1,7 @@
 import React from 'react';
-import Model from './Model';
+import Model from '../Model/Model';
 import styles from './select-time.module.scss';
-import DateCalendarValue from '../common/Calendar';
+import DateCalendarValue from '../../common/Calendar';
 
 type Props = {}
 
