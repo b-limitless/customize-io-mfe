@@ -10,6 +10,9 @@ import Model from '../Model/Model';
 // import SelectDate from '../SelectDate';
 import SelectDate from '../SelectDateAndTime/SelectDate';
 import SelectTime from '../SelectDateAndTime/SelectTime';
+import Booking from '../Confimation/Booking';
+import BookingConfirmation from '../Confimation/Booking';
+import RediectionConfirmation from '../Confimation/Rediection';
 
 type Props = {}
 
@@ -38,7 +41,9 @@ export default function BookAnAppointment({ }: Props) {
   return (
     <DefaultTemplate rightIcon={avatarEl()}>
       {/* <SelectTime /> */}
-      <SelectDate/>
+      {/* <SelectDate/> */}
+      {/* <BookingConfirmation/> */}
+      <RediectionConfirmation/>
       <div className={styles.appointments}>
         <div className={styles.row}>
           <div className={styles.title}>Marketing Conference</div>

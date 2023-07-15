@@ -1,18 +1,39 @@
- @mixin scroolBar() {
-    ::-webkit-scrollbar {
-        width: 0px;
-      }
-      
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-      }
-      
-      ::-webkit-scrollbar-thumb {
-        background: #888;
-      }
-      
-      ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
- }
- 
+@mixin scroolBar() {
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+@mixin buttonWithBorder() {
+  padding: 13px;
+  justify-content: center;
+  border-radius: 8px;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  background-color: transparent;
+
+  // .time {
+  //   border: 1px solid rgba(0, 0, 0, 0.15);
+  //   color: #000;
+  //   flex-grow: 1;
+  //   flex-basis: 50%;
+  // }
+}
