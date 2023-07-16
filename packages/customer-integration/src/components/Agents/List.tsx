@@ -29,10 +29,12 @@ export default function ListAgents({ }: Props) {
         </button>
       </div>
 
-      <div className={styles.agents}>
-        {count.map((item) => <Template data={userData} addStyles={{ position: 'relative' }} loading={false} />)}
-
+      <div className={styles.empty__result}>
+        <span className={styles.title}>No results found</span>
       </div>
+      {/* <div className={styles.agents}>
+        {count.map((item) => <Template data={userData} addStyles={{ position: 'relative' }} loading={false} />)}
+      </div> */}
     </DefaultTemplate>
     // <div className={styles.list__agents}>
     //   <div className={styles.row}>

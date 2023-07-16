@@ -112,6 +112,17 @@
   height: calc(123 * 5px );
   overflow-y: auto;
 }
+.empty__result {
+  display: grid;
+  place-items: center;
+  height: 812px;
+  .title {
+    font-family: $default-font-family;
+    font-size: 14px;
+    line-height: 20px;
+    
+  }
+}
 
 .agents::-webkit-scrollbar {
   width: 0px;

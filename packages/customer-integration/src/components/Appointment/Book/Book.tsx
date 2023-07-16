@@ -41,9 +41,9 @@ export default function BookAnAppointment({ }: Props) {
   return (
     <DefaultTemplate rightIcon={avatarEl()}>
       {/* <SelectTime /> */}
-      {/* <SelectDate/> */}
+      <SelectDate/>
       {/* <BookingConfirmation/> */}
-      <RediectionConfirmation/>
+      {/* <RediectionConfirmation/> */}
       <div className={styles.appointments}>
         <div className={styles.row}>
           <div className={styles.title}>Marketing Conference</div>
