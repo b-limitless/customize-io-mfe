@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import DefaultTemplate from '@components/common/Screen/Default';
 import styles from './book.module.scss';
 import avatar from '@assets/images/avatar.png';
@@ -13,6 +13,11 @@ import SelectTime from '../SelectDateAndTime/SelectTime';
 import Booking from '../Confimation/Booking';
 import BookingConfirmation from '../Confimation/Booking';
 import RediectionConfirmation from '../Confimation/Rediection';
+import { useLocation } from 'react-router-dom';
+import { appRoutes } from '../../../config/routes';
+import { componentEnum } from '../../Welcome/welcome.types';
+import dayjs, { Dayjs } from 'dayjs'; 
+import useOnClickOutside from '@hooks/useOnClickOutSide';
 
 type Props = {}
 
@@ -38,10 +43,35 @@ export default function BookAnAppointment({ }: Props) {
     fontWeight: 400,
     lineHeight: "normal"
   }
+  const location = useLocation();
+  const { state: { data: { path } } = {} } = location;
+  const [showPickDateModel, setShowPickDateModel] = useState<boolean>(false);
+  const [showPickTimeModel, setShowPickTimeModel] = useState<boolean | null>(null);
+  const [selectedDate, setselectedDate] = React.useState<Dayjs | null>(null);
+  const [selectedTime, setSelectedTime] = useState<string | null>();
+
+
+  // We need to manage height base on the clicked the button
+  const dateModelRef = useRef(null);
+  const timeModelRef = useRef(null);
+
+  useOnClickOutside(timeModelRef, () => setShowPickTimeModel(false))
+
+
   return (
     <DefaultTemplate rightIcon={avatarEl()}>
-      {/* <SelectTime /> */}
-      <SelectDate/>
+      {showPickTimeModel && <SelectTime 
+               setShowModel={setShowPickTimeModel} 
+               value={selectedTime} 
+               setValue={setSelectedTime} 
+               ref={timeModelRef}
+      />}
+      {showPickDateModel && <SelectDate
+        setShowModel={setShowPickDateModel}
+        value={selectedDate}
+        setValue={setselectedDate}
+      />
+      }
       {/* <BookingConfirmation/> */}
       {/* <RediectionConfirmation/> */}
       <div className={styles.appointments}>
@@ -55,8 +85,14 @@ export default function BookAnAppointment({ }: Props) {
           <TextField label='Full Name' id='full-name' defaultValue='' />
           <TextField label='Phone Number' id='phone-number' defaultValue='' />
           <TextField label='Email Address' id='email-address' defaultValue='' />
-          <Button text='Pick date' variant='secondary' />
-          <Button text='Pick available time' variant='secondary' />
+
+          {path === componentEnum.bookAnAppointment && <>
+            <Button text='Pick date' variant='secondary' onClick={() => setShowPickDateModel(true)} />
+            <Button text='Pick available time' variant='secondary' onClick={() => setShowPickTimeModel(true)}/>
+          </>}
+
+
+
         </div>
 
         <div className={styles.row}>

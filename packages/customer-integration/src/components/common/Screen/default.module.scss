@@ -5,7 +5,7 @@
   bottom: 1rem;
   right: 1rem;
   width: 375px;
-  height: 812px;
+  max-height: 812px;
   border-radius: 30px;
   background: #f9f9f9;
   padding: 14px 20px;
@@ -39,6 +39,10 @@
     margin-top: calc(25px - 21px);
     align-items: center;
     column-gap: 24px;
+
+    svg {
+      cursor: pointer;
+    }
     .title {
         margin-right: auto;
         color: #000;

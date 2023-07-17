@@ -6,7 +6,7 @@ type Props = {}
 
 export default function RediectionConfirmation({ }: Props) {
   return (
-    <Model>
+    <Model ref={null}>
       <ConfirmationTemplate title='Navigate' description='we are going to navigate you 
 to calling screen' confirmation='navigation' />
 

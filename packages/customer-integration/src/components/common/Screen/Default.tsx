@@ -9,8 +9,10 @@ import Search from '@assets/icons/search.svg'
 import { Input } from '@pasal/cio-component-library';
 import Button from '@components/common/Button/Button';
 import Template from '@components/Welcome/Template';
+import {useNavigate} from 'react-router-dom';
 
 import styles from './default.module.scss';
+
 
 
 type Props = {
@@ -22,6 +24,8 @@ export default function DefaultTemplate({ children, rightIcon }: Props) {
     const count = new Array(5).fill(0);
     const data: any = [];
     const [userData, setUserData] = useState([{ hello: 'world' }]);
+    const navigate = useNavigate();
+
     return (
         <div className={styles.list__agents}>
             <div className={styles.row}>
@@ -34,7 +38,7 @@ export default function DefaultTemplate({ children, rightIcon }: Props) {
             </div>
 
             <div className={styles.navigation}>
-                <BackIcon />
+                <BackIcon onClick={() => navigate(-1)}/>
                 <div className={styles.title}>
                     Select an agent
                 </div>

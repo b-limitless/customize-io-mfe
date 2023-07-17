@@ -7,9 +7,10 @@ interface Props {
     text: string | ReactNode;
     variant: button;
     className?:any;
+    [x:string]:any;
 }
 
-export default function Button({ text, variant, className }: Props) {
+export default function Button({ text, variant, className, ...rest }: Props) {
 
     let variantClass = "";
 
@@ -22,6 +23,6 @@ export default function Button({ text, variant, className }: Props) {
     }
 
     return (
-        <button className={styles.btn + ' ' + variantClass + ' ' + className} >{text}</button>
+        <button className={styles.btn + ' ' + variantClass + ' ' + className} {...rest}>{text}</button>
     )
 }

@@ -4,6 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import dayjs, { Dayjs } from 'dayjs';
 import * as React from 'react';
 import { styled } from '@mui/material';
+import { Props } from '../../Appointment/SelectDateAndTime/selected-date.types';
 
 // const style = {
 //     fontFamily: 'Poppins',
@@ -58,15 +59,21 @@ const calendarSx = {
   };
 
 
-export default function DateCalendarValue() {
-    const [value, setValue] = React.useState<Dayjs | null>(dayjs('2022-04-17'));
+export default function DateCalendarValue({setShowModel, value, setValue}: Props) {
+    
 
    
+    const dataOnChangeHalde = (newValue:any) => {
+        setValue(dayjs(newValue));
+        setShowModel(false);
+    }
+
+    // console.log(value, value)
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
 
-            <DateCalendar value={value} onChange={(newValue:any) => setValue(newValue)} sx={calendarSx} />
+            <DateCalendar value={value} onChange={(newValue:any) => dataOnChangeHalde(newValue)} sx={calendarSx} />
 
 
         </LocalizationProvider>

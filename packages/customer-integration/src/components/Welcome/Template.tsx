@@ -7,6 +7,8 @@ import Button from '@components/common/Button';
 import { Skeleton } from '@mui/material';
 import { CircularSkleton, TextSkleton } from '../common/Skleton';
 import { Link } from 'react-router-dom';
+import { componentEnum } from './welcome.types';
+import { appRoutes } from '../../config/routes';
 type Props = {}
 
 interface style {
@@ -23,6 +25,11 @@ export default function Template({ welcome, loading, data, addStyles }: Template
 
 
     const count = new Array(3).fill(0);
+
+    const test = {
+        id: 123,
+        name: 'John Doe',
+    };
 
     return (
         <div className={styles.welcome} style={addStyles}>
@@ -91,7 +98,13 @@ export default function Template({ welcome, loading, data, addStyles }: Template
             </div>
             <div className={styles.row}>
                 {loading && <TextSkleton width='60px' />}
-                {!loading && data.length > 0 && <> {!welcome && <Link to='/book-an-appointment'><Button text={'Book an appointment'} variant='secondary' /></Link>} <Link to='/agents'> <Button text={welcome ? 'Contact us' : 'Make a call'} variant='primary' /></Link></>}
+                {!loading && data.length > 0 && <> {!welcome &&
+                    <Link to={appRoutes.bookAnAppointment} state={{ data: { path: componentEnum.bookAnAppointment } }}>
+                        <Button text={'Book an appointment'} variant='secondary' />
+                    </Link>}
+                    <Link to={welcome ? appRoutes.agents : appRoutes.bookAnAppointment} state={{ data: { path: componentEnum.makeACall } }}>
+                        <Button text={welcome ? 'Contact us' : 'Make a call'} variant='primary' />
+                    </Link></>}
             </div>
         </div>
     )

@@ -14,3 +14,4 @@ declare module "@pasal/common-components/*";
 declare module "*.json";
 declare module "@components/*"
 declare module "@assets/*"
+declare module "@hooks/*"

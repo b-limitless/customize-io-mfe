@@ -28,13 +28,15 @@ export default function ListAgents({ }: Props) {
           <Search />
         </button>
       </div>
-
-      <div className={styles.empty__result}>
+      {/* If no data is found show this ui */}
+     
+      {/* <div className={styles.empty__result}>
         <span className={styles.title}>No results found</span>
-      </div>
-      {/* <div className={styles.agents}>
-        {count.map((item) => <Template data={userData} addStyles={{ position: 'relative' }} loading={false} />)}
       </div> */}
+      {/* If agents is avialabe then show this  */}
+      <div className={styles.agents}>
+        {count.map((item) => <Template data={userData} addStyles={{ position: 'relative' }} loading={false} />)}
+      </div>
     </DefaultTemplate>
     // <div className={styles.list__agents}>
     //   <div className={styles.row}>
@@ -53,8 +55,6 @@ export default function ListAgents({ }: Props) {
     //     </div>
     //     <QuestionSVG />
     //   </div>
-
-
     // </div>
   )
 }

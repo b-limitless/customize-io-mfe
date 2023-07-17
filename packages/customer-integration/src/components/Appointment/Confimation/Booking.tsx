@@ -11,7 +11,7 @@ type Props = {
 
 export default function BookingConfirmation({ }: Props) {
     return (
-        <Model>
+        <Model ref={null}>
             <ConfirmationTemplate title='Confirmation' description='Hey you have book the meeting
                     successfully, Kindly check you
                     email for confirmation' confirmation='confirmation' />

@@ -1,12 +1,15 @@
 import React from 'react';
 import Model from '../Model/Model';
 import styles from './select-time.module.scss';
+import { Props } from './selected-date.types';
 
-type Props = {}
 
-export default function SelectTime({}: Props) {
+
+const SelectTime = React.forwardRef<HTMLDivElement, Props>(
+       (
+        {setShowModel, value, setValue}, ref) => {
   return (
-    <Model>
+    <Model ref={ref}>
         <>
         <div className={styles.item}>
                 {/* If selected we need to show flex with two */}
@@ -77,4 +80,6 @@ export default function SelectTime({}: Props) {
             </div></>
     </Model>
   )
-}
+});
+
+export default SelectTime;

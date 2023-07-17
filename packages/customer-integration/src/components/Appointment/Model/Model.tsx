@@ -1,16 +1,19 @@
-import React, {ReactNode} from 'react';
+import React, {ReactNode, forwardRef} from 'react';
 import styles from './model.module.scss';
 
 type Props = {
-    children: ReactNode
+    children: ReactNode;
+    ref:any;
 }
 
-export default function Model({children}: Props) {
+const Model = forwardRef<HTMLDivElement, Props>(({children}, ref) => {
   return (
     <div className={styles.model}>
-        <div className={styles.items}>
+        <div className={styles.items} ref={ref}>
             {children}
         </div>
     </div>
   )
-}
+});
+
+export default Model;
