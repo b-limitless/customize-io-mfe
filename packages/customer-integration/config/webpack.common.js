@@ -71,6 +71,7 @@ const commonConfig = {
       '@components': path.resolve(__dirname, '../src/components'),
       '@assets': path.resolve(__dirname, '../src/assets'),
       '@hooks': path.resolve(__dirname, '../src/hooks'),
+      '@regrex': path.resolve(__dirname, '../src/regrex'),
     },
   },
 };

@@ -16,10 +16,24 @@ import RediectionConfirmation from '../Confimation/Rediection';
 import { useLocation } from 'react-router-dom';
 import { appRoutes } from '../../../config/routes';
 import { componentEnum } from '../../Welcome/welcome.types';
-import dayjs, { Dayjs } from 'dayjs'; 
+import dayjs, { Dayjs } from 'dayjs';
 import useOnClickOutside from '@hooks/useOnClickOutSide';
+import { baseExportModel, bookAnAppointmentModel } from './book.model';
+
+const baseModel = {
+
+}
 
 type Props = {}
+
+interface BaseForm {
+  fullName: string | null;
+  phoneNumber: string | null;
+  emailAddress: string | null;
+  date?: Date | null;
+  time?: Date | null;
+}
+
 
 export default function BookAnAppointment({ }: Props) {
   const style = {
@@ -49,6 +63,8 @@ export default function BookAnAppointment({ }: Props) {
   const [showPickTimeModel, setShowPickTimeModel] = useState<boolean | null>(null);
   const [selectedDate, setselectedDate] = React.useState<Dayjs | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>();
+  const [formError, setFormError] = useState({});
+  const [formData, setFormData] = useState<BaseForm>({ fullName: "", phoneNumber: "", emailAddress: "", date: null, time: null });
 
 
   // We need to manage height base on the clicked the button
@@ -56,20 +72,46 @@ export default function BookAnAppointment({ }: Props) {
   const timeModelRef = useRef(null);
 
   useOnClickOutside(timeModelRef, () => setShowPickTimeModel(false))
+  useOnClickOutside(dateModelRef, () => setShowPickDateModel(false));
+
+  const confirmBookingOrCallHanlder = () => {
+    // Base on differet location we need to handle the validation 
+    // In booking we have two extra model, date and time
+    setFormError({});
+    const catchError: any = {};
+    baseExportModel.map((field, i) => {
+      // @ts-ignore
+      if (!field.regrex.test(formData[field.name])) {
+        const { name } = field;
+        catchError[name] = ` ${name} is required `;
+      }
+    });
+    setFormError(catchError);
+
+
+  }
+
+  const onChangeHandler = (e: any) => {
+    const { value, name } = e.target;
+    setFormData({ ...formData, [name]: value });
+  }
+
+  console.log('formError', formError);
 
 
   return (
     <DefaultTemplate rightIcon={avatarEl()}>
-      {showPickTimeModel && <SelectTime 
-               setShowModel={setShowPickTimeModel} 
-               value={selectedTime} 
-               setValue={setSelectedTime} 
-               ref={timeModelRef}
+      {showPickTimeModel && <SelectTime
+        setShowModel={setShowPickTimeModel}
+        value={selectedTime}
+        setValue={setSelectedTime}
+        ref={timeModelRef}
       />}
       {showPickDateModel && <SelectDate
         setShowModel={setShowPickDateModel}
         value={selectedDate}
         setValue={setselectedDate}
+        ref={dateModelRef}
       />
       }
       {/* <BookingConfirmation/> */}
@@ -82,21 +124,18 @@ export default function BookAnAppointment({ }: Props) {
         </div>
         <div className={styles.row}>
           {/* <Input label='Full Name' size="small"/> */}
-          <TextField label='Full Name' id='full-name' defaultValue='' />
-          <TextField label='Phone Number' id='phone-number' defaultValue='' />
-          <TextField label='Email Address' id='email-address' defaultValue='' />
+          <TextField label='Full Name' id='full-name' value={formData.fullName} onChange={onChangeHandler} name='fullName' />
+          <TextField label='Phone Number' id='phone-number' value={formData.phoneNumber} onChange={onChangeHandler} name='phoneNumber' />
+          <TextField label='Email Address' id='email-address' value={formData.emailAddress} onChange={onChangeHandler} name='emailAddress' />
 
           {path === componentEnum.bookAnAppointment && <>
             <Button text='Pick date' variant='secondary' onClick={() => setShowPickDateModel(true)} />
-            <Button text='Pick available time' variant='secondary' onClick={() => setShowPickTimeModel(true)}/>
+            <Button text='Pick available time' variant='secondary' onClick={() => setShowPickTimeModel(true)} />
           </>}
-
-
-
         </div>
 
         <div className={styles.row}>
-          <Button text='Confirm' variant='primary' />
+          <Button text='Confirm' variant='primary' onClick={confirmBookingOrCallHanlder} />
           <Button text='Cancel' variant='secondary' />
         </div>
 

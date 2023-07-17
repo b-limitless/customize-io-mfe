@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import Model from '../Model/Model';
 import styles from './select-time.module.scss';
 import DateCalendarValue from '../../common/Calendar';
 import { Props } from './selected-date.types';
 
-export default function SelectDate({ setShowModel, value, setValue }: Props) {
+const SelectDate = forwardRef<HTMLDivElement, Props>(({ setShowModel, value, setValue }, ref) => {
   return (
-    <Model ref={null}>
+    <Model ref={ref}>
       <DateCalendarValue
         setShowModel={setShowModel}
         value={value}
@@ -14,4 +14,5 @@ export default function SelectDate({ setShowModel, value, setValue }: Props) {
       />
     </Model>
   )
-}
+});
+export default SelectDate;

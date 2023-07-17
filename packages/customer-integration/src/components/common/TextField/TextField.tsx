@@ -5,12 +5,12 @@ import { style } from '../../styles'
 type Props = {
     label: string;
     id: string;
-    defaultValue: string;
+    defaultValue?: string;
     [x: string]: any;
 }
 
 
-export default function TextField({ label, id, defaultValue }: Props) {
+export default function TextField({ label, id, defaultValue, ...rest }: Props) {
      const placeHodler = {
      
     }
@@ -31,6 +31,7 @@ export default function TextField({ label, id, defaultValue }: Props) {
                 lineHeight: "normal", 
                 opacity: 0.5 }, 
              }}
+         {...rest}
         />
     )
 }
