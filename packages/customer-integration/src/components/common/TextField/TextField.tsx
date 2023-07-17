@@ -10,10 +10,8 @@ type Props = {
 }
 
 
-export default function TextField({ label, id, defaultValue, ...rest }: Props) {
-     const placeHodler = {
-     
-    }
+export default function TextField({ error, label, id, defaultValue, ...rest }: Props) {
+   
     return (
         <Input
             label={label}
@@ -31,7 +29,10 @@ export default function TextField({ label, id, defaultValue, ...rest }: Props) {
                 lineHeight: "normal", 
                 opacity: 0.5 }, 
              }}
-         {...rest}
+           {...rest}
+           error={error}
+           helperText={error ? rest.helpText : null}
+        
         />
     )
 }

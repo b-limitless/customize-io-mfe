@@ -19,6 +19,9 @@ import { componentEnum } from '../../Welcome/welcome.types';
 import dayjs, { Dayjs } from 'dayjs';
 import useOnClickOutside from '@hooks/useOnClickOutSide';
 import { baseExportModel, bookAnAppointmentModel } from './book.model';
+import { camelCaseToNormal } from '../../../functions/camelCaseToNormal';
+import { FormHelperText } from '@mui/material';
+import HelpText from '../../common/TextField/HelpText';
 
 const baseModel = {
 
@@ -30,8 +33,9 @@ interface BaseForm {
   fullName: string | null;
   phoneNumber: string | null;
   emailAddress: string | null;
-  date?: Date | null;
-  time?: Date | null;
+  date?: string | null;
+  time?: string | null;
+  [x: string]: any;
 }
 
 
@@ -63,8 +67,8 @@ export default function BookAnAppointment({ }: Props) {
   const [showPickTimeModel, setShowPickTimeModel] = useState<boolean | null>(null);
   const [selectedDate, setselectedDate] = React.useState<Dayjs | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>();
-  const [formError, setFormError] = useState({});
-  const [formData, setFormData] = useState<BaseForm>({ fullName: "", phoneNumber: "", emailAddress: "", date: null, time: null });
+  const [formError, setFormError] = useState<any>({});
+  const [formData, setFormData] = useState<BaseForm>({ fullName: "", phoneNumber: "", emailAddress: "", date: "", time: "" });
 
 
   // We need to manage height base on the clicked the button
@@ -79,16 +83,24 @@ export default function BookAnAppointment({ }: Props) {
     // In booking we have two extra model, date and time
     setFormError({});
     const catchError: any = {};
-    baseExportModel.map((field, i) => {
-      // @ts-ignore
+
+    let selectedModel = baseExportModel;
+
+    if (path === componentEnum.bookAnAppointment) {
+      selectedModel = bookAnAppointmentModel;
+    }
+
+
+
+    console.log(selectedModel)
+    selectedModel.map((field, i) => {
+
       if (!field.regrex.test(formData[field.name])) {
         const { name } = field;
-        catchError[name] = ` ${name} is required `;
+        catchError[name] = `${camelCaseToNormal(name, true)} is required `;
       }
     });
     setFormError(catchError);
-
-
   }
 
   const onChangeHandler = (e: any) => {
@@ -96,7 +108,7 @@ export default function BookAnAppointment({ }: Props) {
     setFormData({ ...formData, [name]: value });
   }
 
-  console.log('formError', formError);
+  console.log(formError,)
 
 
   return (
@@ -124,13 +136,39 @@ export default function BookAnAppointment({ }: Props) {
         </div>
         <div className={styles.row}>
           {/* <Input label='Full Name' size="small"/> */}
-          <TextField label='Full Name' id='full-name' value={formData.fullName} onChange={onChangeHandler} name='fullName' />
-          <TextField label='Phone Number' id='phone-number' value={formData.phoneNumber} onChange={onChangeHandler} name='phoneNumber' />
-          <TextField label='Email Address' id='email-address' value={formData.emailAddress} onChange={onChangeHandler} name='emailAddress' />
+          <TextField
+            label='Full Name'
+            id='full-name'
+            value={formData.fullName}
+            onChange={onChangeHandler}
+            name='fullName'
+            error={!!formError?.fullName}
+            helpText={formError.fullName}
+          />
+
+          <TextField
+            label='Phone Number'
+            id='phone-number'
+            value={formData.phoneNumber}
+            onChange={onChangeHandler}
+            name='phoneNumber'
+            error={!!formError?.phoneNumber}
+            helpText={formError.phoneNumber}
+          />
+          <TextField label='Email Address' id='email-address'
+            value={formData.emailAddress} onChange={onChangeHandler} name='emailAddress'
+            error={!!formError?.emailAddress}
+            helpText={formError.emailAddress} />
 
           {path === componentEnum.bookAnAppointment && <>
-            <Button text='Pick date' variant='secondary' onClick={() => setShowPickDateModel(true)} />
+            <div className={styles.button__row}>
+              <Button text='Pick date' variant='secondary' onClick={() => setShowPickDateModel(true)} />
+              {!!formError.date && <HelpText text={formError.date}/>}
+            </div>
+            <div className={styles.button__row}>
             <Button text='Pick available time' variant='secondary' onClick={() => setShowPickTimeModel(true)} />
+            {!!formError.time && <HelpText text={formError.time}/>}
+            </div>
           </>}
         </div>
 

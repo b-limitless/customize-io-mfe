@@ -32,9 +32,14 @@
         margin-top: 31px;
         display: flex;
         flex-direction: column;
-        row-gap: 30px;
+        row-gap: calc(30px - 19px);
         padding-bottom: 34px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+
+        & > div {
+            min-height: 58.16px;
+        }
+        
 
         button {
             padding: 12px 0 11px 0;
@@ -54,5 +59,12 @@
             padding: 12px 0 11px 0;
             border-radius: 66px;
         }
+    }
+}
+.button__row {
+    width: 100%;
+
+    button {
+        width: 100%;
     }
 }
