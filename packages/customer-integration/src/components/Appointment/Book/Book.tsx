@@ -22,6 +22,7 @@ import { baseExportModel, bookAnAppointmentModel } from './book.model';
 import { camelCaseToNormal } from '../../../functions/camelCaseToNormal';
 import { FormHelperText } from '@mui/material';
 import HelpText from '../../common/TextField/HelpText';
+import { message } from '@components/message';
 
 // Will be fetch through the rest api when the date is changed 
 
@@ -154,33 +155,56 @@ export default function BookAnAppointment({ }: Props) {
   useOnClickOutside(timeModelRef, () => setShowPickTimeModel(false))
   useOnClickOutside(dateModelRef, () => setShowPickDateModel(false));
 
-  const confirmBookingOrCallHanlder = () => {
+  const valideData = async() => {
     // Base on differet location we need to handle the validation 
     // In booking we have two extra model, date and time
-    setFormError({});
-    const catchError: any = {};
+    // setFormError({});
+    return new Promise((resolve, reject) => {
+      const catchError: any = {};
 
-    let selectedModel = baseExportModel;
-
-    if (path === componentEnum.bookAnAppointment) {
-      selectedModel = bookAnAppointmentModel;
-    }
-
-    selectedModel.map((field, i) => {
-      if (!field.regrex.test(formData[field.name])) {
-        const { name } = field;
-        catchError[name] = `${camelCaseToNormal(name, true)} is required `;
+      let selectedModel = baseExportModel;
+  
+      if (path === componentEnum.bookAnAppointment) {
+        selectedModel = bookAnAppointmentModel;
       }
-    });
+  
+      selectedModel.map((field, i) => {
+        if (!field.regrex.test(formData[field.name])) {
+          const { name } = field;
+          catchError[name] = `${camelCaseToNormal(name, true)} is required `;
+        }
+      });
+  
+      if (path === componentEnum.bookAnAppointment && !selectedDate) {
+        catchError.date = `${message.pleaseSelect} ${message.date}`;
+      }
+  
+      if (path === componentEnum.bookAnAppointment && !formData.time) {
+        catchError.time = `${message.pleaseSelect} ${message.time}`;
+      }
+      // setFormError(catchError);
+      if(Object.entries(catchError).length > 0) {
+        return reject(catchError);
+      }
+  
+      resolve(null);
 
-    if (!selectedDate) {
-      catchError.date = `Please select the date`;
-    }
+    })
+    
+  }
 
-    if (!formData.time) {
-      catchError.time = `Please select the time`;
+  const confirmFormSubmissionHandler = async() => {
+    setFormError({});
+    try {
+      await valideData();
+      console.log("all is good to go")
+    } catch (err) {
+      setFormError(err);
+      console.log(err);
     }
-    setFormError(catchError);
+    
+
+    
   }
 
   const onChangeHandler = (e: any) => {
@@ -190,13 +214,11 @@ export default function BookAnAppointment({ }: Props) {
 
   const conformTimeSlotHandler = () => {
     const getSlot = availableSlots.available_slots.filter((slot:any) => slot.mongoId === selectedTime);
-    console.log('getSlot', getSlot);
     if(getSlot.length === 0) return;
     setFormData({...formData, time: getSlot[0]}); 
     setShowPickTimeModel(false);
   }
 
-  console.log('formData', formData)
   
 
   return (
@@ -257,7 +279,7 @@ export default function BookAnAppointment({ }: Props) {
         </div>
 
         <div className={styles.row}>
-          <Button text='Confirm' variant='primary' onClick={confirmBookingOrCallHanlder} />
+          <Button text='Confirm' variant='primary' onClick={confirmFormSubmissionHandler} />
           <Button text='Cancel' variant='secondary' />
         </div>
 
