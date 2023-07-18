@@ -24,16 +24,16 @@ export const baseExportModel = [
 
 export const bookAnAppointmentModel = [
   ...baseExportModel,
-  {
-    name: "date",
-    regrex: validString,
-    errorMessage: "",
-    type: "text ",
-  },
-  {
-    name: "time",
-    regrex: validString,
-    errorMessage: "",
-    type: "text ",
-  },
+  // {
+  //   name: "date",
+  //   regrex: validString,
+  //   errorMessage: "",
+  //   type: "text ",
+  // },
+  // {
+  //   name: "time",
+  //   regrex: validString,
+  //   errorMessage: "",
+  //   type: "text ",
+  // },
 ];

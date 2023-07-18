@@ -23,9 +23,85 @@ import { camelCaseToNormal } from '../../../functions/camelCaseToNormal';
 import { FormHelperText } from '@mui/material';
 import HelpText from '../../common/TextField/HelpText';
 
-const baseModel = {
+// Will be fetch through the rest api when the date is changed 
 
+
+
+const availableSlots = {
+  "date": "2023-07-18",
+  "available_slots": [
+    {
+      "id": 1,
+      "mongoId": "6094c1d8e3d74b001e245a2a",
+      "start_time": "09:00 AM",
+      "end_time": "10:00 AM"
+    },
+    {
+      "id": 2,
+      "mongoId": "6094c1d8e3d74b001e245a2b",
+      "start_time": "11:00 AM",
+      "end_time": "12:00 PM"
+    },
+    {
+      "id": 3,
+      "mongoId": "6094c1d8e3d74b001e245a2c",
+      "start_time": "02:00 PM",
+      "end_time": "03:00 PM"
+    },
+    {
+      "id": 4,
+      "mongoId": "6094c1d8e3d74b001e245a2d",
+      "start_time": "05:00 PM",
+      "end_time": "06:00 PM"
+    },
+    {
+      "id": 5,
+      "mongoId": "6094c1d8e3d74b001e245a2e",
+      "start_time": "06:00 PM",
+      "end_time": "07:00 PM"
+    },
+    {
+      "id": 6,
+      "mongoId": "6094c1d8e3d74b001e245a26",
+      "start_time": "06:00 PM",
+      "end_time": "07:00 PM"
+    }, 
+    {
+      "id": 7,
+      "mongoId": "6094c1d8e3d74b001e245a27",
+      "start_time": "06:00 PM",
+      "end_time": "07:00 PM"
+    }
+  ]
 }
+
+
+// POST https://www.googleapis.com/calendar/v3/calendars/{calendarId}/events
+
+// {
+//   "start": {
+//     "dateTime": "2023-07-18T10:00:00+04:00",
+//     "timeZone": "Asia/Dubai"
+//   },
+//   "end": {
+//     "dateTime": "2023-07-18T10:30:00+04:00",
+//     "timeZone": "Asia/Dubai"
+//   }
+// }
+
+// You will be sending user request in this format to google calendar api in this way 
+
+// POST https://www.googleapis.com/calendar/v3/calendars/{calendarId}/events
+
+// {
+//   "start": {
+//     "dateTime": "2023-07-18T09:00:00+04:00"
+//   },
+//   "end": {
+//     "dateTime": "2023-07-18T10:00:00+04:00"
+//   },
+//   "summary": "Meeting"
+// }
 
 type Props = {}
 
@@ -34,7 +110,7 @@ interface BaseForm {
   phoneNumber: string | null;
   emailAddress: string | null;
   date?: string | null;
-  time?: string | null;
+  time?: {[x:string]:any} | null;
   [x: string]: any;
 }
 
@@ -68,7 +144,7 @@ export default function BookAnAppointment({ }: Props) {
   const [selectedDate, setselectedDate] = React.useState<Dayjs | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>();
   const [formError, setFormError] = useState<any>({});
-  const [formData, setFormData] = useState<BaseForm>({ fullName: "", phoneNumber: "", emailAddress: "", date: "", time: "" });
+  const [formData, setFormData] = useState<BaseForm>({ fullName: "", phoneNumber: "", emailAddress: "", time: null });
 
 
   // We need to manage height base on the clicked the button
@@ -90,16 +166,20 @@ export default function BookAnAppointment({ }: Props) {
       selectedModel = bookAnAppointmentModel;
     }
 
-
-
-    console.log(selectedModel)
     selectedModel.map((field, i) => {
-
       if (!field.regrex.test(formData[field.name])) {
         const { name } = field;
         catchError[name] = `${camelCaseToNormal(name, true)} is required `;
       }
     });
+
+    if (!selectedDate) {
+      catchError.date = `Please select the date`;
+    }
+
+    if (!formData.time) {
+      catchError.time = `Please select the time`;
+    }
     setFormError(catchError);
   }
 
@@ -108,8 +188,16 @@ export default function BookAnAppointment({ }: Props) {
     setFormData({ ...formData, [name]: value });
   }
 
-  console.log(formError,)
+  const conformTimeSlotHandler = () => {
+    const getSlot = availableSlots.available_slots.filter((slot:any) => slot.mongoId === selectedTime);
+    console.log('getSlot', getSlot);
+    if(getSlot.length === 0) return;
+    setFormData({...formData, time: getSlot[0]}); 
+    setShowPickTimeModel(false);
+  }
 
+  console.log('formData', formData)
+  
 
   return (
     <DefaultTemplate rightIcon={avatarEl()}>
@@ -118,6 +206,8 @@ export default function BookAnAppointment({ }: Props) {
         value={selectedTime}
         setValue={setSelectedTime}
         ref={timeModelRef}
+        availableSlots={availableSlots.available_slots}
+        conformTimeSlotHandler={conformTimeSlotHandler}
       />}
       {showPickDateModel && <SelectDate
         setShowModel={setShowPickDateModel}
@@ -161,14 +251,8 @@ export default function BookAnAppointment({ }: Props) {
             helpText={formError.emailAddress} />
 
           {path === componentEnum.bookAnAppointment && <>
-            <div className={styles.button__row}>
-              <Button text='Pick date' variant='secondary' onClick={() => setShowPickDateModel(true)} />
-              {!!formError.date && <HelpText text={formError.date}/>}
-            </div>
-            <div className={styles.button__row}>
-            <Button text='Pick available time' variant='secondary' onClick={() => setShowPickTimeModel(true)} />
-            {!!formError.time && <HelpText text={formError.time}/>}
-            </div>
+            <Button text='Pick date' variant={!!formError.date ? 'error' : 'secondary'} onClick={() => setShowPickDateModel(true)} />
+            <Button text='Pick available time' variant={!!formError.time ? 'error' : 'secondary'} onClick={() => setShowPickTimeModel(true)} />
           </>}
         </div>
 

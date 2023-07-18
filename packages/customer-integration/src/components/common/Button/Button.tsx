@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import styles from './button.module.scss';
 
-type button = 'primary' | 'secondary';
+type button = 'primary' | 'secondary' | 'error';
 
 interface Props {
     text: string | ReactNode;
@@ -20,6 +20,10 @@ export default function Button({ text, variant, className, ...rest }: Props) {
 
     if (variant === 'secondary') {
         variantClass = styles.btn__secondary;
+    }
+
+    if(variant === 'error') {
+        variantClass = styles.btn__error;
     }
 
     return (
