@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import DefaultTemplate from '@components/common/Screen/Default';
 import styles from './book.module.scss';
 import avatar from '@assets/images/avatar.png';
-import { Input } from '@pasal/cio-component-library';
 import Button from '../../common/Button/Button';
 import TextField from '../../common/TextField/TextField';
 import Model from '../Model/Model';
@@ -145,8 +144,10 @@ export default function BookAnAppointment({ }: Props) {
   const [selectedDate, setselectedDate] = React.useState<Dayjs | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>();
   const [formError, setFormError] = useState<any>({});
-  const [formData, setFormData] = useState<BaseForm>({ fullName: "", phoneNumber: "", emailAddress: "", time: null });
-
+  const initialFormValue = { fullName: "", phoneNumber: "", emailAddress: "", time: null };
+  const [formData, setFormData] = useState<BaseForm>(initialFormValue);
+  const [bookingConfirmed, setBookingConfirmed] = useState(false);
+  const [showReadyToCall, setShowReadyToCall] = useState(false);
 
   // We need to manage height base on the clicked the button
   const dateModelRef = useRef(null);
@@ -197,7 +198,17 @@ export default function BookAnAppointment({ }: Props) {
     setFormError({});
     try {
       await valideData();
-      console.log("all is good to go")
+      // Lets send this request to server
+      // Based on the response will have to show different popu
+      if(path === componentEnum.bookAnAppointment) {
+        setBookingConfirmed(true);
+        setFormData(initialFormValue);
+       
+      }
+
+      if(path === componentEnum.makeACall) {
+        setShowReadyToCall(true);
+      }
     } catch (err) {
       setFormError(err);
       console.log(err);
@@ -238,8 +249,8 @@ export default function BookAnAppointment({ }: Props) {
         ref={dateModelRef}
       />
       }
-      {/* <BookingConfirmation/> */}
-      {/* <RediectionConfirmation/> */}
+      {bookingConfirmed && <BookingConfirmation/>}
+      {showReadyToCall && <RediectionConfirmation/>}
       <div className={styles.appointments}>
         <div className={styles.row}>
           <div className={styles.title}>Marketing Conference</div>

@@ -21,17 +21,6 @@ const devConfig = {
     },
   },
   plugins: [
-    new ModuleFederationPlugin({
-      name: "payment",
-      filename: "remoteEntry.js",
-      exposes: {
-        "./CustomerInteractionApp": "./src/bootstrap",
-      },
-      remotes: {
-        
-      },
-      shared: packageJson.dependencies,
-    }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),

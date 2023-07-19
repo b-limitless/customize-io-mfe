@@ -6,7 +6,6 @@ import BackIcon from '@assets/icons/back.svg';
 import QuestionSVG from '@assets/icons/question.svg';
 import SquireAvtar from '@assets/icons/squire-avatar.svg'
 import Search from '@assets/icons/search.svg'
-import { Input } from '@pasal/cio-component-library';
 import Button from '@components/common/Button/Button';
 import Template from '@components/Welcome/Template';
 import DefaultTemplate from '@components/common/Screen/Default';
