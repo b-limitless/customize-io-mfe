@@ -25,7 +25,7 @@ const prodConfig = {
     // }),
     new WebpackManifestPlugin({
       fileName: 'asset-manifest.json',
-      publicPath: "../dist",
+      publicPath: "../build",
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
