@@ -4,8 +4,6 @@ import React, { useRef, useState } from 'react';
 import Button from '../../common/Button/Button';
 import TextField from '../../common/TextField/TextField';
 import styles from './book.module.scss';
-// import SelectTime from '../SelectTime';
-// import SelectDate from '../SelectDate';
 import { message } from '@components/message';
 import useOnClickOutside from '@hooks/useOnClickOutSide';
 import { Dayjs } from 'dayjs';
@@ -17,60 +15,6 @@ import RediectionConfirmation from '../Confimation/Rediection';
 import SelectDate from '../SelectDateAndTime/SelectDate';
 import SelectTime from '../SelectDateAndTime/SelectTime';
 import { baseExportModel, bookAnAppointmentModel } from './book.model';
-
-// Will be fetch through the rest api when the date is changed 
-
-
-
-const availableSlots = {
-  "date": "2023-07-18",
-  "available_slots": [
-    {
-      "id": 1,
-      "mongoId": "6094c1d8e3d74b001e245a2a",
-      "start_time": "09:00 AM",
-      "end_time": "10:00 AM"
-    },
-    {
-      "id": 2,
-      "mongoId": "6094c1d8e3d74b001e245a2b",
-      "start_time": "11:00 AM",
-      "end_time": "12:00 PM"
-    },
-    {
-      "id": 3,
-      "mongoId": "6094c1d8e3d74b001e245a2c",
-      "start_time": "02:00 PM",
-      "end_time": "03:00 PM"
-    },
-    {
-      "id": 4,
-      "mongoId": "6094c1d8e3d74b001e245a2d",
-      "start_time": "05:00 PM",
-      "end_time": "06:00 PM"
-    },
-    {
-      "id": 5,
-      "mongoId": "6094c1d8e3d74b001e245a2e",
-      "start_time": "06:00 PM",
-      "end_time": "07:00 PM"
-    },
-    {
-      "id": 6,
-      "mongoId": "6094c1d8e3d74b001e245a26",
-      "start_time": "06:00 PM",
-      "end_time": "07:00 PM"
-    }, 
-    {
-      "id": 7,
-      "mongoId": "6094c1d8e3d74b001e245a27",
-      "start_time": "06:00 PM",
-      "end_time": "07:00 PM"
-    }
-  ]
-}
-
-
 // POST https://www.googleapis.com/calendar/v3/calendars/{calendarId}/events
 
 // {
@@ -111,6 +55,55 @@ type BaseForm  = {
 
 
 export default function BookAnAppointment({selectedComponent, setSeletedComponent }: Props) {
+
+  const availableSlots = {
+    "date": "2023-07-18",
+    "available_slots": [
+      {
+        "id": 1,
+        "mongoId": "6094c1d8e3d74b001e245a2a",
+        "start_time": "09:00 AM",
+        "end_time": "10:00 AM"
+      },
+      {
+        "id": 2,
+        "mongoId": "6094c1d8e3d74b001e245a2b",
+        "start_time": "11:00 AM",
+        "end_time": "12:00 PM"
+      },
+      {
+        "id": 3,
+        "mongoId": "6094c1d8e3d74b001e245a2c",
+        "start_time": "02:00 PM",
+        "end_time": "03:00 PM"
+      },
+      {
+        "id": 4,
+        "mongoId": "6094c1d8e3d74b001e245a2d",
+        "start_time": "05:00 PM",
+        "end_time": "06:00 PM"
+      },
+      {
+        "id": 5,
+        "mongoId": "6094c1d8e3d74b001e245a2e",
+        "start_time": "06:00 PM",
+        "end_time": "07:00 PM"
+      },
+      {
+        "id": 6,
+        "mongoId": "6094c1d8e3d74b001e245a26",
+        "start_time": "06:00 PM",
+        "end_time": "07:00 PM"
+      }, 
+      {
+        "id": 7,
+        "mongoId": "6094c1d8e3d74b001e245a27",
+        "start_time": "06:00 PM",
+        "end_time": "07:00 PM"
+      }
+    ]
+  }
+
   const style = {
     width: '35px',
     height: '35px',
@@ -152,9 +145,6 @@ export default function BookAnAppointment({selectedComponent, setSeletedComponen
   useOnClickOutside(dateModelRef, () => setShowPickDateModel(false));
 
   const valideData = async() => {
-    // Base on differet location we need to handle the validation 
-    // In booking we have two extra model, date and time
-    // setFormError({});
     return new Promise((resolve, reject) => {
       const catchError: any = {};
 
@@ -178,7 +168,7 @@ export default function BookAnAppointment({selectedComponent, setSeletedComponen
       if (path === componentEnum.bookAnAppointment && !formData.time) {
         catchError.time = `${message.pleaseSelect} ${message.time}`;
       }
-      // setFormError(catchError);
+
       if(Object.entries(catchError).length > 0) {
         return reject(catchError);
       }
@@ -208,9 +198,6 @@ export default function BookAnAppointment({selectedComponent, setSeletedComponen
       setFormError(err);
       console.log(err);
     }
-    
-
-    
   }
 
   const onChangeHandler = (e: any) => {
@@ -225,7 +212,6 @@ export default function BookAnAppointment({selectedComponent, setSeletedComponen
     setShowPickTimeModel(false);
   }
 
-  
 
   return (
     <DefaultTemplate rightIcon={avatarEl()} selectedComponent={selectedComponent} setSeletedComponent={setSeletedComponent} >
