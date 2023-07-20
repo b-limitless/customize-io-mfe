@@ -37,7 +37,7 @@ export default function ListAgents({selectedComponent, setSeletedComponent }: Pr
       </div> */}
       {/* If agents is avialabe then show this  */}
       <div className={styles.agents}>
-        {count.map((item) => <Template data={userData} addStyles={{ position: 'relative' }} loading={false} />)}
+        {count.map((item, i) => <Template key={`template-${i}`} selectedComponent={selectedComponent} setSeletedComponent={setSeletedComponent} data={userData} addStyles={{ position: 'relative' }} loading={false} />)}
       </div>
     </DefaultTemplate>
     

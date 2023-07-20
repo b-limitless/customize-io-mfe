@@ -1,12 +1,4 @@
 import React, { useState } from 'react';
-import styles from './welcome.module.scss';
-import logo from '@assets/images/logo.png'
-import smallAvatar from '@assets/images/small-avatar.png'
-import Star from '@assets/icons/star.svg';
-import Button from '@components/common/Button';
-import { Skeleton } from '@mui/material';
-import { CircularSkleton, TextSkleton } from '../common/Skleton';
-import { Link } from 'react-router-dom';
 import Template from './Template';
 type Props = {
   [x:string]:any

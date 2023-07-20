@@ -1,27 +1,22 @@
-import React, { useRef, useState } from 'react';
-import DefaultTemplate from '@components/common/Screen/Default';
-import styles from './book.module.scss';
 import avatar from '@assets/images/avatar.png';
+import DefaultTemplate from '@components/common/Screen/Default';
+import React, { useRef, useState } from 'react';
 import Button from '../../common/Button/Button';
 import TextField from '../../common/TextField/TextField';
-import Model from '../Model/Model';
+import styles from './book.module.scss';
 // import SelectTime from '../SelectTime';
 // import SelectDate from '../SelectDate';
-import SelectDate from '../SelectDateAndTime/SelectDate';
-import SelectTime from '../SelectDateAndTime/SelectTime';
-import Booking from '../Confimation/Booking';
+import { message } from '@components/message';
+import useOnClickOutside from '@hooks/useOnClickOutSide';
+import { Dayjs } from 'dayjs';
+import { camelCaseToNormal } from '../../../functions/camelCaseToNormal';
+import { componentEnum } from '../../Welcome/welcome.types';
+import { commonTypes } from '../../type';
 import BookingConfirmation from '../Confimation/Booking';
 import RediectionConfirmation from '../Confimation/Rediection';
-import { useLocation } from 'react-router-dom';
-import { appRoutes } from '../../../config/routes';
-import { componentEnum } from '../../Welcome/welcome.types';
-import dayjs, { Dayjs } from 'dayjs';
-import useOnClickOutside from '@hooks/useOnClickOutSide';
+import SelectDate from '../SelectDateAndTime/SelectDate';
+import SelectTime from '../SelectDateAndTime/SelectTime';
 import { baseExportModel, bookAnAppointmentModel } from './book.model';
-import { camelCaseToNormal } from '../../../functions/camelCaseToNormal';
-import { FormHelperText } from '@mui/material';
-import HelpText from '../../common/TextField/HelpText';
-import { message } from '@components/message';
 
 // Will be fetch through the rest api when the date is changed 
 
@@ -103,9 +98,9 @@ const availableSlots = {
 //   "summary": "Meeting"
 // }
 
-type Props = {}
+type Props = commonTypes & {}
 
-interface BaseForm {
+type BaseForm  = {
   fullName: string | null;
   phoneNumber: string | null;
   emailAddress: string | null;
@@ -115,7 +110,7 @@ interface BaseForm {
 }
 
 
-export default function BookAnAppointment({ }: Props) {
+export default function BookAnAppointment({selectedComponent, setSeletedComponent }: Props) {
   const style = {
     width: '35px',
     height: '35px',
@@ -137,8 +132,8 @@ export default function BookAnAppointment({ }: Props) {
     fontWeight: 400,
     lineHeight: "normal"
   }
-  const location = useLocation();
-  const { state: { data: { path } } = {} } = location;
+  
+  const path = selectedComponent;
   const [showPickDateModel, setShowPickDateModel] = useState<boolean>(false);
   const [showPickTimeModel, setShowPickTimeModel] = useState<boolean | null>(null);
   const [selectedDate, setselectedDate] = React.useState<Dayjs | null>(null);
@@ -233,7 +228,7 @@ export default function BookAnAppointment({ }: Props) {
   
 
   return (
-    <DefaultTemplate rightIcon={avatarEl()}>
+    <DefaultTemplate rightIcon={avatarEl()} selectedComponent={selectedComponent} setSeletedComponent={setSeletedComponent} >
       {showPickTimeModel && <SelectTime
         setShowModel={setShowPickTimeModel}
         value={selectedTime}

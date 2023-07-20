@@ -3,13 +3,10 @@ import logo from '@assets/images/logo.png';
 import smallAvatar from '@assets/images/small-avatar.png';
 import Button from '@components/common/Button';
 import React from 'react';
-import { appRoutes } from '../../config/routes';
 import { CircularSkleton, TextSkleton } from '../common/Skleton';
 import { componentEnum as newComponentEnum } from '../type';
 import styles from './template.module.scss';
-import { componentEnum } from './welcome.types';
 type Props = {}
-
 interface style {
     [x: string]: string;
 }
@@ -18,21 +15,14 @@ interface TemplateInterface {
     welcome?: boolean;
     data: any[];
     addStyles: style
-    [x:string]:any
+    [x: string]: any
 }
-
-
-
-export default function Template({selectedComponent, setSeletedComponent, welcome, loading, data, addStyles }: TemplateInterface) {
-
-
+export default function Template({ selectedComponent, setSeletedComponent, welcome, loading, data, addStyles }: TemplateInterface) {
     const count = new Array(3).fill(0);
-
     const test = {
         id: 123,
         name: 'John Doe',
     };
-
     return (
         <div className={styles.welcome} style={addStyles}>
             <div className={styles.row}>
@@ -49,7 +39,6 @@ export default function Template({selectedComponent, setSeletedComponent, welcom
                         <div className={styles.title}>
                             {loading && <TextSkleton width='200px' />}
                             {!loading && data.length > 0 && 'Marketing Conference'}
-
                         </div>
                         <div className={styles.sub__title}>
                             {loading && <TextSkleton width='200px' />}
@@ -62,7 +51,6 @@ export default function Template({selectedComponent, setSeletedComponent, welcom
                             <div className={styles.numbers}>
                                 {loading && <TextSkleton width='5px' />}
                                 {!loading && data.length > 0 && 10}
-
                             </div>
                         </div>
                         <div className={styles.child__col}>
@@ -75,8 +63,6 @@ export default function Template({selectedComponent, setSeletedComponent, welcom
                                     <img src={smallAvatar}></img>
                                     <span className={styles.more__available}>+15</span>
                                 </>}
-
-
                             </div>
                         </div>
                         <div className={styles.child__col}>
@@ -92,7 +78,6 @@ export default function Template({selectedComponent, setSeletedComponent, welcom
                                     <Star />
                                     <Star />
                                     <Star /></>}
-
                             </div>
                         </div>
                     </div>}
@@ -101,12 +86,12 @@ export default function Template({selectedComponent, setSeletedComponent, welcom
             <div className={styles.row}>
                 {loading && <TextSkleton width='60px' />}
                 {!loading && data.length > 0 && <> {!welcome &&
-                    <a href={appRoutes.bookAnAppointment} data-state={{ data: { path: componentEnum.bookAnAppointment } }}>
-                        <Button text={'Book an appointment'} variant='secondary' />
-                    </a>}
-                    {/* <a href={welcome ? appRoutes.agents : appRoutes.bookAnAppointment} data-state={{ data: { path: componentEnum.makeACall } }}> </a> */}
-                        <Button text={welcome ? 'Contact us' : 'Make a call'} variant='primary' onClick={() => setSeletedComponent(newComponentEnum.agents)}/>
-                   </>}
+                        <Button text={'Book an appointment'} variant='secondary' onClick={() => setSeletedComponent(newComponentEnum.bookAnAppointment)}/>
+                }
+                    {}
+                    <Button 
+                       text={welcome ? 'Contact us' : 'Make a call'} variant='primary' onClick={() => welcome ? setSeletedComponent(newComponentEnum.agents) : setSeletedComponent(newComponentEnum.makeACall)} />
+                </>}
             </div>
         </div>
     )

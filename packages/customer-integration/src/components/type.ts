@@ -1,7 +1,8 @@
 export enum componentEnum  {
     welcome='welcome',
     agents='agents', 
-    bookAnAppointment='bookAnAppointment'
+    bookAnAppointment='bookAnAppointment', 
+    makeACall='makeACall'
   }
   
 export type componentType = `${componentEnum}`; 
