@@ -13,14 +13,17 @@ import DefaultTemplate from '@components/common/Screen/Default';
 import styles from './list.module.scss';
 
 
-type Props = {}
+type Props = {
+  [x:string]: any;
+}
+// 
 
-export default function ListAgents({ }: Props) {
+export default function ListAgents({selectedComponent, setSeletedComponent }: Props) {
   const count = new Array(5).fill(0);
   const data: any = [];
   const [userData, setUserData] = useState([{ hello: 'world' }]);
   return (
-    <DefaultTemplate rightIcon={<QuestionSVG />}>
+    <DefaultTemplate rightIcon={<QuestionSVG />} selectedComponent={selectedComponent} setSeletedComponent={setSeletedComponent}>
       <div className={styles.search}>
         <div className={styles.form}><input className={styles.search__input} type='text' placeholder='Searh...' /></div>
         <button className={styles.search__btn}>
@@ -37,23 +40,6 @@ export default function ListAgents({ }: Props) {
         {count.map((item) => <Template data={userData} addStyles={{ position: 'relative' }} loading={false} />)}
       </div>
     </DefaultTemplate>
-    // <div className={styles.list__agents}>
-    //   <div className={styles.row}>
-    //     <div className={styles.time}>9:41</div>
-    //     <div className={styles.indicators}>
-    //       <NetWorkSVG />
-    //       <WifiSVG />
-    //       <BatteriesSVG />
-    //     </div>
-    //   </div>
-
-    //   <div className={styles.navigation}>
-    //     <BackIcon />
-    //     <div className={styles.title}>
-    //       Select an agent
-    //     </div>
-    //     <QuestionSVG />
-    //   </div>
-    // </div>
+    
   )
 }

@@ -9,21 +9,27 @@ import Search from '@assets/icons/search.svg'
 import Button from '@components/common/Button/Button';
 import Template from '@components/Welcome/Template';
 import {useNavigate} from 'react-router-dom';
-
+import { getPrevousComponent } from '../../functions/getPreviousComponent';
 import styles from './default.module.scss';
+import { commonTypes, componentEnum } from '../../type';
 
 
 
-type Props = {
+type Props =commonTypes &  {
     children: ReactNode;
-    rightIcon: ReactNode
+    rightIcon: ReactNode;
+
 }
 
-export default function DefaultTemplate({ children, rightIcon }: Props) {
+export default function DefaultTemplate({selectedComponent,setSeletedComponent, children, rightIcon }: Props) {
     const count = new Array(5).fill(0);
     const data: any = [];
     const [userData, setUserData] = useState([{ hello: 'world' }]);
-    const navigate = useNavigate();
+
+    const getPreviousComponentName = () => {
+        return getPrevousComponent(componentEnum, selectedComponent)
+    }
+   
 
     return (
         <div className={styles.list__agents}>
@@ -37,7 +43,7 @@ export default function DefaultTemplate({ children, rightIcon }: Props) {
             </div>
 
             <div className={styles.navigation}>
-                <BackIcon onClick={() => navigate(-1)}/>
+                <BackIcon onClick={() => setSeletedComponent(getPreviousComponentName)}/>
                 <div className={styles.title}>
                     Select an agent
                 </div>

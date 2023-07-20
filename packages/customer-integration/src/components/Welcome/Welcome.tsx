@@ -8,9 +8,11 @@ import { Skeleton } from '@mui/material';
 import { CircularSkleton, TextSkleton } from '../common/Skleton';
 import { Link } from 'react-router-dom';
 import Template from './Template';
-type Props = {}
+type Props = {
+  [x:string]:any
+}
 
-export default function Welcome({ }: Props) {
+export default function Welcome({selectedComponent, setSeletedComponent }: Props) {
   const [loading, setLoading] = useState(false);
   const [userData, setUserData] = useState([{ hello: 'world' }]);
 
@@ -22,6 +24,6 @@ export default function Welcome({ }: Props) {
   const count = new Array(3).fill(0); 
 
   return (
-    <Template loading={loading} data={userData} addStyles={styles} welcome/>
+    <Template selectedComponent={selectedComponent} setSeletedComponent={setSeletedComponent} loading={loading} data={userData} addStyles={styles} welcome/>
   )
 }

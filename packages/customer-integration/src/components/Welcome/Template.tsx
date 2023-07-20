@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import styles from './template.module.scss';
-import logo from '@assets/images/logo.png'
-import smallAvatar from '@assets/images/small-avatar.png'
 import Star from '@assets/icons/star.svg';
+import logo from '@assets/images/logo.png';
+import smallAvatar from '@assets/images/small-avatar.png';
 import Button from '@components/common/Button';
-import { Skeleton } from '@mui/material';
-import { CircularSkleton, TextSkleton } from '../common/Skleton';
-import { Link } from 'react-router-dom';
-import { componentEnum } from './welcome.types';
+import React from 'react';
 import { appRoutes } from '../../config/routes';
+import { CircularSkleton, TextSkleton } from '../common/Skleton';
+import { componentEnum as newComponentEnum } from '../type';
+import styles from './template.module.scss';
+import { componentEnum } from './welcome.types';
 type Props = {}
 
 interface style {
@@ -19,9 +18,12 @@ interface TemplateInterface {
     welcome?: boolean;
     data: any[];
     addStyles: style
+    [x:string]:any
 }
 
-export default function Template({ welcome, loading, data, addStyles }: TemplateInterface) {
+
+
+export default function Template({selectedComponent, setSeletedComponent, welcome, loading, data, addStyles }: TemplateInterface) {
 
 
     const count = new Array(3).fill(0);
@@ -99,12 +101,12 @@ export default function Template({ welcome, loading, data, addStyles }: Template
             <div className={styles.row}>
                 {loading && <TextSkleton width='60px' />}
                 {!loading && data.length > 0 && <> {!welcome &&
-                    <Link to={appRoutes.bookAnAppointment} state={{ data: { path: componentEnum.bookAnAppointment } }}>
+                    <a href={appRoutes.bookAnAppointment} data-state={{ data: { path: componentEnum.bookAnAppointment } }}>
                         <Button text={'Book an appointment'} variant='secondary' />
-                    </Link>}
-                    <Link to={welcome ? appRoutes.agents : appRoutes.bookAnAppointment} state={{ data: { path: componentEnum.makeACall } }}>
-                        <Button text={welcome ? 'Contact us' : 'Make a call'} variant='primary' />
-                    </Link></>}
+                    </a>}
+                    {/* <a href={welcome ? appRoutes.agents : appRoutes.bookAnAppointment} data-state={{ data: { path: componentEnum.makeACall } }}> </a> */}
+                        <Button text={welcome ? 'Contact us' : 'Make a call'} variant='primary' onClick={() => setSeletedComponent(newComponentEnum.agents)}/>
+                   </>}
             </div>
         </div>
     )

@@ -5,22 +5,21 @@ import Welcome from '@components/Welcome';
 import ListAgents from '@components/Agents';
 import BookAnAppointment from '@components/Appointment/Book';
 import { Link } from 'react-router-dom';
+import { componentEnum, componentType } from './components/type';
 
 type Props = {}
 
-enum componentEnum  {
-  welcome='welcome',
-  agents='agents', 
-  bookAnAppointment='bookAnAppointment'
-}
 
-type componentType = `${componentEnum}`; 
 
 export default function App({ }: Props) {
   const [selectedComponent, setSeletedComponent] = useState<componentType>('welcome');
 
   if(selectedComponent === 'welcome') {
-    return <Welcome/>
+    return <Welcome selectedComponent={selectedComponent} setSeletedComponent={setSeletedComponent}/>
+  }
+
+  if(selectedComponent === 'agents') {
+    return <ListAgents selectedComponent={selectedComponent} setSeletedComponent={setSeletedComponent}/>
   }
 
   return null;
