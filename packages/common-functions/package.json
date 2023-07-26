@@ -1,12 +1,13 @@
 {
   "name": "@pasal/common-functions",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "clean": "del ./dist/*",
     "build": "npm run clean && tsc --outDir dist",
-    "publish:major": "git add . && git commit -m \"$message\" && npm version $(semver $npm_package_version -i major) && npm publish --access public --tag latest --no-email"
+    "removed": "git add . && git commit -m \"$message\"",
+    "publish:major": "npm version $(semver $npm_package_version -i major) && npm publish --access public --tag latest --no-email"
   },
   "author": "",
   "license": "ISC",
