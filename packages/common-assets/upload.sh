@@ -1,3 +1,3 @@
 for file in assets/*; do
-    cld upload "$file"
+    cld uploader upload "$file" folder="social" 
 done
