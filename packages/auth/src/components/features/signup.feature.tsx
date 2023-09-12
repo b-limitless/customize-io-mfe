@@ -4,11 +4,17 @@ import {
     Checkbox,
     Input,
     InputAdornments,
-} from "@pasal/cio-component-library"
+} from "@pasal/cio-component-library";
+import { FormInterface } from '../../interfaces/user/inde';
 
-type Props = {}
+type Props = {
+    onChangeHandler:Function;
+    form:FormInterface;
+}
 
-export default function SignupFeature({ }: Props) {
+
+
+export default function SignupFeature({onChangeHandler, form }: Props) {
     return (
         <div className="group-elements">
             <div className="row registration">
@@ -25,6 +31,9 @@ export default function SignupFeature({ }: Props) {
                         type="text"
                     //  error={true}
                     // helperText="Incorrect entry."
+                    name='fullName'
+                    onChange={onChangeHandler}
+                    value={form.fullName}
                     />
                     <Input
                         label="Email address*"
@@ -33,13 +42,28 @@ export default function SignupFeature({ }: Props) {
                         type="email"
                     //  error={true}
                     // helperText="Incorrect entry."
+                    name='email'
+                    onChange={onChangeHandler}
+                    value={form.email}
                     />
-                    <InputAdornments label="Password" />
+                    <InputAdornments label="Password" 
+                    name='password'
+                    onChange={onChangeHandler}
+                    value={form.password}
+                    />
 
-                    <InputAdornments label="Confirm password" />
+                    <InputAdornments label="Confirm password" 
+                    name='confirmPassword'
+                    onChange={onChangeHandler}
+                    value={form.confirmPassword}
+                    />
 
                     <div className="agreement">
-                        <Checkbox id="check-me" />
+                        <Checkbox id="check-me" 
+                        checked={form.agreement}
+                        name='agreement'
+                        onChange={onChangeHandler}
+                        />
                         <label htmlFor="check-me">I agree to terms & conditions</label>
                     </div>
 

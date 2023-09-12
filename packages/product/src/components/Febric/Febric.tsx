@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { mockFebrics } from '../../mock-data/febric';
-import { Button, BasicTable, DataTable, camelCaseToNormal, svgCDNAssets } from "@pasal/cio-component-library"
+import { Button, BasicTable, DataTable, camelCaseToNormal, svgCDNAssets, CheckboxWithLabel } from "@pasal/cio-component-library"
 
 import FebricDetails from './FebricDetails';
 
@@ -72,7 +72,7 @@ export default function Febric() {
   return (
     <>
     {showFebricDetailsModel !== -1 && <FebricDetails setShowFebricDetailsModel = {setShowFebricDetailsModel} showFebricDetailsModel={showFebricDetailsModel}/>}
-    
+   
     {/* <div className={styles.febric__wrapper}>
     <div className={styles.febric__container}>
       <div className={styles.row}>

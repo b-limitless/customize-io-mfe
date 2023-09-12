@@ -4,13 +4,61 @@ import {
   Input,
   InputAdornments,
 } from "@pasal/cio-component-library"
-import React from "react";
+import React, { useReducer } from "react";
 import BackLeftIcon from "../assets/svg/back-left-icon.svg";
 import Template from "../common/Template";
 import SignupFeature from "./features/signup.feature";
 import VerifyFeature from "./features/verify.feature";
+import { FormState } from "../interfaces/user/inde";
+
+const initialState: FormState = {
+  submitting: false,
+  form: {
+    fullName: '',
+    email: '',
+    password: '',
+    confirmPassword: '', 
+    agreement: false
+  },
+  submissionError: null,
+  success: null
+}
+
+function authReducer(state: FormState, action: any): FormState {
+  switch (action.type) {
+    case 'REGISTERING_USER':
+      return { ...state, submitting: true };
+    case 'USER_REGISTRATION_ERROR':
+      return { ...state, submissionError: action.payload };
+    case 'USER_REGISTRATION_SUCCESS':
+      return { ...state, success: true };
+    case 'UPDATE_FORM':
+      const { name, value } = action.payload;
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          [name]: value
+        }
+      }
+    default:
+      return state;
+  }
+}
+
+
 
 export default function Signup() {
+
+  const [{ submitting, form, submissionError, success }, dispatch] = useReducer(authReducer, initialState);
+
+  const onChangeHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const {name, value} = e.target;
+    dispatch({type: 'UPDATE_FORM', payload: {name, value: e.target.type === 'checkbox' ? e.target.checked : value}});
+  }
+
+  console.log(form)
+
   return (
     <Template>
       <div className="right col">
@@ -65,8 +113,11 @@ export default function Signup() {
             </div>
           </div>
         </div> */}
-        {/* <SignupFeature/> */}
-        <VerifyFeature/>
+        <SignupFeature 
+           onChangeHandler={onChangeHandler} 
+           form={form}
+           />
+        {/* <VerifyFeature/> */}
       </div>
     </Template>
   );
