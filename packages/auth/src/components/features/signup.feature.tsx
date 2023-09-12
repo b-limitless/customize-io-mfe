@@ -10,11 +10,12 @@ import { FormInterface } from '../../interfaces/user/inde';
 type Props = {
     onChangeHandler:Function;
     form:FormInterface;
+    onMouseLeaveEventHandler:Function;
 }
 
 
 
-export default function SignupFeature({onChangeHandler, form }: Props) {
+export default function SignupFeature({onChangeHandler, form, onMouseLeaveEventHandler }: Props) {
     return (
         <div className="group-elements">
             <div className="row registration">
@@ -34,6 +35,8 @@ export default function SignupFeature({onChangeHandler, form }: Props) {
                     name='fullName'
                     onChange={onChangeHandler}
                     value={form.fullName}
+                    onMouseOut={() => onMouseLeaveEventHandler('fullName', form.fullName)}
+                    // 
                     />
                     <Input
                         label="Email address*"

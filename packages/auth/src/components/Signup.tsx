@@ -11,14 +11,24 @@ import SignupFeature from "./features/signup.feature";
 import VerifyFeature from "./features/verify.feature";
 import { FormState } from "../interfaces/user/inde";
 
+const initialFormErrorState = {
+  fullName: null,
+  email: null,
+  password: null,
+  confirmPassword: null,
+  agreement: null
+}
 const initialState: FormState = {
   submitting: false,
   form: {
     fullName: '',
     email: '',
     password: '',
-    confirmPassword: '', 
+    confirmPassword: '',
     agreement: false
+  },
+  formError: {
+    ...initialFormErrorState
   },
   submissionError: null,
   success: null
@@ -32,7 +42,7 @@ function authReducer(state: FormState, action: any): FormState {
       return { ...state, submissionError: action.payload };
     case 'USER_REGISTRATION_SUCCESS':
       return { ...state, success: true };
-    case 'UPDATE_FORM':
+    case 'UPDATE_FORM': {
       const { name, value } = action.payload;
       return {
         ...state,
@@ -41,6 +51,27 @@ function authReducer(state: FormState, action: any): FormState {
           [name]: value
         }
       }
+    }
+    case 'FORM_ERROR': {
+      const { name, value } = action.payload;
+      return {
+        ...state,
+        formError: {
+          ...state.formError,
+          [name]: value
+        }
+      }
+    }
+    case 'RESET_FORM_ERROR': {
+      return {
+        ...state, 
+        formError: {
+          ...initialFormErrorState
+        }
+      }
+    }
+
+
     default:
       return state;
   }
@@ -50,14 +81,24 @@ function authReducer(state: FormState, action: any): FormState {
 
 export default function Signup() {
 
-  const [{ submitting, form, submissionError, success }, dispatch] = useReducer(authReducer, initialState);
+  const [{ submitting, form, submissionError, success, formError }, dispatch] = useReducer(authReducer, initialState);
 
-  const onChangeHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = e.target;
-    dispatch({type: 'UPDATE_FORM', payload: {name, value: e.target.type === 'checkbox' ? e.target.checked : value}});
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    dispatch({ type: 'UPDATE_FORM', payload: { name, value: e.target.type === 'checkbox' ? e.target.checked : value } });
   }
 
-  console.log(form)
+  const onMouseLeaveEventHandler = (name:string, value:string) => {
+    // Intiall clear all the errors
+    dispatch({type:  'RESET_FORM_ERROR'});
+
+    if(value === '') {
+      dispatch({type:  'FORM_ERROR', payload: {name, value: `${name} is required`}})
+    }
+  }
+
+
+  console.log('formError', formError)
 
   return (
     <Template>
@@ -113,10 +154,11 @@ export default function Signup() {
             </div>
           </div>
         </div> */}
-        <SignupFeature 
-           onChangeHandler={onChangeHandler} 
-           form={form}
-           />
+        <SignupFeature
+          onChangeHandler={onChangeHandler}
+          onMouseLeaveEventHandler={onMouseLeaveEventHandler}
+          form={form}
+        />
         {/* <VerifyFeature/> */}
       </div>
     </Template>
