@@ -3,8 +3,10 @@ export interface FormInterface {
   email: string;
   password: string;
   confirmPassword: string;
-  agreement:boolean;
+  agreement?:boolean;
 }
+
+
 
 export interface FormError {
     fullName: null | string,
@@ -19,5 +21,6 @@ export interface FormState {
   submissionError: null | string;
   success: null | boolean;
   formError: FormError
+  formHasError: null | boolean;
   
 }

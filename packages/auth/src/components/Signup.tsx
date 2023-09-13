@@ -9,14 +9,16 @@ import BackLeftIcon from "../assets/svg/back-left-icon.svg";
 import Template from "../common/Template";
 import SignupFeature from "./features/signup.feature";
 import VerifyFeature from "./features/verify.feature";
-import { FormState } from "../interfaces/user/inde";
+import { FormInterface, FormState } from "../interfaces/user/inde";
+import { camelCaseToNormal } from '@pasal/cio-component-library'
+import { userModel } from "../model/user";
 
 const initialFormErrorState = {
   fullName: null,
   email: null,
   password: null,
   confirmPassword: null,
-  agreement: null
+  agreement: null,
 }
 const initialState: FormState = {
   submitting: false,
@@ -27,6 +29,7 @@ const initialState: FormState = {
     confirmPassword: '',
     agreement: false
   },
+  formHasError: true,
   formError: {
     ...initialFormErrorState
   },
@@ -53,9 +56,10 @@ function authReducer(state: FormState, action: any): FormState {
       }
     }
     case 'FORM_ERROR': {
-      const { name, value } = action.payload;
+      const { name, value, formHasError } = action.payload;
       return {
         ...state,
+        formHasError,
         formError: {
           ...state.formError,
           [name]: value
@@ -64,14 +68,12 @@ function authReducer(state: FormState, action: any): FormState {
     }
     case 'RESET_FORM_ERROR': {
       return {
-        ...state, 
+        ...state,
         formError: {
           ...initialFormErrorState
         }
       }
     }
-
-
     default:
       return state;
   }
@@ -81,24 +83,63 @@ function authReducer(state: FormState, action: any): FormState {
 
 export default function Signup() {
 
-  const [{ submitting, form, submissionError, success, formError }, dispatch] = useReducer(authReducer, initialState);
+  const [{ submitting, 
+          form, 
+          submissionError, 
+          success, formError, 
+          formHasError }, dispatch] = useReducer(authReducer, initialState);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
     dispatch({ type: 'UPDATE_FORM', payload: { name, value: e.target.type === 'checkbox' ? e.target.checked : value } });
   }
 
-  const onMouseLeaveEventHandler = (name:string, value:string) => {
-    // Intiall clear all the errors
-    dispatch({type:  'RESET_FORM_ERROR'});
-
-    if(value === '') {
-      dispatch({type:  'FORM_ERROR', payload: {name, value: `${name} is required`}})
+  const onMouseLeaveEventHandler = (name: keyof FormInterface, value: string) => {
+    if (!userModel[name].test(value)) {
+      dispatch({ type: 'FORM_ERROR', payload: { formHasError: true, name, value: `${camelCaseToNormal(name, true)} is required` } })
+    } else {
+      dispatch({ type: 'FORM_ERROR', payload: { name, value: null, formHasError: false } })
     }
   }
 
+  const onSubmitHandler = () => {
+    // Make sure that there is error 
+    // if (formHasError) {
+    //   return;
+    // }
 
+    // Agreement must be checked
+    // if(!form.agreement) {
+    //   dispatch({type: 'FORM_ERROR', payload: {name: 'agreement', value: 'Please accept agreement'}});
+    //   return;
+    // }
+
+    // While submitting the form as well we need to validate all of the data
+
+    Object.keys(form).forEach((key) => {
+
+      const formKey = key as keyof FormInterface;
+      const value = form[formKey] as string;
+
+      if (!userModel[formKey].test(value)) {
+        console.log(`${formKey} value ${value} is invalid`)
+        dispatch({ type: 'FORM_ERROR', payload: { formHasError: true, name: formKey, value: `${camelCaseToNormal(formKey, true)} is required` } })
+      }
+
+      if (userModel[formKey].test(value)) {
+        console.log(`${formKey} value ${value} is valid`)
+        dispatch({ type: 'FORM_ERROR', payload: { formHasError: false, name: formKey, value: null } })
+      }
+
+    });
+  }
+
+  // console.log("formHasError", formHasError, formError)
+  console.log('form', form)
+  console.log('formHasError', formHasError);
   console.log('formError', formError)
+
 
   return (
     <Template>
@@ -158,6 +199,8 @@ export default function Signup() {
           onChangeHandler={onChangeHandler}
           onMouseLeaveEventHandler={onMouseLeaveEventHandler}
           form={form}
+          formError={formError}
+          onSubmitHandler={onSubmitHandler}
         />
         {/* <VerifyFeature/> */}
       </div>

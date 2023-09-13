@@ -5,17 +5,19 @@ import {
     Input,
     InputAdornments,
 } from "@pasal/cio-component-library";
-import { FormInterface } from '../../interfaces/user/inde';
+import { FormError, FormInterface } from '../../interfaces/user/inde';
 
 type Props = {
-    onChangeHandler:Function;
-    form:FormInterface;
-    onMouseLeaveEventHandler:Function;
+    onChangeHandler: Function;
+    form: FormInterface;
+    onMouseLeaveEventHandler: Function;
+    formError: FormError;
+    onSubmitHandler:Function;
 }
 
 
 
-export default function SignupFeature({onChangeHandler, form, onMouseLeaveEventHandler }: Props) {
+export default function SignupFeature({onSubmitHandler, onChangeHandler, form, onMouseLeaveEventHandler, formError }: Props) {
     return (
         <div className="group-elements">
             <div className="row registration">
@@ -30,47 +32,61 @@ export default function SignupFeature({onChangeHandler, form, onMouseLeaveEventH
                         id="full-name"
                         // defaultValue="Hello World"
                         type="text"
-                    //  error={true}
-                    // helperText="Incorrect entry."
-                    name='fullName'
-                    onChange={onChangeHandler}
-                    value={form.fullName}
-                    onMouseOut={() => onMouseLeaveEventHandler('fullName', form.fullName)}
+                        name='fullName'
+                        onChange={onChangeHandler}
+                        value={form.fullName}
+                        error={formError.fullName}
+                        helperText={formError.fullName}
+                        onMouseOut={() => onMouseLeaveEventHandler('fullName', form.fullName)}
                     // 
                     />
                     <Input
                         label="Email address*"
                         id="email-address"
-                        defaultValue=""
+                        
                         type="email"
-                    //  error={true}
-                    // helperText="Incorrect entry."
-                    name='email'
-                    onChange={onChangeHandler}
-                    value={form.email}
+                        name='email'
+                        onChange={onChangeHandler}
+                        value={form.email}
+                        error={formError.email}
+                        helperText={formError.email}
+                        onMouseOut={() => onMouseLeaveEventHandler('email', form.email)}
+
                     />
-                    <InputAdornments label="Password" 
-                    name='password'
-                    onChange={onChangeHandler}
-                    value={form.password}
+                    <InputAdornments label="Password"
+                        name='password'
+                        onChange={onChangeHandler}
+                        value={form.password}
+                        error={formError.password}
+                        helperText={formError.password}
+                        onMouseOut={() => onMouseLeaveEventHandler('password', form.password)}
                     />
 
-                    <InputAdornments label="Confirm password" 
-                    name='confirmPassword'
-                    onChange={onChangeHandler}
-                    value={form.confirmPassword}
+                    <InputAdornments label="Confirm password"
+                        name='confirmPassword'
+                        onChange={onChangeHandler}
+                        value={form.confirmPassword}
+                        error={formError.confirmPassword}
+                        helperText={formError.confirmPassword}
+                        onMouseOut={() => onMouseLeaveEventHandler('confirmPassword', form.confirmPassword)}
                     />
 
                     <div className="agreement">
-                        <Checkbox id="check-me" 
-                        checked={form.agreement}
-                        name='agreement'
-                        onChange={onChangeHandler}
+                        <Checkbox id="check-me"
+                            checked={form.agreement}
+                            name='agreement'
+                            onChange={onChangeHandler}
+                            error={true}
+                            // helperText={formError.agreement}
                         />
                         <label htmlFor="check-me">I agree to terms & conditions</label>
                     </div>
 
-                    <Button variant="primary" text="Register Account"></Button>
+                    <Button 
+                     variant="primary" 
+                     text="Register Account"
+                     onClick={() => onSubmitHandler()}
+                     ></Button>
                 </div>
             </div>
         </div>
