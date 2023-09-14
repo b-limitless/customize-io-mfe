@@ -29,7 +29,7 @@ $header-margin: 3rem;
     .row.face {
       //   max-width: pxToRem(696);
       display: flex;
-      height: calc(100vh - (26.5px + 81px));
+      height: calc(100vh - (110.5px));
       align-items: center;
 
       img {
@@ -86,8 +86,12 @@ $header-margin: 3rem;
         .form {
           display: flex;
           flex-direction: column;
-          row-gap: 2rem;
+          row-gap: 1rem;
           margin-top: 74px;
+
+          .MuiFormControl-root {
+            min-height: 78.91px;
+          }
 
           .agreement {
             display: flex;

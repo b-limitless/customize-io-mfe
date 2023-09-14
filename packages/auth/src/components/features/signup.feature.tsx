@@ -37,7 +37,7 @@ export default function SignupFeature({onSubmitHandler, onChangeHandler, form, o
                         value={form.fullName}
                         error={formError.fullName}
                         helperText={formError.fullName}
-                        onMouseOut={() => onMouseLeaveEventHandler('fullName', form.fullName)}
+                        onBlur={() => onMouseLeaveEventHandler('fullName', form.fullName)}
                     // 
                     />
                     <Input
@@ -50,7 +50,7 @@ export default function SignupFeature({onSubmitHandler, onChangeHandler, form, o
                         value={form.email}
                         error={formError.email}
                         helperText={formError.email}
-                        onMouseOut={() => onMouseLeaveEventHandler('email', form.email)}
+                        onBlur={() => onMouseLeaveEventHandler('email', form.email)}
 
                     />
                     <InputAdornments label="Password"
@@ -59,7 +59,7 @@ export default function SignupFeature({onSubmitHandler, onChangeHandler, form, o
                         value={form.password}
                         error={formError.password}
                         helperText={formError.password}
-                        onMouseOut={() => onMouseLeaveEventHandler('password', form.password)}
+                        onBlur={() => onMouseLeaveEventHandler('password', form.password)}
                     />
 
                     <InputAdornments label="Confirm password"
@@ -68,7 +68,7 @@ export default function SignupFeature({onSubmitHandler, onChangeHandler, form, o
                         value={form.confirmPassword}
                         error={formError.confirmPassword}
                         helperText={formError.confirmPassword}
-                        onMouseOut={() => onMouseLeaveEventHandler('confirmPassword', form.confirmPassword)}
+                        onBlur={() => onMouseLeaveEventHandler('confirmPassword', form.confirmPassword)}
                     />
 
                     <div className="agreement">
