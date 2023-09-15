@@ -3,15 +3,19 @@ import {
   Checkbox,
   Input,
   InputAdornments,
-} from "@pasal/cio-component-library"
-import React, { useReducer } from "react";
-import BackLeftIcon from "../assets/svg/back-left-icon.svg";
-import Template from "../common/Template";
-import SignupFeature from "./features/signup.feature";
-import VerifyFeature from "./features/verify.feature";
-import { FormInterface, FormState } from "../interfaces/user/inde";
+} from '@pasal/cio-component-library'
+import React, { useEffect, useReducer } from 'react';
+import BackLeftIcon from '../assets/svg/back-left-icon.svg';
+import Template from '../common/Template';
+import SignupFeature from './features/signup.feature';
+import VerifyFeature from './features/verify.feature';
+import { FormInterface, FormState } from '../interfaces/user/inde';
 import { camelCaseToNormal } from '@pasal/cio-component-library'
-import { userModel } from "../model/user";
+import { userModel } from '../model/user';
+import { request } from '../utils/request';
+import { APIS } from '../config/apis';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const initialFormErrorState = {
   fullName: null,
@@ -19,6 +23,7 @@ const initialFormErrorState = {
   password: null,
   confirmPassword: null,
   agreement: null,
+
 }
 const initialState: FormState = {
   submitting: false,
@@ -34,6 +39,7 @@ const initialState: FormState = {
     ...initialFormErrorState
   },
   submissionError: null,
+  formSubmitted: false,
   success: null
 }
 
@@ -44,7 +50,7 @@ function authReducer(state: FormState, action: any): FormState {
     case 'USER_REGISTRATION_ERROR':
       return { ...state, submissionError: action.payload };
     case 'USER_REGISTRATION_SUCCESS':
-      return { ...state, success: true };
+      return { ...initialState, success: true };
     case 'UPDATE_FORM': {
       const { name, value } = action.payload;
       return {
@@ -74,6 +80,18 @@ function authReducer(state: FormState, action: any): FormState {
         }
       }
     }
+    case 'FORM_SUBMITTED': {
+      return {
+        ...state,
+        formSubmitted: action.payload
+      }
+    }
+    case 'SUBMITTING': {
+      return {
+        ...state,
+        submitting: action.payload
+      }
+    }
     default:
       return state;
   }
@@ -82,12 +100,16 @@ function authReducer(state: FormState, action: any): FormState {
 
 
 export default function Signup() {
+  const history = useHistory();
 
-  const [{ submitting, 
-          form, 
-          submissionError, 
-          success, formError, 
-          formHasError }, dispatch] = useReducer(authReducer, initialState);
+  const [{ submitting,
+    form,
+    submissionError,
+    success, 
+    formError,
+    formSubmitted,
+    formHasError },
+    dispatch] = useReducer(authReducer, initialState);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -104,18 +126,6 @@ export default function Signup() {
   }
 
   const onSubmitHandler = () => {
-    // Make sure that there is error 
-    // if (formHasError) {
-    //   return;
-    // }
-
-    // Agreement must be checked
-    // if(!form.agreement) {
-    //   dispatch({type: 'FORM_ERROR', payload: {name: 'agreement', value: 'Please accept agreement'}});
-    //   return;
-    // }
-
-    // While submitting the form as well we need to validate all of the data
 
     Object.keys(form).forEach((key) => {
 
@@ -123,7 +133,6 @@ export default function Signup() {
       const value = form[formKey] as string;
 
       if (!userModel[formKey].test(value)) {
-        console.log(`${formKey} value ${value} is invalid`)
         dispatch({ type: 'FORM_ERROR', payload: { formHasError: true, name: formKey, value: `${camelCaseToNormal(formKey, true)} is required` } })
       }
 
@@ -133,76 +142,81 @@ export default function Signup() {
       }
 
     });
+    dispatch({ type: 'FORM_SUBMITTED', payload: true });
   }
 
-  // console.log("formHasError", formHasError, formError)
-  console.log('form', form)
-  console.log('formHasError', formHasError);
-  console.log('formError', formError)
+  useEffect(() => {
+    const submitFormToServer = async () => {
+      // const body = {
+      //   fullName: 'bharat shah',
+      //   email: 'bharatrose1@gmail.com',
+      //   password: 'thisismylife123',
+      //   confirmPassword: 'thisismylife123',
+      //   agreement: true,
+      //   role: 'admin',
+      //   permissions: ['all']
+      // }
+      try {
+        const response = await request({
+          url: APIS.auth.signup,
+          method: 'post',
+          body: {...form, role:'admin', permissions: ['all']}
+        });
+    
+        const { verificationCode, user } = response; 
+        dispatch({ type: 'USER_REGISTRATION_SUCCESS' });
+        history.push('/auth/verify');
+
+      } catch (err: any) {
+        const { response: { data: { errors } } } = err;
+        errors.forEach((error: any, i: number) => {
+          dispatch({ type: 'FORM_ERROR', payload: { formHasError: true, name: error.field, value: error.message } })
+          dispatch({ type: 'FORM_SUBMITTED', payload: false });
+          dispatch({ type: 'SUBMITTING', payload: false });
+        });
+        console.log('err', errors);
+      }
 
 
+    }
+
+    if(formSubmitted && !formHasError) {
+      submitFormToServer();
+    }
+    
+  }, [formHasError, formSubmitted]);
+
+ 
+  console.log("formError", formError)
   return (
     <Template>
-      <div className="right col">
-        <div className="group-nav">
-          <div className="row navigate">
-            <span className="ico-back">
-              <span className="icon">
+      <div className='right col'>
+        <div className='group-nav'>
+          <div className='row navigate'>
+            <span className='ico-back'>
+              <span className='icon'>
                 <BackLeftIcon />
               </span>
-              <div className="back">Back</div>
+              <div className='back'>Back</div>
             </span>
-            <span className="steps-info">
-              <span className="step">STEP 01/03</span>
-              <span className="info">Personal Info.</span>
+            <span className='steps-info'>
+              <span className='step'>STEP 01/03</span>
+              <span className='info'>Personal Info.</span>
             </span>
           </div>
         </div>
-        {/* <div className="group-elements">
-          <div className="row registration">
-            <div className="title">Register Individual Account!</div>
-            <div className="purpose">
-              For the purpose of industry regulation, your details are required.
-            </div>
-
-            <div className="form">
-              <Input
-                label="Full name*"
-                id="full-name"
-                // defaultValue="Hello World"
-                type="text"
-                //  error={true}
-                // helperText="Incorrect entry."
-              />
-              <Input
-                label="Email address*"
-                id="email-address"
-                defaultValue=""
-                type="email"
-                //  error={true}
-                // helperText="Incorrect entry."
-              />
-              <InputAdornments label="Password" />
-
-              <InputAdornments label="Confirm password" />
-
-              <div className="agreement">
-                <Checkbox id="check-me" />
-                <label htmlFor="check-me">I agree to terms & conditions</label>
-              </div>
-
-              <Button variant="primary" text="Register Account"></Button>
-            </div>
-          </div>
-        </div> */}
-        <SignupFeature
+        
+        {!success && <SignupFeature
           onChangeHandler={onChangeHandler}
           onMouseLeaveEventHandler={onMouseLeaveEventHandler}
           form={form}
           formError={formError}
           onSubmitHandler={onSubmitHandler}
-        />
-        {/* <VerifyFeature/> */}
+          submitting={submitting}
+        />}
+        {/* {success && <VerifyFeature/>} */}
+
+        <VerifyFeature/>
       </div>
     </Template>
   );

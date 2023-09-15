@@ -6,6 +6,7 @@ import ForgotPassword from "./components/ForgotPassword";
 import CreateANewPassword from "./components/CreateANewPassword";
 
 import "./styles";
+import VerifyRegisteredAccount from "./components/VerifyRegisteredAccount";
 
 interface AppInterface {
   history: any;
@@ -22,6 +23,7 @@ export default function App({ history }: AppInterface) {
           <Route path="/auth/signup" component={Signup} />
           <Route path="/auth/forgot-password" component={ForgotPassword} />
           <Route path="/auth/create-a-new-password" component={CreateANewPassword} />
+          <Route path="/auth/verify" component={VerifyRegisteredAccount} />
         </Switch>
 
       </Router>

@@ -22,5 +22,6 @@ export interface FormState {
   success: null | boolean;
   formError: FormError
   formHasError: null | boolean;
+  formSubmitted: boolean
   
 }

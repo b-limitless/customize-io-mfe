@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const setAuthToken = async () => {
+const axiosCommon = async () => {
   axios.interceptors.response.use(
     (response) => {
       if ([401, 403].indexOf(response.data.status) !== -1) {
@@ -14,4 +14,4 @@ const setAuthToken = async () => {
   );
 };
 
-export default setAuthToken;
+export default axiosCommon;

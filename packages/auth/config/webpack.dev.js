@@ -10,9 +10,9 @@ const PORT = 8083;
 const domain = process.env.PRODUCTION_DOMAIN;
 
 let devConfig = {
-  // optimization :{
-  //   runtimeChunk: "single",
-  // },
+  optimization :{
+    runtimeChunk: "single",
+  },
   mode: 'development',
   output: {
     publicPath: `http://localhost:${PORT}/`,

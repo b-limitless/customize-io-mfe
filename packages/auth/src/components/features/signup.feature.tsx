@@ -13,11 +13,12 @@ type Props = {
     onMouseLeaveEventHandler: Function;
     formError: FormError;
     onSubmitHandler:Function;
+    submitting: boolean
 }
 
 
 
-export default function SignupFeature({onSubmitHandler, onChangeHandler, form, onMouseLeaveEventHandler, formError }: Props) {
+export default function SignupFeature({submitting, onSubmitHandler, onChangeHandler, form, onMouseLeaveEventHandler, formError }: Props) {
     return (
         <div className="group-elements">
             <div className="row registration">
@@ -84,8 +85,9 @@ export default function SignupFeature({onSubmitHandler, onChangeHandler, form, o
 
                     <Button 
                      variant="primary" 
-                     text="Register Account"
-                     onClick={() => onSubmitHandler()}
+                     text={submitting ? "Please wait..." : "Register Account"}
+                     onClick={() => !submitting ? onSubmitHandler() : null}
+                     
                      ></Button>
                 </div>
             </div>
